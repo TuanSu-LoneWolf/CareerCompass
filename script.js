@@ -1,16 +1,16 @@
 var index = 0;
 changeImage = function changeImage() {
   var imgs = [
-    "../Vocationalguidancewebsite/image/nganhcongnghethongtin.jpg",
-    "../Vocationalguidancewebsite/image/cokhidientu.jpg",
-    "../Vocationalguidancewebsite/image/congnghethucpham.jpg",
-    "../Vocationalguidancewebsite/image/xaydung.jpg",
-    "../Vocationalguidancewebsite/image/marketing.jpg",
-    "../Vocationalguidancewebsite/image/nganhkientruc.jpg",
-    "../Vocationalguidancewebsite/image/teacher.jpg",
-    "../Vocationalguidancewebsite/image/doctor.jpg",
-    "../Vocationalguidancewebsite/image/logistics.jpg",
-    "../Vocationalguidancewebsite/image/accounting.jpeg",
+    "../image/nganhcongnghethongtin.jpg",
+    "../image/cokhidientu.jpg",
+    "../image/congnghethucpham.jpg",
+    "../image/xaydung.jpg",
+    "../image/marketing.jpg",
+    "../image/nganhkientruc.jpg",
+    "../image/teacher.jpg",
+    "../image/doctor.jpg",
+    "../image/logistics.jpg",
+    "../image/accounting.jpeg",
   ];
   var imgElement = document.getElementById("img1");
 
