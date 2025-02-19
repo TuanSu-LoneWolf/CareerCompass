@@ -107,6 +107,30 @@
             </a>
         </div>
     </div>
+    <div class="forum">
+        <div class="forum-header">
+            <h2>Diễn Đàn Hướng Nghiệp</h2>
+            <button class="button-post" onclick="openPostform()">Đăng bài</button>
+        </div>
+        <div class="forum-post">
+            <div class="post">
+                <h3>Chủ đề ....</h3>
+                <p>Người đăng - Ngày đăng</p>
+                <p>Nội dung....</p>
+            </div>
+        </div>
+        <div id="post-form">
+            <h3>Đăng bài mới</h3>
+            <form id="newpost">
+                <label for="postTitle">Tiêu đề: </label>
+                <input type="text" id="postTitle" name="postTitle" required>
+                <label for="postContent">Nội dung</label>
+                <textarea id="postContent" name="postContent" rows="4" required></textarea>
+                <button type="submit">Đăng bài</button>
+                <button type="button" onclick="closepostForm()">Hủy</button>
+            </form>
+        </div>
+    </div>
     <footer>
         <div class="footer-bottom">
             <h3>VOCATIONAL GUIDANCE</h3>
