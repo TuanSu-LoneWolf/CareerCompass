@@ -160,6 +160,83 @@ header ul li a:hover {
   }
 }
 
+/* container */
+.container {
+  display: grid; /* Kích hoạt grid */
+  grid-template-columns: 250px 1fr; /* Định nghĩa 2 cột: 250px cho sidebar, 1fr cho phần còn lại */
+}
+
+.content {
+  grid-column: 2; /* Đặt nội dung vào cột thứ 2 */
+}
+
+/* sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #c3c4c7;
+  color: white;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: black;
+}
+
+.sidebar-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  padding: 10px; /* Thêm padding để có khoảng trống xung quanh nội dung */
+}
+
+.sidebar-item a:hover {
+  background-color: #646669; /* Màu nền khi hover */
+  border-radius: 8px; /* Bo góc khi hover */
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.sidebar-item.active {
+  border-radius: 8px; /* Bo góc active item */
+}
+
+.icon-wrapper {
+  width: 25px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center; /* Căn giữa icon */
+}
+
+.sidebar-item img {
+  width: 100%; /* Icon chiếm toàn bộ icon-wrapper */
+  display: block;
+}
+
+.sidebar-item span {
+  white-space: nowrap;
+  font-size: 16px;
+  color: white;
+}
+
+.sidebar.collapsed .sidebar-item span {
+  display: none;
+}
+
 /* Tìm kiếm */
 .search {
   width: 100%;
@@ -190,6 +267,7 @@ header ul li a:hover {
 
 .blog h2 {
   font-size: 30px;
+  margin-left: 40px;
 }
 
 .grid-blog {
@@ -200,7 +278,7 @@ header ul li a:hover {
 .row-blog {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -0.5%;
+  margin-left: 40px;  
   margin-right: -0.5%;
 }
 
@@ -327,7 +405,6 @@ footer {
   background-color: black;
   color: white;
   padding: 20px;
-  margin-top: 20px;
 }
 
 .footer-container {
@@ -385,105 +462,4 @@ footer {
   .nav_pc-link a {
     font-size: 25px;
   }
-}
-
-.forum{
-  width: 80%;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.forum-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.forum-header h2{
-  margin: 0;
-}
-
-.button-post{
-  padding: 10ppx 20px;
-  background-color: #1f65de;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.button-post:hover{
-  background-color: #1652b3;
-}
-
-.forum-post .post{
-  background-color: white;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0 0 0 0.1);
-}
-
-.post h3{
-  margin: 0 0 10px;
-}
-
-.post p{
-  margin: 5px 0;
-}
-
-.post-form{
-  display: none;
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0 0 0 0.1);
-  margin-top: 20px;
-}
-
-.post-form h3{
-  margin-top: 0;
-}
-
-.post-form label{
-  display: block;
-  margin-bottom: 5px;
-}
-
-.post-form input, .post-form textarea{
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.post-form button{
-  padding: 10px 20px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.post-form button[type="submit"]{
-  background-color: #1f65de;
-  color: white;
-}
-
-.post-form button[type="submit"]:hover{
-  background-color: #1652b3;
-}
-
-.post-form button[type="button"]{
-  background-color: #ccc;
-  color: black;
-}
-
-.post-form button[type="button"]:hover{
-  background-color: #bbb;
 }

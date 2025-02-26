@@ -61,74 +61,78 @@
           },
         });
     </script>
-    <div class="search">
-        <input class="search-input" type="text" id="search-input" name="search-input" placeholder="Tìm kiếm bài viết, thông tin tuyển sinh, ngành nghề,..." required>
-    </div>
-    <div class="blog">
-        <h2>Bài viết nổi bật</h2>
-    </div>
-    <div class="grid-blog">
-        <div class="row-blog">
-            <a class="col-blog" href="../Thông tin1 - Top 3 ngành nghề hot hiện nay/">
-                <div class="image-blog1"></div>
-                <div class="content-blog">
-                    <p>Top 3 ngành nghề hot hiện nay</p>
-                </div>
-            </a>
-            <a class="col-blog"  href="../Thông tin2 - Ngành y/">
-                <div class="image-blog2"></div>
-                <div class="content-blog">
-                    <p>Tại sao ngành y học lại quan trọng và cần thiết?</p>
-                </div>
-            </a>
-            <a class="col-blog" href="../Thông tin3 - Nhà giáo/">
-                <div class="image-blog3"></div>
-                <div class="content-blog">
-                    <p>Vai trò của ngành Nhà giáo - những người lái đò dẫn lối tương lai của trò</p>
-                </div>
-            </a>
-            <a class="col-blog" href="../Thông tin4 - Định hướng nghề nghiệp phù hợp/">
-                <div class="image-blog4"></div>
-                <div class="content-blog">
-                    <p>Định hướng nghề nghiệp phù hợp</p>
-                </div>
-            </a>
-            <a class="col-blog" href="../Thông tin5 - Xu hướng nghề nghiệp/index.html">
-                <div class="image-blog5"></div>
-                <div class="content-blog">
-                    <p>Xu hướng nghề nghiệp</p>
-                </div>
-            </a>
-            <a class="col-blog" href="../Thông tin6 - Xu hướng tuyển sinh/">
-                <div class="image-blog6"></div>
-                <div class="content-blog">
-                    <p>Xu hướng tuyển sinh</p>
-                </div>
-            </a>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active">
+                    <a href="../Thông tin/forum.html">
+                        <div class="icon-wrapper">
+                        <img src="../Thông tin/img/forumicon (1).png" alt="Forum">
+                        </div>
+                        <span>Forum</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="../Thông tin/post.html">
+                        <div class="icon-wrapper">
+                            <img src="../Thông tin/img/articleicon.png" alt="Bài viết">
+                        </div>
+                        <span>Bài viết</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </div>
-    <div class="forum">
-        <div class="forum-header">
-            <h2>Diễn Đàn Hướng Nghiệp</h2>
-            <button class="button-post" onclick="openPostform()">Đăng bài</button>
-        </div>
-        <div class="forum-post">
-            <div class="post">
-                <h3>Chủ đề ....</h3>
-                <p>Người đăng - Ngày đăng</p>
-                <p>Nội dung....</p>
+
+        <div class="content">
+            <div class="search">
+                <input class="search-input" type="text" id="search-input" name="search-input" placeholder="Tìm kiếm bài viết, thông tin tuyển sinh, ngành nghề,..." required>
+            </div>
+            <div class="blog">
+                <h2>Bài viết nổi bật</h2>
+            </div>
+            <div class="grid-blog">
+                <div class="row-blog">
+                    <a class="col-blog" href="../Thông tin1 - Top 3 ngành nghề hot hiện nay/">
+                    <div class="image-blog1"></div>
+                    <div class="content-blog">
+                        <p>Top 3 ngành nghề hot hiện nay</p>
+                    </div>
+                    </a>
+                    <a class="col-blog"  href="../Thông tin2 - Ngành y/">
+                    <div class="image-blog2"></div>
+                    <div class="content-blog">
+                        <p>Tại sao ngành y học lại quan trọng và cần thiết?</p>
+                    </div>
+                    </a>
+                    <a class="col-blog" href="../Thông tin3 - Nhà giáo/">
+                    <div class="image-blog3"></div>
+                    <div class="content-blog">
+                        <p>Vai trò của ngành Nhà giáo - những người lái đò dẫn lối tương lai của trò</p>
+                    </div>
+                    </a>
+                    <a class="col-blog" href="../Thông tin4 - Định hướng nghề nghiệp phù hợp/">
+                    <div class="image-blog4"></div>
+                    <div class="content-blog">
+                        <p>Định hướng nghề nghiệp phù hợp</p>
+                    </div>
+                    </a>
+                    <a class="col-blog" href="../Thông tin5 - Xu hướng nghề nghiệp/index.html">
+                    <div class="image-blog5"></div>
+                    <div class="content-blog">
+                        <p>Xu hướng nghề nghiệp</p>
+                    </div>
+                    </a>
+                    <a class="col-blog" href="../Thông tin6 - Xu hướng tuyển sinh/">
+                    <div class="image-blog6"></div>
+                    <div class="content-blog">
+                        <p>Xu hướng tuyển sinh</p>
+                    </div>
+                    </a>
+                </div>
             </div>
         </div>
-        <div id="post-form">
-            <h3>Đăng bài mới</h3>
-            <form id="newpost">
-                <label for="postTitle">Tiêu đề: </label>
-                <input type="text" id="postTitle" name="postTitle" required>
-                <label for="postContent">Nội dung</label>
-                <textarea id="postContent" name="postContent" rows="4" required></textarea>
-                <button type="submit">Đăng bài</button>
-                <button type="button" onclick="closepostForm()">Hủy</button>
-            </form>
         </div>
     </div>
     <footer>
