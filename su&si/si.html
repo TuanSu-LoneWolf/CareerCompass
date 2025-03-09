@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum</title>
-    <link rel="stylesheet" href="./forum.css">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="../su&si/si.css">
+    <script src="si.js"></script>
 </head>
 <body>
     <header>
@@ -12,15 +13,13 @@
             <img class="nav-logo"></img>
             <nav class="nav_pc">
                 <ul class="nav_pc-list">
-                    <li class="nav_pc-link"><a href="../Trang chủ">Trang chủ</a></li>
+                    <li class="nav_pc-link"><a href="../index.html">Trang chủ</a></li>
                     <li class="nav_pc-link"><a href="../Học tập/tl.html">Học tập</a></li>
                     <li class="nav_pc-link"><a href="#">Test</a></li>
                     <li class="nav_pc-link"><a href="../Thông tin/index.html">Thông tin</a></li>
                     <li class="nav_pc-link"><a href="#">Tư vấn</a></li>
                     <li class="nav_pc-link"><a href="#">Phỏng vấn</a></li>
-                    <li class="nav_pc-link"><a href="../Liên hệ/lienhe.html">Liên hệ</a></li>
-                    <li class="nav_pc-link"><a href="../su&si/si.html">Đăng nhập</a></li>
-                    <li class="nav_pc-link"><a href="../su&si/su.html">Đăng ký</a></li>
+                    <li class="nav_pc-link"><a href="./lienhe.html">Liên hệ</a></li>
                 </ul>
             </nav>
             <label class="bar-btn" for="nav_MobileAndTablet-input">
@@ -36,37 +35,57 @@
                     </label>
                 </div>
                 <ul class="nav_MobileAndTablet-list">
-                    <li class="nav_MobileAndTablet-link"><a href="./index.html">Trang chủ</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Trang chủ/index.html">Trang chủ</a></li>
                     <li class="nav_MobileAndTablet-link"><a href="../Học tập/tl.html">Học tập</a></li>
                     <li class="nav_MobileAndTablet-link"><a href="#">Test</a></li>
                     <li class="nav_MobileAndTablet-link"><a href="../Thông tin/index.html">Thông tin</a></li>
                     <li class="nav_MobileAndTablet-link"><a href="#">Tư vấn</a></li>
                     <li class="nav_MobileAndTablet-link"><a href="#">Phỏng vấn</a></li>
                     <li class="nav_MobileAndTablet-link"><a href="#">Liên kết</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="../Liên hệ/lienhe.html">Liên hệ</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="../su&si/si.html">Đăng nhập</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="../su&si/su.html">Đăng ký</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="./lienhe.html">Liên hệ</a></li>
                 </ul>
             </div>
         </div>
     </header>
-    <div class="container">
-        <div class="forum-container">
-            <h1>Xin chào, chúng tôi có thể giúp gì cho bạn?</h1>
-            <p>Định hướng nghề nghiệp phù hợp cho bạn.</p>
-            <div class="search-box">
-                <input type="text" placeholder="Search for Topics...">
-                <button>Search</button>
+    <div class="login-container">
+        <h2>Đăng nhập</h2>
+        <input type="text" id="username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <button onclick="login()">Đăng nhập</button>
+    </div>
+    <!---
+    <footer>
+        <div class="footer-bottom">
+            <h3>VOCATIONAL GUIDANCE</h3>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Nội dung khác</h3>
+                <p>Một số nội dung bạn muốn hiển thị ở cột 3.</p>
             </div>
-            <div class="popular-container">
-                <p class="popular-title">Popular:</p>
-                <div class="popular-items">
-                    <a href="../Học tập/tl.html" class="popular-item">Học tập</a>
-                    <a href="../Thông tin/index.html" class="popular-item">Thông tin</a>
-                    <a href="../Liên hệ/lienhe.html" class="popular-item">Liên hệ</a>
-                </div>
+            <div class="footer-column">
+                <h3>Thông tin liên hệ</h3>
+                <p>Địa chỉ: 1A Nguyễn Hiến Lê, Phường 13, Tân Bình, Hồ Chí Minh</p>
+                <p>Điện thoại: 090 695 0881</p>
+                <p>Email: tuansu1561@gmail.com</p>
+            </div>
+            <div class="footer-column">
+                <div class="links">
+                    <a href="../Trang chủ/index.html">Trang chủ</a> 
+                    <a href="../Học tập/tl.html">Học tập</a> 
+                    <a href="#">Test</a> 
+                    <a href="../Thông tin/index.html">Thông tin</a> 
+                    <a href="#">Tư vấn</a> 
+                    <a href="#">Phỏng vấn</a> 
+                    <a href="#">Liên kết</a> 
+                    <a href="../Liên hệ/lienhe.html">Liên hệ</a>
+                </div>  
             </div>
         </div>
-    </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 VOCATIONAL GUIDANCE. All rights reserved.</p>
+        </div>
+    </footer>
+-->   
 </body>
 </html>
