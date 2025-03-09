@@ -7,7 +7,7 @@ body {
 
 /* Navvigation Bar */
 header {
-  width: 100vw;
+  width: 100%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -15,7 +15,6 @@ header {
 }
 
 .nav {
-  display: flex;
   width: 100vw;
   background-color: white;
   display: flex;
@@ -163,27 +162,23 @@ header ul li a:hover {
 /* container */
 .container {
   display: grid; /* Kích hoạt grid */
-  grid-template-columns: 250px 1fr; /* Định nghĩa 2 cột: 250px cho sidebar, 1fr cho phần còn lại */
+  grid-template-columns: 7% 93%; /* Định nghĩa 2 cột: 250px cho sidebar, 1fr cho phần còn lại */
+  margin-top: 50px;
+
 }
 
 .content {
   grid-column: 2; /* Đặt nội dung vào cột thứ 2 */
   margin-left: 0;
-  padding: 50px;
 }
 
 /* sidebar */
 .sidebar {
-  width: 5%;
   background-color: white;
   color: white;
-  height: 75vh;
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
-  margin-top: 50px;
-  padding-top: 20px;
-  position: fixed;
   align-items: center;
   text-align: center;
 }
@@ -193,6 +188,12 @@ header ul li a:hover {
   padding: 0;
   margin: 0;
   color: black;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  position: sticky;
+  top: 70px;
 }
 
 .sidebar-item a {
@@ -201,20 +202,29 @@ header ul li a:hover {
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  padding: 10px 0;
   width: 100%;
+  row-gap: 5px;
 }
 
-.sidebar-item a:hover {
-  background-color: #646669; /* Màu nền khi hover */
+
+#forum a:hover {
+  background-color: #f4f3f3; /* Màu nền khi hover */
   border-radius: 8px; /* Bo góc khi hover */
 }
 
 .sidebar-item {
   display: flex;
   align-items: center;
-  padding: 15px 20px;
   cursor: pointer;
+  width: 100%;
 }
+
+#article {
+  background-color:rgb(231, 230, 230);
+  border-radius: 8px;
+}
+
 
 .sidebar-item.active {
   border-radius: 8px; /* Bo góc active item */
@@ -223,14 +233,16 @@ header ul li a:hover {
 .sidebar-item img {
   width: 25px; /* Icon chiếm toàn bộ icon-wrapper */
   display: block;
-  margin-bottom: 10px;
   align-items: center;
+  fill:rgb(26, 26, 26);
 }
+
 
 .sidebar-item span {
   white-space: nowrap;
-  font-size: 16px;
-  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(27, 27, 27);
   text-align: center;
 }
 
