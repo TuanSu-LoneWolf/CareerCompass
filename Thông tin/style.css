@@ -168,19 +168,24 @@ header ul li a:hover {
 
 .content {
   grid-column: 2; /* Đặt nội dung vào cột thứ 2 */
+  margin-left: 0;
+  padding: 50px;
 }
 
 /* sidebar */
 .sidebar {
-  width: 200px;
+  width: 5%;
   background-color: white;
-  color: black;
+  color: white;
   height: 75vh;
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
-  margin-top: 40px;
+  margin-top: 50px;
   padding-top: 20px;
+  position: fixed;
+  align-items: center;
+  text-align: center;
 }
 
 .sidebar-menu {
@@ -192,11 +197,11 @@ header ul li a:hover {
 
 .sidebar-item a {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
-  color: inherit;
   width: 100%;
-  padding: 10px; /* Thêm padding để có khoảng trống xung quanh nội dung */
 }
 
 .sidebar-item a:hover {
@@ -215,22 +220,18 @@ header ul li a:hover {
   border-radius: 8px; /* Bo góc active item */
 }
 
-.icon-wrapper {
-  width: 25px;
-  margin-right: 15px;
-  display: flex;
-  justify-content: center; /* Căn giữa icon */
-}
-
 .sidebar-item img {
-  width: 100%; /* Icon chiếm toàn bộ icon-wrapper */
+  width: 25px; /* Icon chiếm toàn bộ icon-wrapper */
   display: block;
+  margin-bottom: 10px;
+  align-items: center;
 }
 
 .sidebar-item span {
   white-space: nowrap;
   font-size: 16px;
   color: black;
+  text-align: center;
 }
 
 .sidebar.collapsed .sidebar-item span {
@@ -242,6 +243,8 @@ header ul li a:hover {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: -40px;
 }
 .search-input {
   width: 60%;
@@ -278,7 +281,7 @@ header ul li a:hover {
 .row-blog {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 5px;  
+  margin-left: 40px;  
   margin-right: -0.5%;
 }
 
@@ -367,7 +370,7 @@ header ul li a:hover {
   color: rgb(50, 50, 50);
   font-weight: bold;
   line-height: 1.5;
-  width: 20%;
+  width: 100%;
   margin: 0;
   text-decoration: justify;
   font-size: 17px;
