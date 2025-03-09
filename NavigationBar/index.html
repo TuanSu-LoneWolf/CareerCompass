@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công cụ Hướng nghiệp THPT</title>
+    <link rel="stylesheet" href="style.css"> <!--Liên kết với file Css-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Đây là dòng giúp kích thước của các phần tử không bị tràn ra khỏi màn hình của các thiết bị nhỏ-->
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <img class="nav-logo"></img>
+            <nav class="nav_pc">
+                <ul class="nav_pc-list">
+                    <li class="nav_pc-link"><a href="../index.html">Trang chủ</a></li>
+                    <li class="nav_pc-link"><a href="../Học tập/tl.html">Học tập</a></li>
+                    <li class="nav_pc-link"><a href="#">Test</a></li>
+                    <li class="nav_pc-link"><a href="../Thông tin/index.html">Thông tin</a></li>
+                    <li class="nav_pc-link"><a href="#">Tư vấn</a></li>
+                    <li class="nav_pc-link"><a href="#">Phỏng vấn</a></li>
+                    <li class="nav_pc-link"><a href="../Liên hệ/lienhe.html">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <label class="bar-btn" for="nav_MobileAndTablet-input">
+                <img class="nav_bar-btn" src="../image/bar-button.png">
+            </label>
+            <input type="checkbox" hidden class="nav_input" id="nav_MobileAndTablet-input">
+            <label for="nav_MobileAndTablet-input" class="nav_overlay"></label>
+            <div class="nav_MobileAndTablet">
+                <div class="menu">
+                    <img class="nav-logo"></img>
+                    <label class="bar-close" for="nav_MobileAndTablet-input">
+                        <img class="nav_bar-close" src="../image/close.png">
+                    </label>
+                </div>
+                <ul class="nav_MobileAndTablet-list">
+                    <li class="nav_MobileAndTablet-link"><a href="../Trang chủ/">Trang chủ</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Học tập/tl.html">Học tập</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="#">Test</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Thông tin/index.html">Thông tin</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="#">Tư vấn</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="#">Phỏng vấn</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="#">Liên kết</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Liên hệ/lienhe.html">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.0/libs/oversea/index.js"></script>
+    <script>
+        new CozeWebSDK.WebChatClient({
+          config: {
+            bot_id: '7424159713736179729',
+          },
+          componentProps: {
+            title: 'Chuyên gia Hướng nghiệp',
+          },
+        });
+    </script>
+    <footer>
+        <div class="footer-bottom">
+            <h3>VOCATIONAL GUIDANCE</h3>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Nội dung khác</h3>
+                <p>Một số nội dung bạn muốn hiển thị ở cột 3.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Thông tin liên hệ</h3>
+                <p>Địa chỉ: 1A Nguyễn Hiến Lê, Phường 13, Tân Bình, Hồ Chí Minh</p>
+                <p>Điện thoại: 090 695 0881</p>
+                <p>Email: tuansu1561@gmail.com</p>
+            </div>
+            <div class="footer-column">
+                <div class="links">
+                    <a href="../Trang chủ/index.html">Trang chủ</a> 
+                    <a href="../Học tập/tl.html">Học tập</a> 
+                    <a href="#">Test</a> 
+                    <a href="../Thông tin/index.html">Thông tin</a> 
+                    <a href="#">Tư vấn</a> 
+                    <a href="#">Phỏng vấn</a> 
+                    <a href="#">Liên kết</a> 
+                    <a href="../Liên hệ/lienhe.html">Liên hệ</a>
+                </div>  
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 VOCATIONAL GUIDANCE. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

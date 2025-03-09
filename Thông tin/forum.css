@@ -1,0 +1,340 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    overflow-x: block;
+  }
+  
+  /* Navvigation Bar */
+  header {
+    width: 100vw;
+    position: fixed;
+    z-index: 1;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.095);
+  }
+  
+  .nav {
+    display: flex;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 3.25em;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.095);
+  }
+  
+  #logo {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .nav_pc-list {
+    display: flex;
+    list-style-type: none;
+    width: 100vw;
+    justify-content: center;
+  }
+  
+  .nav_pc-link a {
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(100, 100, 100);
+    font-weight: bold;
+  }
+  
+  header ul li a:hover {
+    border-bottom: solid;
+    border-color: #1f65de;
+  }
+  
+  .nav_bars-btn {
+    display: none;
+  }
+  
+  #border {
+    width: 100vw;
+    height: 5px;
+    background-image: transparent;
+    opacity: 0.1;
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(255, 255, 255));
+}
+
+/* Mobile & Tablet: width < 1024px */
+@media only screen and (max-width: 64em) {
+  .nav_pc {
+    display: none;
+  }
+
+  .nav_MobileAndTablet {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 430px;
+    max-width: 100%;
+    background-color: #fff;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform linear 0.2s, opacity linear 0.2s;
+  }
+
+  .menu {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    height: 3.25em;
+  }
+
+  .nav_MobileAndTablet-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+  }
+
+  .nav_MobileAndTablet-link {
+    display: block;
+    padding: 1em 0;
+  }
+
+  .nav_MobileAndTablet-link a {
+    padding: 0.5em 0;
+    text-decoration: none;
+    color: rgb(100, 100, 100);
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  .nav_overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    animation: fadeIn linear 0.2s;
+  }
+
+  .bar-btn {
+    margin: auto 0;
+    margin-right: 1em;
+  }
+
+  .nav_bar-btn {
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+
+  .bar-close {
+    margin: auto 0;
+    margin-right: 1em;
+  }
+
+  .nav_bar-close {
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav_input:checked ~ .nav_overlay {
+    display: block;
+  }
+
+  .nav_input:checked ~ .nav_MobileAndTablet {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.forum{
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .forum-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #6EC1E4;
+  }
+  
+  .forum-header h2{
+    margin: 0;
+  }
+  
+  .button-post{
+    padding: 10ppx 20px;
+    background-color: #1f65de;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button-post:hover{
+    background-color: #1652b3;
+  }
+  
+  .forum-post .post{
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0 0 0 0.1);
+  }
+  
+  .post h3{
+    margin: 0 0 10px;
+  }
+  
+  .post p{
+    margin: 5px 0;
+  }
+  
+  .post-form{
+    display: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0 0 0 0.1);
+    margin-top: 20px;
+  }
+  
+  .post-form h3{
+    margin-top: 0;
+  }
+  
+  .post-form label{
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .post-form input, .post-form textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .post-form button{
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .post-form button[type="submit"]{
+    background-color: #1f65de;
+    color: white;
+  }
+  
+  .post-form button[type="submit"]:hover{
+    background-color: #1652b3;
+  }
+  
+  .post-form button[type="button"]{
+    background-color: #ccc;
+    color: black;
+  }
+  
+  .post-form button[type="button"]:hover{
+    background-color: #bbb;
+  }
+  
+  /* forum */
+  .forum-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #ff0000, #0000ff);
+
+  }
+  
+  .forum-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 100px;
+    color: white;
+  }
+  
+  .forum-container p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  .search-box {
+    display: flex;
+  }
+  
+  .search-box input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 30px;
+  }
+  
+  .search-box button {
+    margin-left: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .popular-container {
+    display: flex;
+    align-items: center;
+    margin: 20px auto; /* Điều chỉnh khoảng cách theo ý muốn */
+    width: fit-content; /* Hoặc một chiều rộng cố định */
+  }
+  
+  .popular-title {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .popular-items {
+    display: flex; /* Các mục nằm ngang hàng nhau */
+  }
+  
+  .popular-item {
+    padding: 5px 10px;
+    border: 2px solid black; /* Điều chỉnh độ dày và màu viền theo ý muốn */
+    border-radius: 50px;
+    background-color: #eee; /* Điều chỉnh màu nền theo ý muốn */
+    color: #333; /* Điều chỉnh màu chữ theo ý muốn */
+    text-decoration: none;
+    margin-right: 5px;
+  }
