@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <link rel="stylesheet" href="../su&si/si.css">
-    <script src="si.js"></script>
 </head>
 <body>
     <header>
@@ -20,6 +19,7 @@
                     <li class="nav_pc-link"><a href="#">Tư vấn</a></li>
                     <li class="nav_pc-link"><a href="#">Phỏng vấn</a></li>
                     <li class="nav_pc-link"><a href="./lienhe.html">Liên hệ</a></li>
+                    <li class="nav_pc-link"><a href="../su&si/si.html"></a></li>
                 </ul>
             </nav>
             <label class="bar-btn" for="nav_MobileAndTablet-input">
@@ -47,12 +47,27 @@
             </div>
         </div>
     </header>
-    <div class="login-container">
-        <h2>Đăng nhập</h2>
-        <input type="text" id="username" placeholder="Tên đăng nhập" required>
-        <input type="password" id="password" placeholder="Mật khẩu" required>
-        <button onclick="login()">Đăng nhập</button>
+    <div class="container">
+        <div class="login-container">
+            <img src="../su&si/img/images.png" alt="avatar" class="usericon">
+            <h2>Đăng nhập</h2>
+            <input type="text" id="username" placeholder="Tên đăng nhập" required>
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+            <button onclick="login()">Đăng nhập</button>
+        </div>
     </div>
+    <script>
+        function login(){
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        if (username === "" || password === ""){
+            alert ("Vui lòng nhập đầy đủ thông tin!");
+        }
+        else{
+            alert ("Đăng nhập thành công!");
+        }
+    }
+    </script>
     <!---
     <footer>
         <div class="footer-bottom">
@@ -76,8 +91,7 @@
                     <a href="#">Test</a> 
                     <a href="../Thông tin/index.html">Thông tin</a> 
                     <a href="#">Tư vấn</a> 
-                    <a href="#">Phỏng vấn</a> 
-                    <a href="#">Liên kết</a> 
+                    <a href="#">Phỏng vấn</a>
                     <a href="../Liên hệ/lienhe.html">Liên hệ</a>
                 </div>  
             </div>
@@ -86,6 +100,6 @@
             <p>Copyright © 2025 VOCATIONAL GUIDANCE. All rights reserved.</p>
         </div>
     </footer>
--->   
+-->
 </body>
 </html>
