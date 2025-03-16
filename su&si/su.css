@@ -167,82 +167,108 @@ body {
     }
   }
 
-  .signup-container {
-    text-align: center;
-    background-color: white;
-    padding: 2em;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-}
-
-.signup-container h1 {
-    font-size: 1.5em;
-    margin-bottom: 1em;
-    color: #333;
-}
-
-.signup-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group {
-    margin-bottom: 1em;
-    text-align: left;
-}
-
-.form-group label {
+  .usericon{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
+    margin: 0 auto 20px;
+    background-color: #f0f0f0;
+  }
 
-.form-group input {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-.form-group input[type="checkbox"] {
-    width: auto;
-    margin-right: 0.5em;
-}
-
-.form-actions {
+  .container{
+    width: 400px;
+    max-width: 90%;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
     display: flex;
-    justify-content: space-between;
-    margin-top: 1em;
-}
+    justify-content: center;
+    align-items: center;
+  }  
 
-.signup-btn, .signin-btn {
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-}
+  .signup-container{
+    width: 400px;
+    max-width: 90%;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
-.signup-btn {
-    background-color: #1f65de;
+  h2{
+    color:#ff7f50;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"], input[type="password"]{
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #D3D3D3;
+    border-radius: 10px;
+    font-size: 16px;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+  }
+
+  button{
+    width: 80%;
+    padding: 15px;
+    background-color: #007bff;
     color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+  }
+
+  button:hover{
+    background-color: #0056b3;
+  }
+
+  .social-login {
+    margin-top: 20px;
+    text-align: center;
 }
 
-.signin-btn {
-    background-color: #ccc;
-    color: #333;
+.google-btn, .facebook-btn, .github-btn {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 50%; 
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
 }
 
-.signup-btn:hover {
-    background-color: #1a53b5;
+.google-btn:hover, .facebook-btn:hover, .github-btn:hover {
+    opacity: 0.8;
 }
 
-.signin-btn:hover {
-    background-color: #bbb;
+.social-login button img {
+    width: 30px;
+    height: 30px;
 }
+
 footer a {
   color: #007bff;
   text-decoration: none;
