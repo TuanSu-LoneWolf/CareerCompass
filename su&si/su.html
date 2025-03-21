@@ -5,115 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" href="../su&si/su.css">
-    <script src="../su&si/su.js"></script>
+    <script src="../su&si/si.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 </head>
 <body>
-    <header>
-        <div class="nav">
-            <img class="nav-logo"></img>
-            <nav class="nav_pc">
-                <ul class="nav_pc-list">
-                    <li class="nav_pc-link"><a href="../index.html">Trang chủ</a></li>
-                    <li class="nav_pc-link"><a href="../Học tập/tl.html">Học tập</a></li>
-                    <li class="nav_pc-link"><a href="#">Test</a></li>
-                    <li class="nav_pc-link"><a href="../Thông tin/index.html">Thông tin</a></li>
-                    <li class="nav_pc-link"><a href="#">Tư vấn</a></li>
-                    <li class="nav_pc-link"><a href="#">Phỏng vấn</a></li>
-                    <li class="nav_pc-link"><a href="./lienhe.html">Liên hệ</a></li>
-                </ul>
-            </nav>
-            <label class="bar-btn" for="nav_MobileAndTablet-input">
-                <img class="nav_bar-btn" src="../image/bar-button.png">
-            </label>
-            <input type="checkbox" hidden class="nav_input" id="nav_MobileAndTablet-input">
-            <label for="nav_MobileAndTablet-input" class="nav_overlay"></label>
-            <div class="nav_MobileAndTablet">
-                <div class="menu">
-                    <img class="nav-logo"></img>
-                    <label class="bar-close" for="nav_MobileAndTablet-input">
-                        <img class="nav_bar-close" src="../image/close.png">
-                    </label>
-                </div>
-                <ul class="nav_MobileAndTablet-list">
-                    <li class="nav_MobileAndTablet-link"><a href="../Trang chủ/index.html">Trang chủ</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="../Học tập/tl.html">Học tập</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="#">Test</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="../Thông tin/index.html">Thông tin</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="#">Tư vấn</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="#">Phỏng vấn</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="#">Liên kết</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="./lienhe.html">Liên hệ</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
     <div class="container">
-        <div class="container">
-            <div class="signup-form">
-                <img src="../su&si/img/images.png" alt="avatar" class="usericon">
-                <h2>Đăng ký</h2>
-                <div class="social-login">
-                    <button class="google-btn" onclick="loginWithGoogle()">
-                        <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="google">
-                    </button>
-                    <button class="facebook-btn" onclick="loginWithFacebook()">
-                        <img src="https://img.icons8.com/color/16/000000/facebook-new.png" alt="facebook">
-                    </button>
-                    <button class="github-btn" onclick="loginWithGithub()">
-                        <img src="https://img.icons8.com/color/16/000000/github--v1.png" alt="github">
-                    </button>
-                </div>
-                <form>
-                    <div class="form-group">
-                        <label for="username">Tên đăng nhập</label>
-                        <input type="text" id="username" name="username" placeholder="Tên đăng nhập">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Mật khẩu</label>
-                        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" id="terms" name="terms">
-                        <label for="terms">Tôi đồng ý với <a href="#">các điều khoản và điều kiện</a></label>
-                    </div>
-                    <button type="submit">Đăng ký</button>
-                </form>
-                <p>Bạn đã có tài khoản? <a href="../su&si/si.html">Đăng nhập</a></p>
+        <div class="login-container">
+            <div class="logo">
+                <img src="../su&si/img/images.png" alt="logo">
             </div>
-        </div>
-    <!--
-    <footer>
-        <div class="footer-bottom">
-            <h3>VOCATIONAL GUIDANCE</h3>
-        </div>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Nội dung khác</h3>butt
-                <p>Một số nội dung bạn muốn hiển thị ở cột 3.</p>
+            <h2>Đăng ký VOCATIONAL GUIDANCE</h2>
+            <p>>Mỗi người nên sử dụng riêng một tài khoản, tài khoản nhiều người sử dụng chung sẽ bị khóa.</p>
+            <div class="social-login">
+                <button class="btn"><img src="../su&si/img/usericon.svg" alt="">Sử dụng email / số điện thoại</button>
+                <button class="btn"><img src="../su&si/img/google.svg" alt="">Đăng nhập với Google</button>
+                <button class="btn"><img src="../su&si/img/facebook.svg" alt="">Đăng nhập với Facebook</button>
+                <button class="btn"><img src="../su&si/img/github.svg" alt="">Đăng nhập với Github</button>
             </div>
-            <div class="footer-column">
-                <h3>Thông tin liên hệ</h3>
-                <p>Địa chỉ: 1A Nguyễn Hiến Lê, Phường 13, Tân Bình, Hồ Chí Minh</p>
-                <p>Điện thoại: 090 695 0881</p>
-                <p>Email: tuansu1561@gmail.com</p>
-            </div>
-            <div class="footer-column">
-                <div class="links">
-                    <a href="../Trang chủ/index.html">Trang chủ</a> 
-                    <a href="../Học tập/tl.html">Học tập</a> 
-                    <a href="#">Test</a> 
-                    <a href="../Thông tin/index.html">Thông tin</a> 
-                    <a href="#">Tư vấn</a> 
-                    <a href="#">Phỏng vấn</a> 
-                    <a href="#">Liên kết</a> 
-                    <a href="../Liên hệ/lienhe.html">Liên hệ</a>
-                </div>  
-            </div>
+            <p>Bạn đã có tài khoản? <a href="../su&si/si.html">Đăng nhập</a></p>
+            <p><a href="#">Quên mật khẩu</a></p>
+            <p>Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với <a href="#">các điều khoản sử dụng</a> của chúng tôi</p>
         </div>
-        <div class="footer-bottom">
-            <p>Copyright © 2025 VOCATIONAL GUIDANCE. All rights reserved.</p>
-        </div>
-    </footer>
--->
+    </div>
 </body>
 </html>
