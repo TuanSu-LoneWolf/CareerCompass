@@ -64,6 +64,16 @@ header ul li a:hover {
   background-image: linear-gradient(rgb(0, 0, 0), rgb(255, 255, 255));
 }
 
+/* font-colororange */
+.fontcolor-organe {
+  color: #ff7504;
+  padding: 0 0.25em;
+}
+
+#firstcolor {
+  padding: 0 0.25em 0.25em 0;
+}
+
 /* Introduction */
 .grid-introduction {
   width: 95%;
@@ -91,13 +101,14 @@ header ul li a:hover {
 }
 
 .title-col-introduction {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
     #30cfd0 0%,
     #330867 100%
-  ); /* Gradient từ màu này sang màu kia */
-  background-clip: text; /* Cắt nền cho chữ */
-  color: transparent; /* Đặt màu chữ thành trong suốt */
+  ); 
+  background-clip: text; 
+  color: transparent;  */
+  color: rgb(24, 26, 82);
 }
 
 .title-col-introduction h1 {
@@ -111,8 +122,7 @@ header ul li a:hover {
 
 .containner-col-introduction p {
   font-size: 30px;
-  font-weight: bold;
-  color: gray;
+  color: rgb(24, 26, 82);
   text-align: justify;
   line-height: 1.5;
 }
@@ -143,7 +153,7 @@ header ul li a:hover {
   margin-top: 50px;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  background-color:rgb(24, 26, 82)
 }
 
 .Elearning-title {
@@ -155,15 +165,18 @@ header ul li a:hover {
 }
 
 .Elearning-title h1 {
-  font-size: 50px;
+  /* 
   background: linear-gradient(
     to right,
     #53daff 0%,
     #2bff8a,
     rgb(3, 194, 95)
-  ); /* Gradient từ màu này sang màu kia */
-  background-clip: text; /* Cắt nền cho chữ */
-  color: transparent;
+  );
+  background-clip: text;
+  color: transparent; */
+  font-size: 50px;
+  color:#ff7504;
+  text-shadow: 0 0 3px #ff7504;
   margin: 70px 20px 20px 20px;
 }
 
@@ -277,10 +290,11 @@ header ul li a:hover {
 .col-button {
   width: 30%;
   display: flex;
-  background-color: #0fc9b3;
-  height: 40px;
+  background-color: #ff7504;
+  box-shadow: 0 0 5px #ff7504;
+  height: 50px;
   margin: 0 20px;
-  border-radius: 5px;
+  border-radius: 35px;
   color: #fff;
   font-weight: bold;
   text-decoration: none;

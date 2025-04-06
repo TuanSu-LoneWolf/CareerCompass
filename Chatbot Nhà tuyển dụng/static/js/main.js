@@ -32,23 +32,24 @@ function init() {
 }
 
 // Document handling functions
-async function loadDocuments() {
-    try {
-        const response = await fetch('/api/documents');
-        const data = await response.json();
+// async function loadDocuments() {
+//     try {
+//         const response = await fetch('/api/documents');
+//         const data = await response.json();
         
-        if (data.documents && data.documents.length > 0) {
-            renderDocumentsList(data.documents);
-            enableChat();
-            documentsLoaded = true;
-        } else {
-            documentsList.innerHTML = '<p class="no-documents">Chưa có tài liệu nào</p>';
-        }
-    } catch (error) {
-        console.error('Error loading documents:', error);
-        showErrorMessage('Không thể tải danh sách tài liệu');
-    }
-}
+//         if (data.documents && data.documents.length > 0) {
+//             renderDocumentsList(data.documents);
+//             enableChat();
+//             documentsLoaded = true;
+//         } else {
+//             documentsList.innerHTML = '<p class="no-documents">Chưa có tài liệu nào</p>';
+//         }
+//     } 
+//     catch (error) {
+//         console.error('Error loading documents:', error);
+//         showErrorMessage('Không thể tải danh sách tài liệu');
+//     }
+// }
 
 function renderDocumentsList(documents) {
     documentsList.innerHTML = '';

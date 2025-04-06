@@ -2,9 +2,10 @@ import os
 import google.generativeai as genai
 from typing import Optional, List, Dict, Any
 from dotenv import load_dotenv
+api_key = os.getenv("AIzaSyCGuCHLyOPxhGL1TBdL3KlgqdAJtnfmp3k")
 
 # Tải biến môi trường
-load_dotenv()
+load_dotenv(".env")
 
 class GeminiHandler:
     """

@@ -1,9 +1,9 @@
 /* Base styles */
 :root {
-    --primary-color: #4a6baf;
+    --primary-color: #ff7504;
     --secondary-color: #f8f9fa;
-    --accent-color: #2e4583;
-    --text-color: #333;
+    --accent-color: #ff650c;
+    --text-color: rgb(24, 26, 82);
     --light-text: #6c757d;
     --border-color: #e0e0e0;
     --bg-color: #fff;
@@ -213,6 +213,7 @@ body {
 
 .message-content p {
     margin-bottom: 8px;
+    text-align: justify;
 }
 
 .message-content p:last-child {

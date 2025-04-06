@@ -377,6 +377,7 @@ header ul li a:hover {
 
 .content-blog {
   height: 40%;
+  padding: 0 15px;
 }
 
 .content-blog p {
