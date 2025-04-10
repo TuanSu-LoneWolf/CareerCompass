@@ -208,7 +208,7 @@ header ul li a:hover {
 }
 
 
-#forum a:hover {
+#article a:hover {
   background-color: #f4f3f3; /* Màu nền khi hover */
   border-radius: 8px; /* Bo góc khi hover */
 }
@@ -220,7 +220,7 @@ header ul li a:hover {
   width: 100%;
 }
 
-#article {
+#forum {
   background-color:rgb(231, 230, 230);
   border-radius: 8px;
 }
