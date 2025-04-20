@@ -22,9 +22,16 @@ body {
     height: 3.25em;
   }
   
-  #logo {
-    height: 30px;
-    width: 30px;
+  .nav_pc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-logo {
+    height: 40px;
+    width: 40px;
+    margin-left: 50px;
   }
   
   .nav_pc-list {

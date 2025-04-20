@@ -23,9 +23,16 @@ body {
     height: 3.25em;
   }
   
-  #logo {
-    height: 30px;
-    width: 30px;
+  .nav_pc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-logo {
+    height: 40px;
+    width: 40px;
+    margin-left: 50px;
   }
   
   .nav_pc-list {
@@ -352,7 +359,7 @@ main {
   }
 
   .intro_MBTI h1 {
-    color:rgb(24, 26, 82);
+    color:#181a52;
     font-size: 45px;
     font-weight: bold;
     padding: 10px 10px 10px 50px;

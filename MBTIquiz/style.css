@@ -26,9 +26,16 @@ header {
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.095);
 }
 
-#logo {
-  height: 30px;
-  width: 30px;
+.nav_pc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-logo {
+  height: 40px;
+  width: 40px;
+  margin-left: 50px;
 }
 
 .nav_pc-list {
@@ -233,7 +240,6 @@ footer {
 
 .main {
   width: 100%;
-  padding-bottom: 100px;
 }
 
 .fontcolor-organe {
@@ -258,6 +264,25 @@ h3 {
   font-weight:100;
 }
 
+.sticky-progress {
+  position: sticky;
+  top: 3.25em;
+  z-index: 10;
+  padding: 10px 0;
+  margin: 0 auto;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sticky-progress.stuck {
+  background-color: #ffffff;  /* Nền khi sticky */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);  /* Hiệu ứng đổ bóng khi sticky */
+}
+
+
+
+
+
+
 .title-process {
   width: 90%;
   margin: 0 auto;
@@ -278,14 +303,23 @@ h3 {
   margin: 0 auto;
 }
 
+.process-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #ff7504;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+
 .grid-quiz {
-  width: 90%;
+  width: 100%;
   padding-top: 100px;
   margin: 0 auto;
 }
 
 .quiz {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 20px;
   border-radius: 20px;
@@ -304,39 +338,64 @@ h3 {
   justify-content: center;
   align-items: center;
   padding: 20px 20px;
-  width: 70%;
-  margin: 0 auto;
 }
 
-#argee {
+.standalone-answers {
+  display: flex;
+  align-items: center;
+  padding: 20px 20px;
+  flex-wrap: wrap; /* Cho phép xuống dòng nếu cần */
+  gap: 10px;
+}
+
+.agree,
+.disagree {
+  flex: 1;
+  min-width: 100px;
+  word-wrap: break-word;
+  text-align: center;
+  color:  #1c1e5e;
+}
+
+.answers-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 200px;
+}
+
+.argee {
   color: green;
   margin: 0 20px;
 }
 
-#disargee {
+.disargee {
   color: #870000;
   margin: 0 20px;
 }
 
+/* Style chung cho tất cả button */
 .btn-answer {
-  display: flex;
-  align-items: center;
+  border: 1px solid #ffa600;
+  border-radius: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: white;
+  transition: all 0.3s ease;
   margin: 0 20px;
 }
 
-#btn-answer1 {
-  width: 70px;
-  height: 70px;
-  border: 1px solid;
-  border-radius: 100%;
-  border-color: #ffa600;
-  position: relative; /* Để pseudo-element nằm trong phần tử chính */
-  overflow: hidden; /* Ẩn phần vượt ngoài */
-  cursor: pointer;
-  background-color: white;
-}
+/* Kích thước từng nút */
+.btn-answer1 { width: 70px; height: 70px; }
+.btn-answer2 { width: 60px; height: 60px; }
+.btn-answer3 { width: 50px; height: 50px; }
+.btn-answer4 { width: 40px; height: 40px; }
+.btn-answer5 { width: 30px; height: 30px; }
 
-#btn-answer1::before {
+/* Icon check */
+.btn-answer::before {
   content: '';
   position: absolute;
   top: 0;
@@ -346,130 +405,33 @@ h3 {
   background-image: url('./img/checkicon.svg');
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0; /* Ảnh nền ban đầu mờ */
-  transition: opacity 0.3s ease; /* Tạo hiệu ứng mờ dần */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-#btn-answer1:hover::before {
-  opacity: 1; /* Khi hover, hình ảnh sẽ trở nên rõ ràng */
+/* Cả hover và selected đều áp dụng style này */
+.btn-answer:hover,
+.btn-answer.selected {
+  background-color: #f0f8ff; /* Màu nền khi hover hoặc đã chọn */
 }
 
-#btn-answer2 {
-  width: 60px;
-  height: 60px;
-  border: 1px solid;
-  border-radius: 100%;
-  border-color: #ffa600;
-  position: relative; /* Để pseudo-element nằm trong phần tử chính */
-  overflow: hidden; /* Ẩn phần vượt ngoài */
-  cursor: pointer;
-  background-color: white;
+/* Cả hover và selected đều hiển thị icon */
+.btn-answer:hover::before,
+.btn-answer.selected::before {
+  opacity: 1;
 }
 
-#btn-answer2::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('./img/checkicon.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0; /* Ảnh nền ban đầu mờ */
-  transition: opacity 0.3s ease; /* Tạo hiệu ứng mờ dần */
-}
-
-#btn-answer2:hover::before {
-  opacity: 1; /* Khi hover, hình ảnh sẽ trở nên rõ ràng */
-}
-
-#btn-answer3 {
-  width: 50px;
-  height: 50px;
-  border: 1px solid;
-  border-radius: 100%;
-  border-color: #ffa600;
-  position: relative; /* Để pseudo-element nằm trong phần tử chính */
-  overflow: hidden; /* Ẩn phần vượt ngoài */
-  cursor: pointer;
-  background-color: white;
-}
-
-#btn-answer3::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('./img/checkicon.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0; /* Ảnh nền ban đầu mờ */
-  transition: opacity 0.3s ease; /* Tạo hiệu ứng mờ dần */
-}
-
-#btn-answer3:hover::before {
-  opacity: 1; /* Khi hover, hình ảnh sẽ trở nên rõ ràng */
-}
-
-#btn-answer4 {
-  width: 40px;
-  height: 40px;
-  border: 1px solid;
-  border-radius: 100%;
-  border-color: #ffa600;
-  position: relative; /* Để pseudo-element nằm trong phần tử chính */
-  overflow: hidden; /* Ẩn phần vượt ngoài */
-  cursor: pointer;
-  background-color: white;
-}
-
-#btn-answer4::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('./img/checkicon.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0; /* Ảnh nền ban đầu mờ */
-  transition: opacity 0.3s ease; /* Tạo hiệu ứng mờ dần */
-}
-
-#btn-answer4:hover::before {
-  opacity: 1; /* Khi hover, hình ảnh sẽ trở nên rõ ràng */
-}
-
-#btn-answer5 {
-  width: 30px;
-  height: 30px;
-  border: 1px solid;
-  border-radius: 100%;
-  border-color: #ffa600;
-  position: relative; /* Để pseudo-element nằm trong phần tử chính */
-  overflow: hidden; /* Ẩn phần vượt ngoài */
-  cursor: pointer;
-  background-color: white;
-}
-
-#btn-answer5::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('./img/checkicon.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0; /* Ảnh nền ban đầu mờ */
-  transition: opacity 0.3s ease; /* Tạo hiệu ứng mờ dần */
-}
-
-#btn-answer5:hover::before {
-  opacity: 1; /* Khi hover, hình ảnh sẽ trở nên rõ ràng */
+/* Nút hiện thị kết quả */
+#submitBtn {
+  display:block;
+  margin: 40px auto;
+  padding: 15px;
+  border: none;
+  border-radius: 35px;
+  background-color:  #ff7504;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  box-shadow: 0 0 5px #ff7504;
+  text-decoration: none;
 }
