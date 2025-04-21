@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
     overflow-x: block;
   }
   
@@ -23,9 +23,16 @@ body {
     height: 3.25em;
   }
   
-  #logo {
-    height: 30px;
-    width: 30px;
+  .nav_pc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-logo {
+    height: 40px;
+    width: 40px;
+    margin-left: 50px;
   }
   
   .nav_pc-list {
@@ -66,7 +73,7 @@ main {
     width: 100%;
     height: 100vh;
     display: grid; /* Kích hoạt grid */
-    grid-template-columns: 7% 93%; /* Định nghĩa 2 cột: 250px cho sidebar, 1fr cho phần còn lại */
+    grid-template-columns: 8% 92%; /* Định nghĩa 2 cột: 250px cho sidebar, 1fr cho phần còn lại */
     margin-top: 50px;
 }
 

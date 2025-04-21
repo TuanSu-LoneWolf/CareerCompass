@@ -1,6 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
     margin: 0;
     padding: 0;
@@ -25,7 +24,7 @@ h1 {
     width: 80%;
     margin: 0 auto;
     display: flex;
-    border: #c5c5c5 solid 1px;
+    border: #e4e4e4 solid 1px;
     border-radius: 10px;
     padding-bottom: 20px;
 }
@@ -44,7 +43,7 @@ h1 {
 }
 
 #resultleft-child {
-    background-color: #ededed;
+    background-color: #f9f9f9;
     height: 90%;
     margin: 5% 5%;
     margin-bottom: 0;
