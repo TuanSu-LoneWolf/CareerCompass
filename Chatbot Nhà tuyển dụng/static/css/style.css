@@ -52,7 +52,9 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-.logo i {
+.iconLogo  {
+    width: 35px;
+    height: 35px;
     font-size: 24px;
     color: var(--primary-color);
     margin-right: 10px;
