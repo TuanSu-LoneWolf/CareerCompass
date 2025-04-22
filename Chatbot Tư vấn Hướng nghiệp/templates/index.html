@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tư Vấn Hướng Nghiệp AI</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><img src="./ing/iconChatbot.png" class="iconLogo"></img> Trợ lí ảo</h1>
+            <p>Hệ thống tư vấn hướng nghiệp thông minh sử dụng công nghệ RAG (Retrieval-Augmented Generation)</p>
+        </header>
+
+        <main>
+            <div class="tabs">
+                <button id="chatTab" class="tab-button active"><i class="fas fa-comments"></i> Tư vấn</button>
+                <button id="uploadTab" class="tab-button"><i class="fas fa-upload"></i> Tải tài liệu</button>
+            </div>
+
+            <div id="chatSection" class="tab-content active">
+                <div class="chat-container">
+                    <div id="chatMessages" class="chat-messages">
+                        <div class="message bot">
+                            <div class="message-content">
+                                <p>"Chào bạn!
+                                    Tôi là trợ lý tư vấn hướng nghiệp AI – người bạn đồng hành đáng tin cậy trên hành trình khám phá và xây dựng con đường sự nghiệp tương lai.
+
+                                     Tôi ở đây để giúp bạn giải đáp mọi thắc mắc liên quan đến nghề nghiệp: từ việc chọn ngành học, xác định công việc phù hợp với sở thích và năng lực, đến việc hiểu rõ hơn về thị trường lao động, cơ hội phát triển, hay những kỹ năng cần thiết để theo đuổi một lĩnh vực cụ thể.
+                                
+                                     Dù bạn đang băn khoăn không biết mình hợp với ngành nào, hay chỉ đơn giản là muốn tìm hiểu thêm để có sự lựa chọn đúng đắn hơn, tôi sẽ luôn sẵn sàng hỗ trợ bạn với những lời khuyên thiết thực và định hướng rõ ràng.</p>
+                                <br>
+                                <p> Hãy chia sẻ điều bạn đang quan tâm, và cùng tôi tìm ra hướng đi phù hợp nhất cho sự nghiệp của bạn!"
+                                    
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input">
+                        <textarea id="userQuestion" placeholder="Nhập câu hỏi của bạn..." rows="3"></textarea>
+                        <button id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="uploadSection" class="tab-content">
+                <div class="upload-container">
+                    <h2>Tải lên tài liệu tư vấn hướng nghiệp</h2>
+                    <p>Tải lên các tài liệu về hướng nghiệp, ngành nghề, thông tin tuyển sinh... để hệ thống học và tư vấn tốt hơn.</p>
+                    
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <div class="file-upload">
+                            <label for="fileInput">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Chọn tài liệu</span>
+                            </label>
+                            <input type="file" id="fileInput" name="file" accept=".pdf,.txt,.docx">
+                            <div id="fileInfo" class="file-info"></div>
+                        </div>
+                        <button type="submit" id="uploadBtn" class="upload-btn">
+                            <i class="fas fa-upload"></i> Tải lên
+                        </button>
+                    </form>
+                    
+                    <div id="uploadStatus" class="upload-status"></div>
+                    
+                    <div class="file-types">
+                        <h3>Định dạng hỗ trợ:</h3>
+                        <ul>
+                            <li><i class="fas fa-file-pdf"></i> PDF</li>
+                            <li><i class="fas fa-file-alt"></i> TXT</li>
+                            <li><i class="fas fa-file-word"></i> DOCX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Tư Vấn Hướng Nghiệp AI | Powered by RAG Technology & Gemini AI</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
