@@ -1,84 +1,182 @@
-body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: url('background.jpg') no-repeat center center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* Biến màu (Giống hệt si.css để nhất quán) */
+:root {
+  --primary-blue: #3498db;  /* Xanh biển chính */
+  --secondary-orange: #e67e22; /* Cam phụ */
+  --light-blue: #ecf0f1;    /* Xanh nhạt cho nền */
+  --dark-blue: #2980b9;   /* Xanh đậm hơn cho hover */
+  --dark-orange: #d35400;  /* Cam đậm hơn cho hover */
+  --text-color: #333;
+  --border-color: #bdc3c7;
+  --white: #ffffff;
+  --grey: #7f8c8d;
+  --error-red: #e74c3c; /* Màu cho thông báo lỗi */
+}
+
+/* Reset cơ bản */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container {
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--light-blue);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  padding: 20px 0; /* Thêm padding để tránh form chạm viền khi nội dung dài */
+  color: var(--text-color);
 }
 
-.login-container {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+/* Sử dụng cùng class hoặc đổi tên nếu muốn */
+.signup-container {
+  background-color: var(--white);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px; /* Có thể rộng hơn chút cho form đăng ký */
   text-align: center;
-  max-width: 400px;
+}
+
+h1 {
+  color: var(--primary-blue);
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Kiểu cho thông báo lỗi */
+.error-message {
+  color: var(--error-red);
+  margin-bottom: 15px;
+  font-weight: bold;
+  min-height: 1.2em; /* Giữ chỗ để layout không nhảy khi lỗi xuất hiện/biến mất */
+  text-align: center; /* Căn giữa lỗi */
+}
+
+
+.form-group {
+  margin-bottom: 18px; /* Giảm khoảng cách một chút */
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
   width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logo img {
-  width: 50px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  white-space: nowrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  font-size: 22px;
-}
-
-p {
-  font-size: 14px;
-  color: #555;
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+  outline: none;
+  border-color: var(--secondary-orange); /* Highlight viền cam khi focus */
+  box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.2); /* Bóng mờ cam nhẹ */
 }
 
 .btn {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px; /* Thêm khoảng cách trên cho nút chính */
+}
+
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-blue);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.separator {
+  margin: 25px 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  background: #f0f0f0;
+  text-align: center;
+  color: var(--grey);
 }
 
-.btn img {
-  width: 20px;
-  margin-right: 70px;
-  margin-left: 10px;
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.google { background: #DB4437; color: white; }
-.facebook { background: #4267B2; color: white; }
-.github { background: #24292E; color: white; }
-
-.btn:hover {
-  opacity: 0.8;
+.separator span {
+  padding: 0 15px;
+  font-size: 14px;
 }
 
-a {
-  color: #007bff;
+.btn-google {
+  background-color: var(--secondary-orange);
+  color: var(--white);
+  margin-bottom: 25px;
+}
+
+.btn-google:hover {
+  background-color: var(--dark-orange);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-google svg {
+  color: var(--white);
+}
+
+.extra-links {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.extra-links span {
+   margin-right: 5px; /* Khoảng cách giữa text và link */
+   color: var(--text-color);
+}
+
+
+.extra-links a {
+  color: var(--primary-blue);
   text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-a:hover {
+.extra-links a:hover {
+  color: var(--dark-blue);
   text-decoration: underline;
+}
+
+/* Responsive nhỏ */
+@media (max-width: 480px) {
+  .signup-container {
+      padding: 25px;
+      margin: 15px;
+  }
+  h1 {
+      font-size: 24px;
+  }
 }
