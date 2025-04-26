@@ -390,10 +390,9 @@ body {
     color: rgb(50, 50, 50);
     font-weight: bold;
     line-height: 1.5;
-    width: 100%;
     margin: 0;
     text-decoration: justify;
-    font-size: 17px;
+    font-size: 15px;
     margin: 0 auto;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -401,7 +400,8 @@ body {
     line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    padding-top: 20px;
+    padding: 20px;
+    word-wrap: break-word; /* Cắt từ khi cần thiết */
   }
   
   footer a {
