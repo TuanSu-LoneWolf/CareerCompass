@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Chuyển hướng đến trang chính sau khi đăng nhập
-        window.location.href = 'index.html'; // Thay 'index.html' bằng trang bạn muốn chuyển đến
+        window.location.href = '../index.html'; // Chuyển đến trang chủ
     }
 
     // 1. Xử lý đăng nhập bằng Email/Password
