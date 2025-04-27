@@ -109,7 +109,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyBrMIQRcwplYg8GFPB7pqpgT1gHbaDbxQw", // Lưu ý: Nên bảo mật key này hơn trong ứng dụng thực tế
     authDomain: "career-compass-8987a.firebaseapp.com",
     projectId: "career-compass-8987a",
-    databaseURL: "https://career-compass-8987a-default-rtdb.asia-southeast1.firebasedatabase.app", // Quan trọng: Thêm databaseURL nếu dùng RTDB
+    databaseURL: "https://career-compass-8987a-default-rtdb.firebaseio.com", // Quan trọng: Thêm databaseURL nếu dùng RTDB
     storageBucket: "career-compass-8987a.firebasestorage.app",
     messagingSenderId: "751217295596",
     appId: "1:751217295596:web:75bc3abd7579885fe225c9"
