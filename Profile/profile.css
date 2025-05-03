@@ -1,17 +1,10 @@
-
-
-/* General Body Styles */
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #eef2f5;
-  color: #333;
-  overflow-x: hidden;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow-x: block;
 }
 
-/* --- Header Styles --- */
-/* ... (Keep your existing header styles) ... */
 /* Navvigation Bar */
 header {
   width: 100vw;
@@ -89,89 +82,115 @@ header ul li a:hover {
 }
 
 /* --- Profile Page Specific Styles --- */
-.profile-page-container { 
-  padding-top: 5em; 
-  padding-bottom: 40px; 
+.profile-page-container {
+  padding-top: calc(3.5em + 40px); /* Header height + desired space */
+  padding-bottom: 60px; /* More space at the bottom */
+  padding-left: 20px; /* Add horizontal padding */
+  padding-right: 20px;
+  box-sizing: border-box;
 }
-.profile-card { 
-  background-color: #ffffff; 
-  max-width: 900px; 
-  margin: 0 auto; 
-  padding: 40px 50px; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+
+.profile-card {
+  background-color: #ffffff;
+  max-width: 950px; /* Slightly wider */
+  margin: 0 auto;
+  padding: 40px 50px;
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 5px 20px rgba(0, 86, 179, 0.1); /* Subtle blue-ish shadow */
+  border: 1px solid #e0e4e8; /* Softer border */
 }
-.profile-card h1 { 
-  text-align: center; 
-  font-family: Arial, sans-serif; 
-  font-size: 2.8em; 
-  font-weight: bold; 
-  color: #007bff; 
-  margin-top: 0; 
-  margin-bottom: 50px; 
+
+.profile-card h1 {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2.5em; /* Adjusted size */
+  font-weight: 700; /* Bolder */
+  color: #0056b3; /* Darker primary blue for main title */
+  margin-top: 0;
+  margin-bottom: 45px; /* Adjusted spacing */
+  letter-spacing: -0.5px; /* Tighten spacing slightly */
 }
-.profile-content { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 60px; 
-  align-items: flex-start; 
+
+.profile-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 60px; /* Row gap, Column gap */
+  align-items: flex-start;
 }
-.profile-left { 
-  flex: 0 0 200px; 
-  text-align: center; 
+
+.profile-left {
+  flex: 0 0 220px; /* Slightly wider */
+  text-align: center;
 }
-#profile-avatar-img { 
-  width: 150px; 
-  height: 150px; 
-  border-radius: 50%; 
-  border: 1px solid #ddd; 
-  background-color: #f0f0f0; 
-  display: block; 
-  margin: 0 auto 25px auto; 
-  object-fit: cover; 
+
+#profile-avatar-img {
+  width: 160px; /* Larger avatar */
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid #ffffff; /* White border to lift it off */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); /* Shadow for avatar */
+  background-color: #e0e4e8; /* Placeholder bg */
+  display: block;
+  margin: 0 auto 25px auto;
+  object-fit: cover;
 }
-.action-links a { 
-  display: block; 
-  margin-bottom: 10px; 
-  color: #007bff; 
-  text-decoration: none; 
-  font-size: 1em; 
-  font-family: Arial, sans-serif; 
-  cursor: pointer; 
+
+.action-links a {
+  display: block;
+  margin-bottom: 12px;
+  color: #007bff; /* Primary blue */
+  text-decoration: none;
+  font-size: 1em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
-.action-links a:hover { 
-  text-decoration: underline; 
+
+.action-links a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
 }
-.profile-right { 
-  flex: 1; 
-  min-width: 0; 
+
+.profile-right {
+  flex: 1;
+  min-width: 0; /* Prevent overflow */
 }
+
 .profile-details p {
-  margin-bottom: 18px; 
-  line-height: 1.5; 
-  font-size: 1.1em; 
-  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 20px; /* Increased spacing */
+  line-height: 1.6; /* Improved readability */
+  font-size: 1.05em; /* Slightly larger text */
+  font-family: Georgia, 'Times New Roman', Times, serif; /* Keep serif for details */
+  display: flex; /* Use flex for better alignment */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  align-items: baseline; /* Align text nicely */
 }
-.profile-details p strong { 
-  font-weight: bold; 
-  color: #ff7504; 
-  min-width: 200px; 
-  display: inline-block; 
-  margin-right: 10px; 
+
+.profile-details p strong {
+  font-weight: 700; /* Bolder */
+  color: #ff7504; /* Accent orange */
+  min-width: 180px; /* Adjust width */
+  display: inline-block;
+  margin-right: 15px; /* More space */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match labels font */
+  flex-shrink: 0; /* Prevent label from shrinking */
 }
-.profile-details p span { 
-  color: #333333; 
+
+.profile-details p span {
+  color: #34495e; /* Main text color */
+  flex-grow: 1; /* Allow value to take remaining space */
 }
 
 /* --- Styles for the IN-PAGE Update Form Section --- */
 .update-form-section {
   display: none; /* Hidden by default */
-  margin-top: 40px; /* Space above the form when visible */
-  padding: 30px 40px; /* Padding inside the form section */
-  border: 1px solid #e0e0e0; /* Subtle border */
-  border-radius: 8px; /* Rounded corners */
-  background-color: #f9f9f9; /* Slightly different background */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+  margin-top: 50px; /* More space above the form */
+  padding: 35px 45px; /* More padding */
+  border: 1px solid #d1e3ff; /* Light blue border */
+  border-radius: 8px;
+  background-color: #f8fcff; /* Very light blue background */
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.08); /* Subtle blue shadow */
 }
 
 /* Class added by JS to show the form */
@@ -183,25 +202,26 @@ header ul li a:hover {
 .update-form-section h2 {
   text-align: center;
   margin-top: 0;
-  margin-bottom: 30px;
-  color: #007bff;
-  font-family: Arial, sans-serif;
-  font-size: 1.8em; /* Same as modal title */
+  margin-bottom: 35px;
+  color: #007bff; /* Primary blue */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.8em;
+  font-weight: 600;
 }
 
-/* Form Group styling (incorporating from uprofile.css) */
+/* Form Group styling */
 .update-form-section .form-group {
-  margin-bottom: 18px; /* Spacing between fields */
+  margin-bottom: 20px; /* Consistent spacing */
 }
 
 /* Label styling within the update form section */
 .update-form-section label {
   display: block;
-  margin-bottom: 8px; /* Space below label */
-  font-weight: bold;
-  color: #ff7504;
+  margin-bottom: 8px;
+  font-weight: 600; /* Slightly less bold than details label */
+  color: #ff7504; /* Accent orange */
   font-size: 0.95em;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Input, Select, Textarea styling within the update form section */
@@ -210,145 +230,288 @@ header ul li a:hover {
 .update-form-section select,
 .update-form-section textarea {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px 15px; /* More padding */
+  border: 1px solid #b8cde0; /* Softer border color */
+  border-radius: 6px; /* Slightly more rounded */
   box-sizing: border-box;
   font-size: 1em;
-  font-family: Arial, sans-serif;
-  /* Removed margin-bottom from here, handled by .form-group */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #34495e;
+  background-color: #ffffff; /* White background for inputs */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Add transitions */
+}
+
+/* Focus styles using blue */
+.update-form-section input[type="text"]:focus,
+.update-form-section input[type="date"]:focus,
+.update-form-section select:focus,
+.update-form-section textarea:focus {
+  border-color: #007bff; /* Blue border on focus */
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue glow */
 }
 
 .update-form-section textarea {
   resize: vertical;
-  min-height: 90px; /* Consistent height */
-  display: block; /* Ensure textarea behaves like other block inputs */
+  min-height: 100px; /* Adjusted height */
+  display: block;
+}
+
+/* Style placeholder text */
+.update-form-section ::placeholder {
+  color: #95a5a6;
+  opacity: 1; /* Firefox */
 }
 
 /* Button styling within the update form section */
 .update-form-section button[type="submit"] {
-  background-color: #007bff; /* Green button */
+  background-color: #007bff; /* Primary blue button */
   color: white;
-  padding: 12px 20px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 1.1em;
-  font-weight: bold;
-  display: block; /* Make button block level */
-  width: 100%;     /* Make button full width */
-  margin-top: 20px; /* Space above the button */
-  font-family: Arial, sans-serif;
-  transition: background-color 0.2s ease;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  margin-top: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .update-form-section button[type="submit"]:hover {
-  background-color: #007bff; /* Darker green */
+  background-color: #0056b3; /* Darker blue on hover */
+  box-shadow: 0 4px 10px rgba(0, 86, 179, 0.2);
 }
 
 /* --- Footer Styles --- */
-/* ... (Keep your existing footer styles) ... */
-footer { 
-  background-color: black; 
-  color: white; 
-  padding: 20px; 
+footer {
+  background-color: #2c3e50; /* Darker, cooler footer background */
+  color: #ecf0f1; /* Lighter text color for footer */
+  padding: 40px 20px 20px 20px; /* More padding */
+  margin-top: 60px; /* Space above footer */
 }
-.footer-container { 
-  display: flex; 
-  justify-content: space-between; 
-  flex-wrap: wrap; 
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px; /* Limit footer width */
+  margin: 0 auto 30px auto; /* Center container and add bottom margin */
+  gap: 30px;
 }
-.footer-column { 
-  width: 30%; 
-  margin-bottom: 20px; 
+
+.footer-column {
+  flex: 1; /* Allow columns to grow */
+  min-width: 200px; /* Minimum width before wrapping */
+  margin-bottom: 20px;
 }
+
+/* Specific styling for logo column */
+.footer-column:first-child {
+    flex-grow: 0.5; /* Make logo column slightly smaller */
+    flex-basis: 150px;
+}
+.footer-column img {
+    max-width: 100px; /* Control logo size */
+    height: auto;
+    opacity: 0.9;
+}
+
+
 .footer-column h3 {
- margin-bottom: 10px; 
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom: 1px solid #3498db; /* Blue underline */
+  padding-bottom: 8px;
+  display: inline-block; /* Contain underline */
 }
-footer a { 
-  color: #007bff; 
-  text-decoration: none; 
-  display: block; 
-  margin-bottom: 5px; 
+
+footer p {
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #bdc3c7; /* Softer grey for paragraphs */
+    margin-bottom: 10px;
 }
-footer a:hover { 
-  text-decoration: underline; 
+
+footer a {
+  color: #3498db; /* Brighter blue for links in footer */
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
 }
-footer .links { 
-  display: flex; 
-  flex-direction: column; 
+
+footer a:hover {
+  color: #ffffff; /* White on hover */
+  text-decoration: none; /* Keep no underline */
 }
-footer .links a { 
-  margin: 5px 0; 
+
+footer .links {
+  display: flex;
+  flex-direction: column;
 }
-.footer-bottom { 
-  text-align: center; 
-  margin-top: 20px; 
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px; /* More space before bottom text */
+  padding-top: 20px; /* Add padding above copyright */
+  border-top: 1px solid #34495e; /* Separator line */
 }
-.footer-bottom h3 {
- margin-bottom: 10px; 
+
+.footer-bottom h3 { /* Compass Title */
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-size: 1.2em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none; /* Remove underline from this h3 */
 }
-.footer-bottom p { font-size: 14px; color: white; }
+
+.footer-bottom p {
+  font-size: 0.9em;
+  color: #95a5a6; /* Lighter grey for copyright */
+}
 
 
-/* Responsive Adjustments (Check if profile-content needs adjustment) */
+/* --- Responsive Adjustments --- */
+
+/* Tablets and Smaller Desktops */
+@media (max-width: 992px) {
+  .profile-card {
+    padding: 30px 35px;
+  }
+  .profile-content {
+    gap: 30px 40px;
+  }
+  .profile-left {
+    flex: 0 0 180px; /* Smaller left column */
+  }
+  #profile-avatar-img {
+    width: 140px;
+    height: 140px;
+  }
+  .profile-details p strong {
+      min-width: 160px;
+  }
+  .update-form-section {
+      padding: 30px;
+  }
+}
+
+
+/* Mobile Devices */
 @media (max-width: 768px) {
-  .profile-page-container { 
-    padding-top: 4em; 
+  .profile-page-container {
+    padding-top: calc(3.5em + 20px); /* Less top padding */
+    padding-left: 15px;
+    padding-right: 15px;
   }
-  .profile-card { 
-    padding: 30px 25px; 
+  .profile-card {
+    padding: 25px 20px;
   }
-  .profile-card h1 { 
-    font-size: 2.2em; 
-    margin-bottom: 30px; 
+  .profile-card h1 {
+    font-size: 2em;
+    margin-bottom: 30px;
   }
-  .profile-content { 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 30px; 
+  .profile-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 35px; /* Adjust gap for column layout */
   }
-  .profile-left { 
-    flex-basis: auto; 
-    width: 100%; 
-    max-width: 200px; 
+  .profile-left {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 200px; /* Limit width even when centered */
   }
-  .profile-right { 
-    width: 100%; 
+  .profile-right {
+    width: 100%;
+    text-align: center; /* Center text in right column */
   }
-  .profile-details p { 
-    font-size: 1em; 
-    text-align: center; 
-  }
-  .profile-details p strong { 
-    display: block; 
-    margin-bottom: 5px; 
-    min-width: unset; 
-    text-align: center; 
-  }
-  .profile-details p span { 
-    display: block; 
-    text-align: center; 
-  }
+   .profile-details p {
+        font-size: 1em;
+        flex-direction: column; /* Stack label and value */
+        align-items: center; /* Center items */
+        text-align: center; /* Ensure text is centered */
+        margin-bottom: 15px;
+    }
+
+    .profile-details p strong {
+        display: block; /* Make label block */
+        margin-bottom: 5px; /* Space between label and value */
+        min-width: unset; /* Remove min-width */
+        margin-right: 0; /* Remove right margin */
+        text-align: center; /* Center label */
+    }
+
+    .profile-details p span {
+        display: block; /* Make value block */
+        text-align: center; /* Center value */
+    }
   /* Adjust form padding on smaller screens */
-  .update-form-section { 
-    padding: 20px; 
+  .update-form-section {
+    padding: 25px 20px;
   }
-  .update-form-section h2 { 
+  .update-form-section h2 {
     font-size: 1.6em;
   }
+  .update-form-section button[type="submit"] {
+      padding: 12px 20px;
+      font-size: 1em;
+  }
+
+  /* Footer columns stack */
+  .footer-container {
+      flex-direction: column;
+      align-items: center; /* Center columns */
+      text-align: center;
+  }
+   .footer-column {
+      width: 90%; /* Make columns take most width */
+      max-width: 400px; /* But not too wide */
+  }
+  .footer-column:first-child { /* Logo column */
+      margin-bottom: 30px; /* More space below logo */
+  }
+   .footer-column h3 {
+      display: inline-block; /* Ensure underline is contained */
+      border-bottom: none; /* Remove underline on mobile if desired */
+      margin-bottom: 10px;
+  }
+   footer .links a { /* Center footer links */
+      text-align: center;
+  }
+
+   /* Simple Header adjustments for mobile - ASSUMING you have mobile nav logic */
+    .nav_pc-list {
+        display: none; /* Hide PC nav list */
+    }
+    .nav_bars-btn {
+        display: block; /* Show hamburger menu */
+    }
+    .nav {
+        justify-content: space-between; /* Space logo and burger */
+        padding: 0 15px; /* Adjust padding */
+    }
+    .nav-logo {
+        margin-left: 0; /* Remove margin if needed */
+        margin-right: auto; /* Push burger to the right */
+    }
+    /* Add styles for .nav_MobileAndTablet when active if not already done */
+
 }
-/* Other media queries */
-@media only screen and (max-width: 46.1875em) { /* Mobile */
-    .footer-column { 
-      width: 100%; 
-    } /* Stack footer columns */
-}
-/* ... Keep other existing media queries ... */
-@media only screen and (min-width: 46.25em) and (max-width: 64em) { /* Tablet */ }
-@media only screen and (min-width: 46.25em) { /* PC */ }
-@media only screen and (min-width: 125em) { /* > PC */
-  .nav_pc-link a { 
-    font-size: 25px; 
+
+/* Larger Screens */
+@media only screen and (min-width: 1200px) {
+  .nav_pc-link a {
+    font-size: 1.05rem; /* Slightly larger nav text on big screens */
+    margin: 0 18px;
+  }
+  .profile-card {
+      padding: 50px 60px;
   }
 }
