@@ -1,0 +1,354 @@
+
+
+/* General Body Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #eef2f5;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* --- Header Styles --- */
+/* ... (Keep your existing header styles) ... */
+/* Navvigation Bar */
+header {
+  width: 100vw;
+  position: fixed;
+  z-index: 1;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.095);
+}
+
+.nav {
+  display: flex;
+  width: 100vw;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  height: 3.25em;
+  position: fixed;
+  top: 0;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.095);
+}
+
+.nav_pc-list {
+  display: flex;
+  list-style-type: none;
+  width: 100vw;
+  justify-content: center;
+}
+
+.nav_pc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-logo {
+  height: 40px;
+  width: 40px;
+  margin-left: 50px;
+}
+
+.nav_pc-link a {
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  margin: 0 20px;
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(100, 100, 100);
+  font-weight: bold;
+}
+
+header ul li a:hover {
+  border-bottom: solid;
+  border-color: #1f65de;
+}
+
+.nav_bars-btn {
+  display: none;
+}
+
+#border {
+  width: 100vw;
+  height: 5px;
+  background-image: transparent;
+  opacity: 0.1;
+  background-image: linear-gradient(rgb(0, 0, 0), rgb(255, 255, 255));
+}
+
+/* font-colororange */
+.fontcolor-organe {
+  color: #ff7504;
+  padding: 0 0.25em;
+}
+
+#firstcolor {
+  padding: 0 0.25em 0.25em 0;
+}
+
+/* --- Profile Page Specific Styles --- */
+.profile-page-container { 
+  padding-top: 5em; 
+  padding-bottom: 40px; 
+}
+.profile-card { 
+  background-color: #ffffff; 
+  max-width: 900px; 
+  margin: 0 auto; 
+  padding: 40px 50px; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+}
+.profile-card h1 { 
+  text-align: center; 
+  font-family: Arial, sans-serif; 
+  font-size: 2.8em; 
+  font-weight: bold; 
+  color: #007bff; 
+  margin-top: 0; 
+  margin-bottom: 50px; 
+}
+.profile-content { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 60px; 
+  align-items: flex-start; 
+}
+.profile-left { 
+  flex: 0 0 200px; 
+  text-align: center; 
+}
+#profile-avatar-img { 
+  width: 150px; 
+  height: 150px; 
+  border-radius: 50%; 
+  border: 1px solid #ddd; 
+  background-color: #f0f0f0; 
+  display: block; 
+  margin: 0 auto 25px auto; 
+  object-fit: cover; 
+}
+.action-links a { 
+  display: block; 
+  margin-bottom: 10px; 
+  color: #007bff; 
+  text-decoration: none; 
+  font-size: 1em; 
+  font-family: Arial, sans-serif; 
+  cursor: pointer; 
+}
+.action-links a:hover { 
+  text-decoration: underline; 
+}
+.profile-right { 
+  flex: 1; 
+  min-width: 0; 
+}
+.profile-details p {
+  margin-bottom: 18px; 
+  line-height: 1.5; 
+  font-size: 1.1em; 
+  font-family: 'Times New Roman', Times, serif;
+}
+.profile-details p strong { 
+  font-weight: bold; 
+  color: #ff7504; 
+  min-width: 200px; 
+  display: inline-block; 
+  margin-right: 10px; 
+}
+.profile-details p span { 
+  color: #333333; 
+}
+
+/* --- Styles for the IN-PAGE Update Form Section --- */
+.update-form-section {
+  display: none; /* Hidden by default */
+  margin-top: 40px; /* Space above the form when visible */
+  padding: 30px 40px; /* Padding inside the form section */
+  border: 1px solid #e0e0e0; /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Slightly different background */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+/* Class added by JS to show the form */
+.update-form-section.show {
+  display: block;
+}
+
+/* Title inside the update form section */
+.update-form-section h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #007bff;
+  font-family: Arial, sans-serif;
+  font-size: 1.8em; /* Same as modal title */
+}
+
+/* Form Group styling (incorporating from uprofile.css) */
+.update-form-section .form-group {
+  margin-bottom: 18px; /* Spacing between fields */
+}
+
+/* Label styling within the update form section */
+.update-form-section label {
+  display: block;
+  margin-bottom: 8px; /* Space below label */
+  font-weight: bold;
+  color: #ff7504;
+  font-size: 0.95em;
+  font-family: Arial, sans-serif;
+}
+
+/* Input, Select, Textarea styling within the update form section */
+.update-form-section input[type="text"],
+.update-form-section input[type="date"],
+.update-form-section select,
+.update-form-section textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  /* Removed margin-bottom from here, handled by .form-group */
+}
+
+.update-form-section textarea {
+  resize: vertical;
+  min-height: 90px; /* Consistent height */
+  display: block; /* Ensure textarea behaves like other block inputs */
+}
+
+/* Button styling within the update form section */
+.update-form-section button[type="submit"] {
+  background-color: #007bff; /* Green button */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  display: block; /* Make button block level */
+  width: 100%;     /* Make button full width */
+  margin-top: 20px; /* Space above the button */
+  font-family: Arial, sans-serif;
+  transition: background-color 0.2s ease;
+}
+
+.update-form-section button[type="submit"]:hover {
+  background-color: #007bff; /* Darker green */
+}
+
+/* --- Footer Styles --- */
+/* ... (Keep your existing footer styles) ... */
+footer { 
+  background-color: black; 
+  color: white; 
+  padding: 20px; 
+}
+.footer-container { 
+  display: flex; 
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+}
+.footer-column { 
+  width: 30%; 
+  margin-bottom: 20px; 
+}
+.footer-column h3 {
+ margin-bottom: 10px; 
+}
+footer a { 
+  color: #007bff; 
+  text-decoration: none; 
+  display: block; 
+  margin-bottom: 5px; 
+}
+footer a:hover { 
+  text-decoration: underline; 
+}
+footer .links { 
+  display: flex; 
+  flex-direction: column; 
+}
+footer .links a { 
+  margin: 5px 0; 
+}
+.footer-bottom { 
+  text-align: center; 
+  margin-top: 20px; 
+}
+.footer-bottom h3 {
+ margin-bottom: 10px; 
+}
+.footer-bottom p { font-size: 14px; color: white; }
+
+
+/* Responsive Adjustments (Check if profile-content needs adjustment) */
+@media (max-width: 768px) {
+  .profile-page-container { 
+    padding-top: 4em; 
+  }
+  .profile-card { 
+    padding: 30px 25px; 
+  }
+  .profile-card h1 { 
+    font-size: 2.2em; 
+    margin-bottom: 30px; 
+  }
+  .profile-content { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 30px; 
+  }
+  .profile-left { 
+    flex-basis: auto; 
+    width: 100%; 
+    max-width: 200px; 
+  }
+  .profile-right { 
+    width: 100%; 
+  }
+  .profile-details p { 
+    font-size: 1em; 
+    text-align: center; 
+  }
+  .profile-details p strong { 
+    display: block; 
+    margin-bottom: 5px; 
+    min-width: unset; 
+    text-align: center; 
+  }
+  .profile-details p span { 
+    display: block; 
+    text-align: center; 
+  }
+  /* Adjust form padding on smaller screens */
+  .update-form-section { 
+    padding: 20px; 
+  }
+  .update-form-section h2 { 
+    font-size: 1.6em;
+  }
+}
+/* Other media queries */
+@media only screen and (max-width: 46.1875em) { /* Mobile */
+    .footer-column { 
+      width: 100%; 
+    } /* Stack footer columns */
+}
+/* ... Keep other existing media queries ... */
+@media only screen and (min-width: 46.25em) and (max-width: 64em) { /* Tablet */ }
+@media only screen and (min-width: 46.25em) { /* PC */ }
+@media only screen and (min-width: 125em) { /* > PC */
+  .nav_pc-link a { 
+    font-size: 25px; 
+  }
+}

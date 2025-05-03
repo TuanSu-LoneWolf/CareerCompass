@@ -1,5 +1,4 @@
 // Import functions and objects from auth.js
-// Note: We assume auth.js correctly initializes and exports these
 import {
     auth,          // Firebase auth instance
     database,      // Firebase database instance
@@ -7,7 +6,7 @@ import {
     signInWithPopup,    // Function for Google Sign-In popup
     ref,           // Function to create database reference
     set            // Function to write data to database
-} from './auth.js';
+} from '../auth.js';
 
 // Import createUserWithEmailAndPassword directly from Firebase SDK
 // because it wasn't explicitly exported in the provided auth.js snippet

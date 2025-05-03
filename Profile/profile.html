@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang cá nhân</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header>
+        <!-- Your existing header code remains unchanged -->
+        <div class="nav">
+            <nav class="nav_pc">
+                <img class="nav-logo" src="../Logo.svg" alt="Logo"></img>
+                <ul class="nav_pc-list">
+                    <li class="nav_pc-link"><a href="../index.html">Trang chủ</a></li>
+                    <li class="nav_pc-link"><a href="../Học tập/tl.html">Học tập</a></li>
+                    <li class="nav_pc-link"><a href="../Test/index.html">Test</a></li>
+                    <li class="nav_pc-link"><a href="../Thông tin/post.html">Thông tin</a></li>
+                    <li class="nav_pc-link"><a href="#">Tư vấn</a></li>
+                    <li class="nav_pc-link"><a href="#">Phỏng vấn</a></li>
+                    <li class="nav_pc-link"><a href="../Liên hệ/lienhe.html">Liên hệ</a></li>
+                    <li class="nav_pc-link"><a href="../su&si/su.html">Đăng ký</a></li>
+                    <li class="nav_pc-link"><a href="../su&si/si.html">Đăng nhập</a></li>
+                </ul>
+            </nav>
+            <label class="bar-btn" for="nav_MobileAndTablet-input">
+                <img class="nav_bar-btn" src="../image/bar-button.png" alt="Menu">
+            </label>
+            <input type="checkbox" hidden class="nav_input" id="nav_MobileAndTablet-input">
+            <label for="nav_MobileAndTablet-input" class="nav_overlay"></label>
+            <div class="nav_MobileAndTablet">
+                <div class="menu">
+                    <img class="nav-logo" src="../Logo.svg" alt="Logo"></img>
+                    <label class="bar-close" for="nav_MobileAndTablet-input">
+                        <img class="nav_bar-close" src="../image/close.png" alt="Close">
+                    </label>
+                </div>
+                <ul class="nav_MobileAndTablet-list">
+                    <li class="nav_MobileAndTablet-link"><a href="../Trang chủ/index.html">Trang chủ</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Học tập/tl.html">Học tập</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Test/index.html">Test</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Thông tin/index.html">Thông tin</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="#">Tư vấn</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="#">Phỏng vấn</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="#">Liên kết</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Liên hệ/lienhe.html">Liên hệ</a></li>
+                    <li class="nav_pc-link"><a href="../su&si/su.html">Đăng ký</a></li>
+                    <li class="nav_pc-link"><a href="../su&si/si.html">Đăng nhập</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Profile Content Area -->
+    <main class="profile-page-container">
+        <div class="profile-card">
+            <h1>Trang cá nhân</h1>
+
+            <div class="profile-content">
+                <!-- Left Column -->
+                <div class="profile-left">
+                    <div class="profile-picture-section">
+                        <img id="profile-avatar-img" src="../image/profile picture.jpg" alt="Ảnh đại diện">
+                        <div class="action-links">
+                            <a href="#" id="change-avatar-link">Thay ảnh đại diện</a>
+                            <!-- Changed href to #, JS will handle the click -->
+                            <a href="#" id="update-profile-link">Cập nhật hồ sơ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="profile-right">
+                    <div class="profile-details">
+                        <p><strong>Họ và tên:</strong> <span id="display-name">Đang tải...</span></p>
+                        <p><strong>Ngày tháng, năm sinh:</strong> <span id="display-dob">Đang tải...</span></p>
+                        <p><strong>Giới tính:</strong> <span id="display-gender">Đang tải...</span></p>
+                        <p><strong>Ngành nghề yêu thích:</strong> <span id="display-fav-career">Đang tải...</span></p>
+                        <p><strong>Định hướng nghề nghiệp:</strong> <span id="display-career-orientation">Đang tải...</span></p>
+                        <p><strong>Điểm mạnh:</strong> <span id="display-strengths" class="detail-block">Đang tải...</span></p>
+                        <p><strong>Điểm yếu:</strong> <span id="display-weaknesses" class="detail-block">Đang tải...</span></p>
+                        <p><strong>MBTI:</strong> <span id="display-mbti">Đang tải...</span></p>
+                    </div>
+                </div>
+            </div> <!-- End of .profile-content -->
+
+            <!-- ===== NEW: Container for the Update Form (Initially Hidden) ===== -->
+            <div id="update-form-container" class="update-form-section">
+                <!-- Content from the old uprofile.html goes here -->
+                <h2>Hồ sơ Người dùng</h2>
+                <form id="profile-form" novalidate>
+                    <div class="form-group">
+                        <label for="fullname">Họ và tên:</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" required>
+                    </div>
+                    <div class="form-group form-group-date">
+                        <label for="dob">Ngày tháng năm sinh:</label>
+                        <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Giới tính:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>-- Chọn giới tính --</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="career">Ngành nghề yêu thích:</label>
+                        <input type="text" id="career" name="career" placeholder="Nhập ngành nghề yêu thích">
+                    </div>
+                    <div class="form-group">
+                        <label for="strengths">Điểm mạnh:</label>
+                        <textarea id="strengths" name="strengths" placeholder="Nhập điểm mạnh của bạn" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="weaknesses">Điểm yếu:</label>
+                        <textarea id="weaknesses" name="weaknesses" placeholder="Nhập điểm yếu của bạn" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="orientation">Định hướng nghề nghiệp:</label>
+                        <input type="text" id="orientation" name="orientation" placeholder="Ví dụ: Trở thành chuyên gia AI">
+                    </div>
+                    <div class="form-group">
+                        <label for="mbti">MBTI:</label>
+                        <input type="text" id="mbti" name="mbti" placeholder="Ví dụ: INTJ, ENFP...">
+                    </div>
+                    <button type="submit" class="submit-button">Lưu hồ sơ</button>
+                </form>
+                <!-- End of content from old uprofile.html -->
+            </div>
+            <!-- ===== End of Update Form Container ===== -->
+
+        </div> <!-- End of .profile-card -->
+    </main>
+
+
+    <footer>
+        <div class="footer-bottom">
+            <h3>VOCATIONAL GUIDANCE</h3>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Nội dung khác</h3>
+                <p>Một số nội dung bạn muốn hiển thị ở cột 3.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Thông tin liên hệ</h3>
+                <p>Địa chỉ: 1A Nguyễn Hiến Lê, Phường 13, Tân Bình, Hồ Chí Minh</p>
+                <p>Điện thoại: 090 695 0881</p>
+                <p>Email: tuansu1561@gmail.com</p>
+            </div>
+            <div class="footer-column">
+                <div class="links">
+                    <a href="../Trang chủ/index.html">Trang chủ</a>
+                    <a href="../Học tập/tl.html">Học tập</a>
+                    <a href="#">Test</a>
+                    <a href="../Thông tin/index.html">Thông tin</a>
+                    <a href="#">Tư vấn</a>
+                    <a href="#">Phỏng vấn</a>
+                    <a href="../Liên hệ/lienhe.html">Liên hệ</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 VOCATIONAL GUIDANCE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="../auth.js"></script>
+    <script type="module" src="./profile.js"></script>
+</body>
+</html>

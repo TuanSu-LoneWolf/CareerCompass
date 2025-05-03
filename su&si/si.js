@@ -1,5 +1,5 @@
 // Import các hàm và biến cần thiết từ auth.js
-import { auth, database, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, ref, update, set } from './auth.js';
+import { auth, database, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, ref, update, set } from '../auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
