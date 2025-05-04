@@ -6,19 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const googleLoginBtn = document.getElementById('google-login-btn');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
-    const errorMessageDiv = document.getElementById('error-message'); // Lấy thẻ div báo lỗi
+    const errorMessageDiv = document.getElementById('error-message');
 
-    // Hàm hiển thị lỗi
+    // Hàm hiển thị lỗi (keep as is)
     function displayError(message) {
         if (errorMessageDiv) {
             errorMessageDiv.textContent = message;
         } else {
-            alert(message); // Fallback nếu không tìm thấy div lỗi
+            alert(message);
         }
-        console.error("Login Error:", message); // Log lỗi ra console
+        console.error("Login Error:", message);
     }
 
-    // Hàm xóa lỗi
+    // Hàm xóa lỗi (keep as is)
     function clearError() {
          if (errorMessageDiv) {
             errorMessageDiv.textContent = '';
@@ -30,33 +30,40 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Đăng nhập thành công:', user.uid);
         clearError(); // Xóa thông báo lỗi nếu có
 
+        // *** ADD ALERT HERE ***
+        alert('Đăng nhập thành công!'); // Show success message
+
         // Lưu UID vào localStorage (tùy chọn)
         localStorage.setItem('loggedInUserId', user.uid);
 
         // Cập nhật thời gian đăng nhập cuối cùng (tùy chọn)
         const userRef = ref(database, 'users/' + user.uid);
-        const dt = new Date().toISOString(); // Sử dụng ISO string cho chuẩn hóa
+        const dt = new Date().toISOString();
         update(userRef, {
             last_login: dt,
-            // Nếu đăng nhập bằng Google và muốn lưu thêm thông tin
-            email: user.email, // Đảm bảo email được cập nhật
-            displayName: user.displayName, // Lưu tên hiển thị
-            photoURL: user.photoURL // Lưu ảnh đại diện
+            // Cập nhật lại thông tin nếu có thể (đặc biệt sau Google login)
+            email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL
         }).catch(dbError => {
-            console.warn("Không thể cập nhật last_login:", dbError); // Dùng warn vì đăng nhập vẫn thành công
+            // Chỉ cảnh báo, không chặn chuyển hướng
+            console.warn("Không thể cập nhật last_login hoặc thông tin user:", dbError);
+        }).finally(() => {
+            // *** MOVE REDIRECT HERE (inside finally) ***
+            // Chuyển hướng đến trang chính sau khi đã alert và cố gắng cập nhật DB
+            window.location.href = '../index.html'; // Chuyển đến trang chủ
         });
-
-        // Chuyển hướng đến trang chính sau khi đăng nhập
-        window.location.href = '../index.html'; // Chuyển đến trang chủ
+        // *** REMOVE REDIRECT FROM HERE ***
+        // window.location.href = '../index.html'; // Moved to finally block
     }
 
     // 1. Xử lý đăng nhập bằng Email/Password
     if (loginForm) {
         loginForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Ngăn form gửi đi theo cách mặc định
-            clearError(); // Xóa lỗi cũ trước khi thử đăng nhập
+            event.preventDefault();
+            clearError();
 
-            const email = emailInput.value.trim(); // .trim() để xóa khoảng trắng thừa
+            const email = emailInput.value.trim();
             const password = passwordInput.value;
 
             if (!email || !password) {
@@ -66,11 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Đăng nhập thành công
+                    // Đăng nhập thành công -> gọi hàm xử lý chung
                     handleLoginSuccess(userCredential.user);
                 })
                 .catch((error) => {
-                    // Xử lý lỗi đăng nhập
+                    // Xử lý lỗi đăng nhập (keep as is)
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.error("Email/Pass Login Error Code:", errorCode);
@@ -88,54 +95,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Xử lý đăng nhập bằng Google
     if (googleLoginBtn) {
         googleLoginBtn.addEventListener('click', () => {
-            clearError(); // Xóa lỗi cũ
+            clearError();
             const provider = new GoogleAuthProvider();
-
-            // Optional: Yêu cầu thêm quyền (ví dụ: email, profile mặc định được yêu cầu)
-            // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
             signInWithPopup(auth, provider)
                 .then((result) => {
-                    // Đăng nhập/Đăng ký bằng Google thành công
-                    const credential = GoogleAuthProvider.credentialFromResult(result);
-                    // const token = credential.accessToken; // Token truy cập Google API (nếu cần)
                     const user = result.user;
 
-                    // Kiểm tra xem người dùng có mới không và ghi thông tin cơ bản vào DB nếu cần
+                    // Kiểm tra và ghi/cập nhật thông tin cơ bản vào DB nếu cần
                     const userRef = ref(database, 'users/' + user.uid);
-                     set(userRef, { // Dùng set để tạo mới hoặc ghi đè nếu đã có từ email/pass
+                     set(userRef, { // Dùng set với merge để đảm bảo thông tin Google là mới nhất
                         email: user.email,
-                        displayName: user.displayName || 'Người dùng Google', // Tên hiển thị
-                        photoURL: user.photoURL || '', // Ảnh đại diện
-                        provider: 'google.com', // Đánh dấu là đăng nhập từ Google
-                        createdAt: new Date().toISOString() // Chỉ ghi lần đầu nếu dùng logic kiểm tra tồn tại
-                    }, { merge: true }) // Dùng merge: true để không xóa các trường khác nếu user đã tồn tại
+                        displayName: user.displayName || 'Người dùng Google',
+                        photoURL: user.photoURL || '',
+                        provider: 'google.com',
+                        // createdAt: new Date().toISOString() // Chỉ ghi lần đầu nếu dùng logic khác
+                    }, { merge: true }) // merge: true quan trọng để không xóa các trường khác
                     .then(() => {
-                         handleLoginSuccess(user); // Gọi hàm xử lý chung sau khi đảm bảo dữ liệu DB được cập nhật
+                         // Sau khi DB được cập nhật (hoặc tạo), gọi hàm xử lý đăng nhập thành công
+                         handleLoginSuccess(user);
                     })
                     .catch(dbError => {
                         console.error("Lỗi khi ghi/cập nhật dữ liệu người dùng Google:", dbError);
                         // Vẫn cho đăng nhập thành công nhưng báo lỗi lưu DB
-                        displayError("Đăng nhập Google thành công nhưng có lỗi khi lưu thông tin người dùng.");
-                        // Hoặc gọi handleLoginSuccess nếu lỗi lưu DB không quá nghiêm trọng
-                        // handleLoginSuccess(user);
+                        displayError("Đăng nhập Google thành công nhưng có lỗi khi lưu thông tin.");
+                        // Quyết định: Vẫn gọi handleLoginSuccess để alert và chuyển hướng
+                        handleLoginSuccess(user);
                     });
-
                 })
                 .catch((error) => {
-                    // Xử lý lỗi khi đăng nhập Google
+                    // Xử lý lỗi khi đăng nhập Google (keep as is)
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    // const email = error.customData.email; // Email người dùng cố gắng đăng nhập (nếu có)
-                    // const credential = GoogleAuthProvider.credentialFromError(error); // Thông tin credential (nếu có)
-
                     console.error("Google Login Error Code:", errorCode, errorMessage);
 
                     if (errorCode === 'auth/popup-closed-by-user') {
                         displayError('Cửa sổ đăng nhập Google đã bị đóng.');
                     } else if (errorCode === 'auth/account-exists-with-different-credential') {
                          displayError('Tài khoản đã tồn tại với phương thức đăng nhập khác (ví dụ: email/password).');
-                         // Có thể hướng dẫn người dùng liên kết tài khoản nếu cần
                     } else {
                         displayError(`Lỗi đăng nhập Google: ${errorMessage}`);
                     }

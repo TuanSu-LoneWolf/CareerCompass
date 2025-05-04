@@ -9,7 +9,6 @@ import {
 } from '../auth.js';
 
 // Import createUserWithEmailAndPassword directly from Firebase SDK
-// because it wasn't explicitly exported in the provided auth.js snippet
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
 // --- DOM Elements ---
@@ -35,7 +34,7 @@ if (signupForm) {
         const password = passwordInput.value;
         const confirmPassword = confirmPasswordInput.value;
 
-        // Basic Validation
+        // Basic Validation (keep this as is)
         if (!email || !password || !confirmPassword) {
             displayError('Vui lòng điền đầy đủ thông tin.');
             return;
@@ -52,34 +51,31 @@ if (signupForm) {
         // --- Firebase Email/Password Signup ---
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signup successful
                 const user = userCredential.user;
                 console.log('Đăng ký thành công với Email:', user.uid, user.email);
 
-                // Save user info to Realtime Database (optional, but good practice)
-                // IMPORTANT: Never save the password!
                 const userRef = ref(database, 'users/' + user.uid);
                 set(userRef, {
                     email: user.email,
-                    provider: 'email/password', // Track signup method
+                    provider: 'email/password',
                     createdAt: new Date().toISOString()
                 })
                 .then(() => {
                     console.log('Thông tin người dùng đã lưu vào Database.');
-                    // Redirect to a success page or the main app page
-                    alert('Đăng ký thành công! Bạn sẽ được chuyển đến trang chính.');
-                    window.location.href = '../index.html';
+                    // *** CHANGE HERE ***
+                    alert('Đăng ký thành công!');
+                    window.location.href = './si.html'; // Redirect to login page
                 })
                 .catch((dbError) => {
                     console.error("Lỗi lưu vào Database:", dbError);
-                    displayError('Đăng ký thành công nhưng lỗi lưu thông tin.');
-                    // Still might want to redirect or inform user
-                    // alert('Đăng ký thành công!');
-                    // window.location.href = '../index.html';
+                    // *** CHANGE HERE (Optional but recommended) ***
+                    // Still inform user of success, but maybe mention DB issue?
+                    alert('Đăng ký thành công nhưng có lỗi lưu thông tin. Bạn sẽ được chuyển đến trang đăng nhập.');
+                    window.location.href = './si.html'; // Still redirect to login page
                 });
             })
             .catch((error) => {
-                // Handle signup errors
+                // Handle signup errors (keep this as is)
                 console.error('Lỗi Đăng ký Email/Password:', error.code, error.message);
                 if (error.code === 'auth/email-already-in-use') {
                     displayError('Địa chỉ email này đã được sử dụng.');
@@ -103,57 +99,42 @@ if (googleSignupButton) {
         displayError(''); // Clear previous errors
         const provider = new GoogleAuthProvider();
 
-        // --- Firebase Google Signup ---
         signInWithPopup(auth, provider)
             .then((result) => {
-                // Google Sign-In successful.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken; // You might not need this directly
                 const user = result.user;
+                console.log('Đăng nhập thành công với Google:', user.uid, user.displayName, user.email);
 
-                console.log('Đăng nhập/Đăng ký thành công với Google:', user.uid, user.displayName, user.email);
-
-                // Save or update user info in Realtime Database
-                // Using set() here will overwrite existing data if the user previously
-                // signed up with email. Consider using update() or checking existence
-                // for more complex scenarios.
                 const userRef = ref(database, 'users/' + user.uid);
                 set(userRef, {
                     email: user.email,
-                    displayName: user.displayName || 'N/A', // Use display name from Google
-                    photoURL: user.photoURL || '', // Use photo URL from Google
-                    provider: 'google.com', // Track signup method
-                    lastLogin: new Date().toISOString(),
-                    // Optionally merge with existing data instead of overwriting if user exists
-                })
+                    displayName: user.displayName || 'N/A',
+                    photoURL: user.photoURL || '',
+                    provider: 'google.com',
+                    lastLogin: new Date().toISOString(), // Maybe add createdAt if not exists?
+                }, { merge: true }) // Use merge to avoid overwriting createdAt if exists
                 .then(() => {
                     console.log('Thông tin người dùng Google đã lưu/cập nhật vào Database.');
-                    // Redirect to the main app page
-                    alert('Đăng nhập/Đăng ký với Google thành công!');
-                    window.location.href = '../index.html';
+                    // *** CHANGE HERE ***
+                    alert('Đăng nhập với Google thành công!');
+                    window.location.href = '../index.html'; // Redirect to login page
                 })
                 .catch((dbError) => {
                     console.error("Lỗi lưu thông tin Google vào Database:", dbError);
-                    displayError('Đăng nhập Google thành công nhưng lỗi lưu thông tin.');
-                    // Might still redirect user
-                     alert('Đăng nhập/Đăng ký với Google thành công!');
-                     window.location.href = '../index.html';
+                    // *** CHANGE HERE (Optional but recommended) ***
+                    alert('Đăng nhập Google thành công nhưng có lỗi lưu thông tin. Bạn sẽ được chuyển đến trang đăng nhập.');
+                    window.location.href = '../index.html'; // Still redirect to login page
                 });
 
             }).catch((error) => {
-                // Handle Google Sign-In errors
-                console.error('Lỗi Đăng nhập/Đăng ký Google:', error.code, error.message);
-                // Handle specific errors
+                // Handle Google Sign-In errors (keep this as is)
+                console.error('Lỗi Đăng nhập Google:', error.code, error.message);
                 if (error.code === 'auth/popup-closed-by-user') {
                     displayError('Cửa sổ đăng nhập Google đã bị đóng.');
                 } else if (error.code === 'auth/account-exists-with-different-credential') {
                     displayError('Tài khoản đã tồn tại với phương thức đăng nhập khác.');
-                    // You might want to guide the user on how to link accounts here
                 } else {
                     displayError('Lỗi khi đăng nhập với Google: ' + error.message);
                 }
-                // const email = error.customData.email; // Email user tried if available
-                // const credential = GoogleAuthProvider.credentialFromError(error); // Credential info
             });
     });
 } else {
