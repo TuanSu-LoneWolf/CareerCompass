@@ -24,8 +24,12 @@
                     <li class="nav_pc-link"><a href="#">Tư vấn</a></li>
                     <li class="nav_pc-link"><a href="./Chatbot Nhà tuyển dụng/templates/index.html">Phỏng vấn</a></li>
                     <li class="nav_pc-link"><a href="../Liên hệ/lienhe.html">Liên hệ</a></li>
-                    <li class="nav_pc-link"><a href="../su&si/su.html">Đăng ký</a></li>
-                    <li class="nav_pc-link"><a href="../su&si/si.html">Đăng nhập</a></li>
+                    <li class="nav_pc-link" id="signupLink"><a href="../su&si/su.html">Đăng ký</a></li>
+                    <li class="nav_pc-link" id="loginLink"><a href="../su&si/si.html">Đăng nhập</a></li>
+                    <li class="nav_pc-link" id="userLogoContainer" style="display: none;">
+                        <img id="userLogo" src="" alt="User Logo" style="width: 30px; height: 30px; border-radius: 50%;">
+                        <button id="logoutBtn" style="margin-left: 10px;">Đăng xuất</button>
+                    </li>
                 </ul>
             </nav>
             <label class="bar-btn" for="nav_MobileAndTablet-input">
@@ -102,7 +106,7 @@
         </div>
         <div class="footer-container">
             <div class="footer-column">
-                <img src="../Logo.svg" alt="Logo">
+                <img src="./Logo.svg" alt="Logo" class="footer-logo">
             </div>
             <div class="footer-column">
                 <h3>Thông tin liên hệ</h3>
@@ -112,19 +116,66 @@
             </div>
             <div class="footer-column">
                 <div class="links">
-                    <a href="../Trang chủ/index.html">Trang chủ</a>
-                    <a href="../Học tập/tl.html">Học tập</a>
-                    <a href="../Test/index.html">Test</a>
-                    <a href="../Thông tin/index.html">Thông tin</a>
-                    <a href="#">Tư vấn</a>
+                    <a href="./index.html">Trang chủ</a> 
+                    <a href="../Học tập/tl.html">Học tập</a> 
+                    <a href="#">Test</a> 
+                    <a href="../Thông tin/index.html">Thông tin</a> 
+                    <a href="#">Tư vấn</a> 
                     <a href="#">Phỏng vấn</a>
                     <a href="../Liên hệ/lienhe.html">Liên hệ</a>
-                </div>
+                </div>  
             </div>
         </div>
         <div class="footer-bottom">
             <p>Copyright © 2025 CAREER COMPASS. All rights reserved.</p>
         </div>
     </footer>
+
+    <body>
+        <script type="module">
+            import { auth } from './auth.js';
+            import { signOut } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js'; // Import hàm signOut
+        
+            document.addEventListener('DOMContentLoaded', () => {
+                const signupLink = document.getElementById('signupLink');
+                const loginLink = document.getElementById('loginLink');
+                const userLogoContainer = document.getElementById('userLogoContainer');
+                const userLogo = document.getElementById('userLogo');
+                const logoutBtn = document.getElementById('logoutBtn'); // Lấy tham chiếu nút đăng xuất
+        
+                console.log('auth instance trên trang chủ:', auth);
+                console.log('onAuthStateChanged trên trang chủ đang chạy!');
+        
+                auth.onAuthStateChanged((user) => {
+                    console.log('Trạng thái đăng nhập trên trang chủ:', user);
+                    if (user) {
+                        signupLink.style.display = 'none';
+                        loginLink.style.display = 'none';
+                        userLogo.src = user.photoURL || './Logo.svg';
+                        userLogoContainer.style.display = 'block';
+                    } else {
+                        signupLink.style.display = 'block';
+                        loginLink.style.display = 'block';
+                        userLogoContainer.style.display = 'none';
+                    }
+                });
+        
+                // Thêm event listener cho nút đăng xuất
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', () => {
+                        signOut(auth).then(() => {
+                            // Đăng xuất thành công.  onAuthStateChanged sẽ được kích hoạt và cập nhật giao diện.
+                            console.log('Đăng xuất thành công.');
+                            // Không cần chuyển hướng thủ công ở đây vì onAuthStateChanged sẽ xử lý việc hiển thị nút đăng nhập.
+                        }).catch((error) => {
+                            // Xảy ra lỗi trong quá trình đăng xuất.
+                            console.error('Lỗi đăng xuất:', error);
+                            alert('Đã xảy ra lỗi khi đăng xuất.');
+                        });
+                    });
+                }
+            });
+        </script>
+    </body>
 </body>
 </html>
