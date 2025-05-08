@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thông tin Phỏng vấn</title>
+  <link rel="stylesheet" href="../static/css/infoPage.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Chuẩn bị Phỏng vấn Nghề nghiệp</h1>
+    <form id="infoForm">
+      <label for="fullName">Họ và tên</label>
+      <input type="text" id="fullName" name="fullName" placeholder="Nguyễn Văn A" required />
+
+      <label for="age">Tuổi</label>
+      <select id="age" name="age" required>
+        <option value="">-- Chọn độ tuổi --</option>
+      </select>
+
+      <label for="career">Nghề nghiệp mong muốn</label>
+      <select id="career" name="career" required>
+        <option value="">-- Chọn nghề nghiệp --</option>
+        <!-- Option nghề sẽ được thêm bằng JavaScript -->
+      </select>
+
+      <button type="submit" id="startButton">Bắt đầu phỏng vấn</button>
+    </form>
+    <footer>
+      Career Compass © 2025
+    </footer>
+  </div>
+
+  <script type="module" src="../static/js/infoPage.js"></script>
+</body>
+</html>

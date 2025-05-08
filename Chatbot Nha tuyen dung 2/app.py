@@ -3,61 +3,26 @@ from flask import Flask, request, jsonify, render_template
 from utils.document_processor import DocumentProcessor
 from utils.vector_store import VectorStore
 from utils.llm_utils import GeminiHandler
-from utils.data_loader import load_career_data, list_all_careers, get_questions_by_career
-
 import json
 
 app = Flask(__name__)
-
-# Đảm bảo DATA_DIR được định nghĩa trước khi sử dụng
-DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
-RAW_DIR = os.path.join(DATA_DIR, 'raw')
-PROCESSED_DIR = os.path.join(DATA_DIR, 'processed')
-VECTOR_STORE_DIR = os.path.join(DATA_DIR, 'vector_store')
-
-# Tạo thư mục nếu chưa tồn tại
-for dir_path in [DATA_DIR, RAW_DIR, PROCESSED_DIR, VECTOR_STORE_DIR]:
-    if not os.path.exists(dir_path):
-        os.makedirs(dir_path)
 
 # Khởi tạo các thành phần
 document_processor = DocumentProcessor()
 vector_store = VectorStore()
 llm_handler = GeminiHandler()
 
-# Đường dẫn đến file dữ liệu nghề nghiệp
-CAREER_DATA_PATH = os.path.join(DATA_DIR, 'career_data.json')
+# Đường dẫn đến thư mục lưu trữ dữ liệu
+DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
+RAW_DIR = os.path.join(DATA_DIR, 'raw')
+PROCESSED_DIR = os.path.join(DATA_DIR, 'processed')
+VECTOR_STORE_DIR = os.path.join(DATA_DIR, 'vector_store')
+processed_file = os.path.join(os.getcwd(), 'data', 'processed', 'data.json')
 
-career_data = []
-try:
-    career_data = load_career_data(CAREER_DATA_PATH)
-except FileNotFoundError as e:
-    print(f"Lỗi: {str(e)}")
-    # Cung cấp thông báo rõ ràng cho người dùng nếu dữ liệu không có
-    career_data = []
-
-# Prompt hệ thống dành cho Gemini
-interview_prompt = """
-Bạn là một trợ lý tuyển dụng AI chuyên nghiệp. Nhiệm vụ của bạn là mô phỏng một buổi phỏng vấn cho ứng viên dựa trên ngành nghề mà họ lựa chọn.
-
-Yêu cầu:
-- Khi người dùng nhập ngành nghề, hãy bắt đầu phỏng vấn ngay bằng cách đặt câu hỏi đầu tiên phù hợp với ngành đó.
-- Đặt các câu hỏi phổ biến, sát với đặc thù ngành nghề và vị trí ứng tuyển.
-- Hỏi từng câu một và chờ ứng viên trả lời trước khi chuyển sang câu tiếp theo.
-- Ghi nhận câu trả lời, đánh giá và phản hồi cụ thể:
-  + Nêu rõ điểm mạnh trong câu trả lời.
-  + Góp ý những điểm cần cải thiện.
-- Sau khi buổi phỏng vấn kết thúc, tổng kết và đánh giá tổng thể:
-  + Đưa ra nhận xét chung về ứng viên.
-  + Tính điểm phỏng vấn dựa trên thang điểm phù hợp.
-  + Đưa ra lời khuyên, chiến lược, kỹ năng để ứng viên cải thiện và gây ấn tượng tốt hơn với nhà tuyển dụng.
-
-Phong cách thể hiện:
-- Luôn giữ thái độ chuyên nghiệp, hỗ trợ, thân thiện và khích lệ ứng viên.
-- Chỉ tập trung vào mô phỏng phỏng vấn, không thực hiện tác vụ khác.
-"""
-
-llm_handler = GeminiHandler(system_prompt=interview_prompt)
+# Tạo thư mục nếu chưa tồn tại
+for dir_path in [DATA_DIR, RAW_DIR, PROCESSED_DIR, VECTOR_STORE_DIR]:
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
 
 @app.route('/')
 def index():
@@ -147,30 +112,22 @@ def get_documents():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-@app.route('/api/careers', methods=['GET'])
-def careers():
-    """API lấy danh sách nghề nghiệp"""
+@app.route('/api/processed_documents', methods=['GET'])
+def get_processed_documents():
+    """API lấy nội dung của file data.json trong processed"""
     try:
-        careers_list = list_all_careers(career_data)
-        return jsonify({'careers': careers_list})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-@app.route('/api/career-questions', methods=['POST'])
-def career_questions():
-    """API lấy câu hỏi theo nghề nghiệp"""
-    data = request.json
-    if not data or 'career' not in data:
-        return jsonify({'error': 'Cần cung cấp tên nghề nghiệp'}), 400
-    
-    career_name = data['career']
-    
-    try:
-        questions = get_questions_by_career(career_data, career_name)
-        if not questions:
-            return jsonify({'message': 'Không tìm thấy câu hỏi cho nghề nghiệp này'}), 404
+        processed_file = os.path.join(PROCESSED_DIR, 'data.json')
+         # Log thêm để kiểm tra
+        print(f"File data.json found at: {processed_file}")
         
-        return jsonify({'career': career_name, 'questions': questions})
+        if not os.path.exists(processed_file):
+            return jsonify({'error': 'Không tìm thấy file data.json'}), 404
+        
+        with open(processed_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        return jsonify({'data': data})
+    
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
