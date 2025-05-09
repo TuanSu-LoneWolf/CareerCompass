@@ -155,4 +155,3 @@ export {
     onAuthStateChanged,         // For checking auth state (used in profile & globally here)
     createUserWithEmailAndPassword // For sign-up page (if needed, though logic is above)
 };
-
