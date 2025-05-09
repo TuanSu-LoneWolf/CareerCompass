@@ -134,6 +134,7 @@ footer {
   height: 100%;
   border-radius: 50%;
 }
+
 /* Mobile & Tablet: width < 1024px */
 @media only screen and (max-width: 64em) {
   .nav_pc {
@@ -288,11 +289,6 @@ h3 {
   background-color: #ffffff;  /* Nền khi sticky */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);  /* Hiệu ứng đổ bóng khi sticky */
 }
-
-
-
-
-
 
 .title-process {
   width: 90%;
