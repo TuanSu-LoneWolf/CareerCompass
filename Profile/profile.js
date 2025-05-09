@@ -156,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
         set(userProfileRef, updatedData)
             .then(() => {
                 console.log("Profile updated successfully in Firebase.");
-                alert('Hồ sơ đã được cập nhật thành công!');
                 currentUserProfileData = updatedData; // Update local cache
                 displayProfileData(currentUserProfileData); // Update the main page display
 
