@@ -7,30 +7,66 @@
   <link rel="stylesheet" href="../static/css/infoPage.css" />
 </head>
 <body>
-  <div class="container">
+  <!-- Phần nhập thông tin -->
+  <div class="container" id="info-screen">
     <h1>🔍 Chuẩn bị Phỏng vấn Nghề nghiệp</h1>
     <form id="infoForm">
       <label for="fullName">Họ và tên</label>
-      <input type="text" id="fullName" name="fullName" placeholder="Nguyễn Văn A" required />
+      <input type="text" id="fullName" name="fullName" placeholder="Nhập họ và tên của bạn"/>
 
       <label for="age">Tuổi</label>
-      <select id="age" name="age" required>
-        <option value="">-- Chọn độ tuổi --</option>
-      </select>
+      <input type="text" id="age" name="age" placeholder="Nhập tuổi của bạn"/>
 
       <label for="career">Nghề nghiệp mong muốn</label>
-      <select id="career" name="career" required>
+      <select id="career" name="career">
         <option value="">-- Chọn nghề nghiệp --</option>
-        <!-- Option nghề sẽ được thêm bằng JavaScript -->
       </select>
 
-      <button type="submit" id="startButton">Bắt đầu phỏng vấn</button>
+      <button type="submit" id="startButton">Tiếp tục</button>
     </form>
-    <footer>
-      Career Compass © 2025
-    </footer>
+    <footer>Career Compass © 2025</footer>
   </div>
 
-  <script type="module" src="../static/js/infoPage.js"></script>
+  <!-- Phần chọn chế độ phỏng vấn -->
+  <div class="mode-container" id="mode-screen" style="display: none;">
+    <h2>Chào <span id="user-name-display"></span>! Hãy chọn chế độ phỏng vấn</h2>
+
+    <div class="mode-options">
+      <div class="mode-card" data-mode="chat">
+        <div class="top-mode-card">
+          <img src="../static/images/chat.png" alt="Phỏng vấn bằng chat">
+        </div>
+        <div class="bottom-mode-card">
+          <h3>Phỏng vấn bằng Chat</h3>
+          <p>Trả lời trò chuyện qua trả lời văn bản</p>
+        </div>
+      </div>
+      <div class="mode-card disabled" data-mode="voice">
+        <div class="top-mode-card-disabled">
+          <img src="../static/images/loading.png" alt="Phỏng vấn bằng chat">
+        </div>
+        <div class="bottom-mode-card">
+          <h3>Phỏng vấn bằng Giọng nói</h3>
+          <p>Đang phát triển...</p>
+        </div>
+      </div>
+      <div class="mode-card disabled" data-mode="interactive">
+        <div class="top-mode-card-disabled">
+          <img src="../static/images/loading.png" alt="Phỏng vấn bằng chat">
+        </div>
+        <div class="bottom-mode-card">
+          <h3>Phỏng vấn bằng Tương tác</h3>
+          <p>Đang phát triển...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mode-buttons">
+      <button id="backButton">Quay lại</button>
+      <button id="continueButton" disabled>Tiếp tục</button>
+    </div>
+  </div>
+
+  <script src="/static/js/infoPage.js"></script>
 </body>
 </html>

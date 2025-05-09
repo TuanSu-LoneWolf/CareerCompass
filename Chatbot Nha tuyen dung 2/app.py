@@ -27,7 +27,7 @@ for dir_path in [DATA_DIR, RAW_DIR, PROCESSED_DIR, VECTOR_STORE_DIR]:
 @app.route('/')
 def index():
     """Hiển thị trang chủ chatbot"""
-    return render_template('index.html')
+    return render_template('infoPage.html')
 
 @app.route('/api/upload', methods=['POST'])
 def upload_document():
@@ -112,7 +112,7 @@ def get_documents():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-@app.route('/api/processed_documents', methods=['GET'])
+@app.route('/data/processed/data.json', methods=['GET'])
 def get_processed_documents():
     """API lấy nội dung của file data.json trong processed"""
     try:
