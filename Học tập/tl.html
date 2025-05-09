@@ -15,17 +15,24 @@
     <header>
         <div class="nav">
             <nav class="nav_pc">
-                <img class="nav-logo" src="./img/Logo.svg"></img>
+                <img class="nav-logo" src="../Logo.svg"></img>
                 <ul class="nav_pc-list">
                     <li class="nav_pc-link"><a href="../index.html">Trang chủ</a></li>
-                    <li class="nav_pc-link"><a href="./tl.html">Học tập</a></li>
+                    <li class="nav_pc-link"><a href="../Học tập/tl.html">Học tập</a></li>
                     <li class="nav_pc-link"><a href="../Test/index.html">Test</a></li>
                     <li class="nav_pc-link"><a href="../Thông tin/post.html">Thông tin</a></li>
                     <li class="nav_pc-link"><a href="#">Tư vấn</a></li>
-                    <li class="nav_pc-link"><a href="#">Phỏng vấn</a></li>
+                    <li class="nav_pc-link"><a href="./Chatbot Nhà tuyển dụng/templates/index.html">Phỏng vấn</a></li>
                     <li class="nav_pc-link"><a href="../Liên hệ/lienhe.html">Liên hệ</a></li>
-                    <li class="nav_pc-link"><a href="../su&si/su.html">Đăng ký</a></li>
-                    <li class="nav_pc-link"><a href="../su&si/si.html">Đăng nhập</a></li>
+                    <li class="nav_pc-link" id="signupLink"><a href="../su&si/su.html">Đăng ký</a></li>
+                    <li class="nav_pc-link" id="loginLink"><a href="../su&si/si.html">Đăng nhập</a></li>
+                    <li class="nav_pc-link" id="userLogoContainer" style="display: none; position: relative;">
+                        <img id="userLogo" src="" alt="User Logo" style="width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">
+                        <div id="userMenu">
+                            <a href="../Profile/profile.html">Trang cá nhân</a>
+                            <button id="logoutBtn">Đăng xuất</button>
+                        </div>
+                    </li>
                 </ul>
             </nav>
             <label class="bar-btn" for="nav_MobileAndTablet-input">
@@ -41,8 +48,8 @@
                     </label>
                 </div>
                 <ul class="nav_MobileAndTablet-list">
-                    <li class="nav_MobileAndTablet-link"><a href="../Trang chủ/index.html">Trang chủ</a></li>
-                    <li class="nav_MobileAndTablet-link"><a href="./tl.html">Học tập</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Trang chủ/">Trang chủ</a></li>
+                    <li class="nav_MobileAndTablet-link"><a href="../Học tập/tl.html">Học tập</a></li>
                     <li class="nav_MobileAndTablet-link"><a href="../Test/index.html">Test</a></li>
                     <li class="nav_MobileAndTablet-link"><a href="../Thông tin/index.html">Thông tin</a></li>
                     <li class="nav_MobileAndTablet-link"><a href="#">Tư vấn</a></li>
@@ -270,20 +277,24 @@
         </div>
     </div>
     <footer>
-        <div class="footer-bottom">
-            <h3>CAREER COMPASS</h3>
-        </div>
         <div class="footer-container">
+          <div class="footer-top">
+            <h3>CAREER COMPASS</h3>
+          </div>
+          <div class="footer-columns">
             <div class="footer-column">
-                <img src="../img/Logo.svg" alt="Logo" class="footer-logo">
+              <div class="footer-logo">
+                <img src="../Logo.svg" alt="Career Compass Logo">
+              </div>
             </div>
             <div class="footer-column">
-                <h3>Thông tin liên hệ</h3>
-                <p>Địa chỉ: 1A Nguyễn Hiến Lê, Phường 13, Tân Bình, Hồ Chí Minh</p>
-                <p>Điện thoại: 090 695 0881</p>
-                <p>Email: tuansu1561@gmail.com</p>
+              <h3>Thông tin liên hệ</h3>
+              <p>Địa chỉ: 4A Nguyễn Hiến Lê, Phường 13, Tân Bình, Hồ Chí Minh</p>
+              <p>Điện thoại: 090 695 0881</p>
+              <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96e2e3f7f8e5e3a7a3aea7d6f1fbf7fffab8f5f9fb">[email&#160;protected]</a></p>
             </div>
             <div class="footer-column">
+                <h3>VỀ CAREER COMPASS</h3>
                 <div class="links">
                     <a href="../index.html">Trang chủ</a> 
                     <a href="../Học tập/tl.html">Học tập</a> 
@@ -294,10 +305,70 @@
                     <a href="../Liên hệ/lienhe.html">Liên hệ</a>
                 </div>  
             </div>
-        </div>
-        <div class="footer-bottom">
+          </div>
+          <div class="footer-bottom">
             <p>Copyright © 2025 CAREER COMPASS. All rights reserved.</p>
+          </div>
         </div>
-    </footer>
+      </footer>
+
+    <script type="module">
+        import { auth } from '../auth.js';
+        import { signOut } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const signupLink = document.getElementById('signupLink');
+            const loginLink = document.getElementById('loginLink');
+            const userLogoContainer = document.getElementById('userLogoContainer');
+            const userLogo = document.getElementById('userLogo');
+            const userMenu = document.getElementById('userMenu');
+            const logoutBtn = document.getElementById('logoutBtn');
+    
+            // Xử lý hiển thị/ẩn menu khi click vào avatar
+            if (userLogo && userMenu) {
+                userLogo.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    userMenu.style.display = userMenu.style.display === 'block' ? 'none' : 'block';
+                });
+    
+                // Ẩn menu khi click ra ngoài
+                document.addEventListener('click', () => {
+                    userMenu.style.display = 'none';
+                });
+    
+                // Ngăn menu đóng khi click vào menu
+                userMenu.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            }
+    
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    signupLink.style.display = 'none';
+                    loginLink.style.display = 'none';
+                    userLogo.src = user.photoURL || './Logo.svg';
+                    userLogoContainer.style.display = 'block';
+                } else {
+                    signupLink.style.display = 'block';
+                    loginLink.style.display = 'block';
+                    userLogoContainer.style.display = 'none';
+                }
+            });
+    
+            // Xử lý đăng xuất
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    signOut(auth).then(() => {
+                        console.log('Đăng xuất thành công.');
+                    }).catch((error) => {
+                        console.error('Lỗi đăng xuất:', error);
+                        alert('Đã xảy ra lỗi khi đăng xuất.');
+                    });
+                });
+            }
+        });
+    </script>
+
+        
 </body>
 </html>

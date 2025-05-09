@@ -1,7 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
   overflow-x: block;
 }
 
@@ -102,7 +104,7 @@ header ul li a:hover {
 
 .profile-card h1 {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2.5em; /* Adjusted size */
   font-weight: 700; /* Bolder */
   color: #0056b3; /* Darker primary blue for main title */
@@ -141,7 +143,7 @@ header ul li a:hover {
   color: #007bff; /* Primary blue */
   text-decoration: none;
   font-size: 1em;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
   cursor: pointer;
   transition: color 0.2s ease, text-decoration 0.2s ease;
@@ -161,7 +163,7 @@ header ul li a:hover {
   margin-bottom: 20px; /* Increased spacing */
   line-height: 1.6; /* Improved readability */
   font-size: 1.05em; /* Slightly larger text */
-  font-family: Georgia, 'Times New Roman', Times, serif; /* Keep serif for details */
+  font-family: Georgia, "Times New Roman", Times, serif; /* Keep serif for details */
   display: flex; /* Use flex for better alignment */
   flex-wrap: wrap; /* Allow wrapping on small screens */
   align-items: baseline; /* Align text nicely */
@@ -173,7 +175,7 @@ header ul li a:hover {
   min-width: 180px; /* Adjust width */
   display: inline-block;
   margin-right: 15px; /* More space */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match labels font */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Match labels font */
   flex-shrink: 0; /* Prevent label from shrinking */
 }
 
@@ -204,7 +206,7 @@ header ul li a:hover {
   margin-top: 0;
   margin-bottom: 35px;
   color: #007bff; /* Primary blue */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.8em;
   font-weight: 600;
 }
@@ -221,7 +223,7 @@ header ul li a:hover {
   font-weight: 600; /* Slightly less bold than details label */
   color: #ff7504; /* Accent orange */
   font-size: 0.95em;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Input, Select, Textarea styling within the update form section */
@@ -235,7 +237,7 @@ header ul li a:hover {
   border-radius: 6px; /* Slightly more rounded */
   box-sizing: border-box;
   font-size: 1em;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #34495e;
   background-color: #ffffff; /* White background for inputs */
   transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Add transitions */
@@ -276,7 +278,7 @@ header ul li a:hover {
   display: block;
   width: 100%;
   margin-top: 25px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -286,67 +288,117 @@ header ul li a:hover {
   box-shadow: 0 4px 10px rgba(0, 86, 179, 0.2);
 }
 
-/* --- Footer Styles --- */
-ooter a {
-  color: #007bff;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 5px;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-footer .links {
-  display: flex;
-  flex-direction: column;
-}
-
-footer .links a {
-  margin: 5px 0;
-}
-
+/* Footer */
 footer {
-  background-color: black;
+  background: linear-gradient(135deg, #1a3a8f 0%, #0a1f4d 100%);
   color: white;
-  padding: 20px;
+  padding: 40px 0 20px;
+  font-family: "Inter", sans-serif;
 }
 
 .footer-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer-top h3 {
+  color: #ff7504;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.footer-top h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #ff7504;
+}
+
+.footer-columns {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .footer-column {
-  width: 30%;
-  margin-bottom: 20px;
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 30px;
+  padding: 0 15px;
+}
+
+.footer-logo {
+  width: 90%; /* Tăng kích thước để chiếm gần hết cột */
+  max-width: 300px; /* Giới hạn kích thước tối đa để không quá lớn */
+  margin: 0 auto;
+}
+
+.footer-logo img {
+  width: 100%;
+  height: auto;
 }
 
 .footer-column h3 {
+  color: #ff7504;
+  font-size: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 3px;
+  background-color: #ff7504;
+}
+
+.footer-column p,
+.footer-column a {
+  color: #ffffff;
+  line-height: 1.6;
   margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.footer-column a {
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #ff7504;
+  padding-left: 5px;
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 20px;
+  padding-top: 20px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom p {
+  margin: 0;
   font-size: 14px;
-  color: white; /* Màu chữ trắng cho copyright */
-}
-
-.footer-logo {
-  width: 300px;
-  height: 300px;
-  margin-left: 80px;
-} 
-.footer-logo img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* --- Responsive Adjustments --- */
@@ -367,13 +419,12 @@ footer {
     height: 140px;
   }
   .profile-details p strong {
-      min-width: 160px;
+    min-width: 160px;
   }
   .update-form-section {
-      padding: 30px;
+    padding: 30px;
   }
 }
-
 
 /* Mobile Devices */
 @media (max-width: 768px) {
@@ -403,26 +454,26 @@ footer {
     width: 100%;
     text-align: center; /* Center text in right column */
   }
-   .profile-details p {
-        font-size: 1em;
-        flex-direction: column; /* Stack label and value */
-        align-items: center; /* Center items */
-        text-align: center; /* Ensure text is centered */
-        margin-bottom: 15px;
-    }
+  .profile-details p {
+    font-size: 1em;
+    flex-direction: column; /* Stack label and value */
+    align-items: center; /* Center items */
+    text-align: center; /* Ensure text is centered */
+    margin-bottom: 15px;
+  }
 
-    .profile-details p strong {
-        display: block; /* Make label block */
-        margin-bottom: 5px; /* Space between label and value */
-        min-width: unset; /* Remove min-width */
-        margin-right: 0; /* Remove right margin */
-        text-align: center; /* Center label */
-    }
+  .profile-details p strong {
+    display: block; /* Make label block */
+    margin-bottom: 5px; /* Space between label and value */
+    min-width: unset; /* Remove min-width */
+    margin-right: 0; /* Remove right margin */
+    text-align: center; /* Center label */
+  }
 
-    .profile-details p span {
-        display: block; /* Make value block */
-        text-align: center; /* Center value */
-    }
+  .profile-details p span {
+    display: block; /* Make value block */
+    text-align: center; /* Center value */
+  }
   /* Adjust form padding on smaller screens */
   .update-form-section {
     padding: 25px 20px;
@@ -431,49 +482,50 @@ footer {
     font-size: 1.6em;
   }
   .update-form-section button[type="submit"] {
-      padding: 12px 20px;
-      font-size: 1em;
+    padding: 12px 20px;
+    font-size: 1em;
   }
 
   /* Footer columns stack */
   .footer-container {
-      flex-direction: column;
-      align-items: center; /* Center columns */
-      text-align: center;
+    flex-direction: column;
+    align-items: center; /* Center columns */
+    text-align: center;
   }
-   .footer-column {
-      width: 90%; /* Make columns take most width */
-      max-width: 400px; /* But not too wide */
+  .footer-column {
+    width: 90%; /* Make columns take most width */
+    max-width: 400px; /* But not too wide */
   }
-  .footer-column:first-child { /* Logo column */
-      margin-bottom: 30px; /* More space below logo */
+  .footer-column:first-child {
+    /* Logo column */
+    margin-bottom: 30px; /* More space below logo */
   }
-   .footer-column h3 {
-      display: inline-block; /* Ensure underline is contained */
-      border-bottom: none; /* Remove underline on mobile if desired */
-      margin-bottom: 10px;
+  .footer-column h3 {
+    display: inline-block; /* Ensure underline is contained */
+    border-bottom: none; /* Remove underline on mobile if desired */
+    margin-bottom: 10px;
   }
-   footer .links a { /* Center footer links */
-      text-align: center;
+  footer .links a {
+    /* Center footer links */
+    text-align: center;
   }
 
-   /* Simple Header adjustments for mobile - ASSUMING you have mobile nav logic */
-    .nav_pc-list {
-        display: none; /* Hide PC nav list */
-    }
-    .nav_bars-btn {
-        display: block; /* Show hamburger menu */
-    }
-    .nav {
-        justify-content: space-between; /* Space logo and burger */
-        padding: 0 15px; /* Adjust padding */
-    }
-    .nav-logo {
-        margin-left: 0; /* Remove margin if needed */
-        margin-right: auto; /* Push burger to the right */
-    }
-    /* Add styles for .nav_MobileAndTablet when active if not already done */
-
+  /* Simple Header adjustments for mobile - ASSUMING you have mobile nav logic */
+  .nav_pc-list {
+    display: none; /* Hide PC nav list */
+  }
+  .nav_bars-btn {
+    display: block; /* Show hamburger menu */
+  }
+  .nav {
+    justify-content: space-between; /* Space logo and burger */
+    padding: 0 15px; /* Adjust padding */
+  }
+  .nav-logo {
+    margin-left: 0; /* Remove margin if needed */
+    margin-right: auto; /* Push burger to the right */
+  }
+  /* Add styles for .nav_MobileAndTablet when active if not already done */
 }
 
 /* Larger Screens */
@@ -483,6 +535,53 @@ footer {
     margin: 0 18px;
   }
   .profile-card {
-      padding: 50px 60px;
+    padding: 50px 60px;
   }
+}
+
+/*Menu người dùng*/
+#userMenu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 160px;
+  z-index: 1000;
+  padding: 8px 0;
+}
+
+#userMenu a,
+#userMenu button {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+#userMenu a:hover,
+#userMenu button:hover {
+  background-color: #f5f5f5;
+}
+
+#userMenu button {
+  color: #ff0000;
+}
+
+#userMenu a {
+  border-bottom: 1px solid #eee;
+  color: #333;
 }

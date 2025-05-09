@@ -383,5 +383,4 @@ onAuthStateChanged(auth, (user) => {
             userLogoContainer.style.display = 'none';
         }
     }
-});
-
+}); 
