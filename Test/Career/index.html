@@ -15,12 +15,16 @@
     <header>
         <div class="nav">
             <nav class="nav_pc">
-                <img class="nav-logo" src="../Logo.svg"></img>
+                <img class="nav-logo" src="./img/Logo.svg"></img>
                 <ul class="nav_pc-list">
                     <li class="nav_pc-link"><a href="./index.html">Trang chủ</a></li>
                     <li class="nav_pc-link"><a href="./Học tập/tl.html">Học tập</a></li>
                     <li class="nav_pc-link"><a href="./Test/index.html">Test</a></li>
                     <li class="nav_pc-link"><a href="./Thông tin/post.html">Thông tin</a></li>
+                    <li class="nav_pc-link"><a href="../../index.html">Trang chủ</a></li>
+                    <li class="nav_pc-link"><a href="../../Học tập/tl.html">Học tập</a></li>
+                    <li class="nav_pc-link"><a href="../../Test/index.html">Test</a></li>
+                    <li class="nav_pc-link"><a href="../../Thông tin/post.html">Thông tin</a></li>
                     <li class="nav_pc-link"><a href="#">Tư vấn</a></li>
                     <li class="nav_pc-link"><a href="./Chatbot Nhà tuyển dụng/templates/index.html">Phỏng vấn</a></li>
                     <li class="nav_pc-link"><a href="./Liên hệ/lienhe.html">Liên hệ</a></li>
@@ -106,39 +110,37 @@
             </div>
         </img>
     </main>
-       <footer>
+    <footer>
+        <div class="footer-bottom">
+            <h3>CAREER COMPASS</h3>
+        </div>
         <div class="footer-container">
-            <div class="footer-top">
-                <h3>CAREER COMPASS</h3>
+            <div class="footer-column">
+                <img src="../img/Logo.svg" alt="Logo" class="footer-logo">
             </div>
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="../Logo.svg" alt="Career Compass Logo">
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Thông tin liên hệ</h3>
-                    <p>Địa chỉ: 4A Nguyễn Hiến Lê, Phường 13, Tân Bình, Hồ Chí Minh</p>
-                    <p>Điện thoại: 090 695 0881</p>
-                    <p>Email: tuansu1581@gmail.com</p>
-                </div>
-                <div class="footer-column">
-                    <h3>VỀ CAREER COMPASS</h3>
-                    <a href="../index.html">Trang chủ</a>
-                    <a href="../Học tập/tl.html">Học tập</a>
-                    <a href="../Test/index.html">Test</a>
-                    <a href="../Thông tin/post.html">Thông tin</a>
-                    <a href="#">Tư vấn</a>
-                    <a href="../Chatbot Nhà tuyển dụng/templates/index.html">Phỏng vấn</a>
-                    <a href="../Liên hệ/lienhe.html">Liên hệ</a>
-                </div>
+            <div class="footer-column">
+                <h3>Thông tin liên hệ</h3>
+                <p>Địa chỉ: 1A Nguyễn Hiến Lê, Phường 13, Tân Bình, Hồ Chí Minh</p>
+                <p>Điện thoại: 090 695 0881</p>
+                <p>Email: tuansu1561@gmail.com</p>
             </div>
-            <div class="footer-bottom">
-                <p>Copyright © 2025 CAREER COMPASS. All rights reserved.</p>
+            <div class="footer-column">
+                <div class="links">
+                    <a href="../../index.html">Trang chủ</a> 
+                    <a href="../../Học tập/tl.html">Học tập</a> 
+                    <a href="../../Test/MBTI/index.html">Test</a> 
+                    <a href="../../Thông tin/post.html">Thông tin</a> 
+                    <a href="../../Chatbot Tư vấn Hướng nghiệp/templates/index.html">Tư vấn</a> 
+                    <a href="../../Chatbot Nhà tuyển dụng/templates/index.html">Phỏng vấn</a>
+                    <a href="../../Liên hệ/lienhe.html">Liên hệ</a>
+                </div>  
             </div>
         </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 CAREER COMPASS. All rights reserved.</p>
+        </div>
     </footer>
+
     <script type="module">
         import { auth } from '../auth.js';
         import { signOut } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';

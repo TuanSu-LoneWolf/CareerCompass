@@ -3,12 +3,22 @@ import google.generativeai as genai
 from typing import Optional, List, Dict, Any
 from dotenv import load_dotenv
 
-# Tải biến môi trường
-load_dotenv()
+# Tải biến môi trường từ file .env ở thư mục cha
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
+
+
+# Lấy API key từ biến môi trường
+api_key = os.getenv("GOOGLE_API_KEY")
+if not api_key:
+    raise ValueError("Không tìm thấy GOOGLE_API_KEY trong biến môi trường hoặc file .env")
+
+# Cấu hình API
+genai.configure(api_key=api_key)
 
 # Gọi ListModels để lấy danh sách mô hình có sẵn
 models = list(genai.list_models())  # Chuyển generator thành list
 print(models)
+
 
 class GeminiHandler:
     """
@@ -22,22 +32,19 @@ class GeminiHandler:
         Args:
             api_key: Google AI API key, nếu không cung cấp sẽ lấy từ biến môi trường
         """
-        # Lấy API key từ biến môi trường nếu không được cung cấp
         if api_key is None:
             api_key = os.getenv("GOOGLE_API_KEY")
             if not api_key:
                 raise ValueError("API key không được cung cấp và không tìm thấy trong biến môi trường GOOGLE_API_KEY")
         
-        # Khởi tạo Gemini API
         genai.configure(api_key=api_key)
         
         # Lấy tên mô hình hợp lệ từ danh sách mô hình
-        model_name = 'models/gemini-2.5-pro-exp-03-25'  # Sử dụng mô hình hợp lệ cho chatbot
+        model_name = 'models/gemini-2.5-pro-exp-03-25'
         
         # Khởi tạo mô hình
         self.model = genai.GenerativeModel(model_name)
         
-        # Cấu hình hệ thống nhắn tin
         self.chat_session = self.model.start_chat(
             history=[ 
                 {
@@ -63,7 +70,6 @@ class GeminiHandler:
             Câu trả lời được tạo bởi Gemini
         """
         try:
-            # Tạo prompt với ngữ cảnh
             prompt = f"""
             Dựa trên ngữ cảnh sau đây, hãy trả lời câu hỏi của người dùng một cách chính xác và đầy đủ.
             Nếu câu trả lời không có trong ngữ cảnh, hãy trả lời là "Tôi không tìm thấy thông tin về vấn đề này trong tài liệu hiện có."
@@ -75,18 +81,14 @@ class GeminiHandler:
             
             Câu trả lời:
             """
-            
-            # Gửi câu hỏi đến Gemini API
             response = self.chat_session.send_message(prompt)
-            
-            # Trả về nội dung phản hồi
             return response.text
-            
         except Exception as e:
             return f"Có lỗi xảy ra khi tạo câu trả lời: {str(e)}"
 
+
 # Kiểm tra mô hình và khởi tạo lớp GeminiHandler
 if __name__ == "__main__":
-    handler = GeminiHandler(api_key="YOUR_API_KEY")
+    handler = GeminiHandler()
     response = handler.generate_response("Quy trình phỏng vấn như thế nào?", "Mô tả chi tiết quy trình phỏng vấn tuyển dụng tại công ty ABC.")
     print(response)
