@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang cá nhân</title>
-    <link rel="stylesheet" href="../style.css"> <!-- Use style.css for navigation consistency -->
-    <link rel="stylesheet" href="profile.css"> <!-- Keep profile.css for profile-specific styles -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
     <header>
@@ -23,8 +23,7 @@
                     <li class="nav_pc-link" id="signupLink"><a href="../su&si/su.html">Đăng ký</a></li>
                     <li class="nav_pc-link" id="loginLink"><a href="../su&si/si.html">Đăng nhập</a></li>
                     <li class="nav_pc-link" id="userLogoContainer" style="display: none; position: relative;">
-                        <img id="userLogo" src="" alt="User Logo"
-                            style="width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">
+                        <img id="userLogo" src="" alt="User Logo" style="width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">
                         <div id="userMenu">
                             <a href="./profile.html">Trang cá nhân</a>
                             <button id="logoutBtn">Đăng xuất</button>
@@ -58,12 +57,11 @@
             </div>
         </div>
     </header>
-    <!-- Main Profile Content Area -->
+
     <main class="profile-page-container">
         <div class="profile-card">
             <h1>Trang cá nhân</h1>
             <div class="profile-content">
-                <!-- Left Column -->
                 <div class="profile-left">
                     <div class="profile-picture-section">
                         <img id="profile-avatar-img" src="../image/profile picture.jpg" alt="Ảnh đại diện">
@@ -73,66 +71,70 @@
                         </div>
                     </div>
                 </div>
-                <!-- Right Column -->
                 <div class="profile-right">
                     <div class="profile-details">
-                        <p><strong>Họ và tên:</strong> <span id="display-name">Đang tải...</span></p>
-                        <p><strong>Ngày tháng, năm sinh:</strong> <span id="display-dob">Đang tải...</span></p>
-                        <p><strong>Giới tính:</strong> <span id="display-gender">Đang tải...</span></p>
-                        <p><strong>Ngành nghề yêu thích:</strong> <span id="display-fav-career">Đang tải...</span></p>
-                        <p><strong>Định hướng nghề nghiệp:</strong> <span id="display-career-orientation">Đang tải...</span></p>
-                        <p><strong>Điểm mạnh:</strong> <span id="display-strengths" class="detail-block">Đang tải...</span></p>
-                        <p><strong>Điểm yếu:</strong> <span id="display-weaknesses" class="detail-block">Đang tải...</span></p>
-                        <p><strong>MBTI:</strong> <span id="display-mbti">Đang tải...</span></p>
+                        <p><strong>Họ và tên:</strong> <span id="display-name">Chưa cập nhật</span></p>
+                        <p><strong>Ngày tháng, năm sinh:</strong> <span id="display-dob">Chưa cập nhật</span></p>
+                        <p><strong>Giới tính:</strong> <span id="display-gender">Chưa cập nhật</span></p>
+                        <p><strong>Ngành nghề yêu thích:</strong> <span id="display-fav-career">Chưa cập nhật</span></p>
+                        <p><strong>Định hướng nghề nghiệp:</strong> <span id="display-career-orientation">Chưa cập nhật</span></p>
+                        <p><strong>Điểm mạnh:</strong> <span id="display-strengths" class="detail-block">Chưa cập nhật</span></p>
+                        <p><strong>Điểm yếu:</strong> <span id="display-weaknesses" class="detail-block">Chưa cập nhật</span></p>
+                        <p><strong>MBTI:</strong> <span id="display-mbti">Chưa cập nhật</span></p>
                     </div>
                 </div>
             </div>
-            <!-- Update Form Container -->
-            <div id="update-form-container" class="update-form-section">
-                <h2>Hồ sơ Người dùng</h2>
-                <form id="profile-form" novalidate>
-                    <div class="form-group">
-                        <label for="fullname">Họ và tên:</label>
-                        <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" required>
-                    </div>
-                    <div class="form-group form-group-date">
-                        <label for="dob">Ngày tháng năm sinh:</label>
-                        <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Giới tính:</label>
-                        <select id="gender" name="gender" required>
-                            <option value="" disabled selected>-- Chọn giới tính --</option>
-                            <option value="Nam">Nam</option>
-                            <option value="Nữ">Nữ</option>
-                            <option value="Khác">Khác</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="career">Ngành nghề yêu thích:</label>
-                        <input type="text" id="career" name="career" placeholder="Nhập ngành nghề yêu thích">
-                    </div>
-                    <div class="form-group">
-                        <label for="strengths">Điểm mạnh:</label>
-                        <textarea id="strengths" name="strengths" placeholder="Nhập điểm mạnh của bạn" rows="4"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="weaknesses">Điểm yếu:</label>
-                        <textarea id="weaknesses" name="weaknesses" placeholder="Nhập điểm yếu của bạn" rows="4"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="orientation">Định hướng nghề nghiệp:</label>
-                        <input type="text" id="orientation" name="orientation" placeholder="Ví dụ: Trở thành chuyên gia AI">
-                    </div>
-                    <div class="form-group">
-                        <label for="mbti">MBTI:</label>
-                        <input type="text" id="mbti" name="mbti" placeholder="Ví dụ: INTJ, ENFP...">
-                    </div>
-                    <button type="submit" class="submit-button">Lưu hồ sơ</button>
-                </form>
-            </div>
         </div>
     </main>
+
+    <!-- Update Profile Modal -->
+    <div id="update-profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Hồ sơ Người dùng</h2>
+            <form id="profile-form" novalidate>
+                <div class="form-group">
+                    <label for="fullname">Họ và tên:</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" required>
+                </div>
+                <div class="form-group form-group-date">
+                    <label for="dob">Ngày tháng năm sinh:</label>
+                    <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Giới tính:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>-- Chọn giới tính --</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="career">Ngành nghề yêu thích:</label>
+                    <input type="text" id="career" name="career" placeholder="Nhập ngành nghề yêu thích">
+                </div>
+                <div class="form-group">
+                    <label for="strengths">Điểm mạnh:</label>
+                    <textarea id="strengths" name="strengths" placeholder="Nhập điểm mạnh của bạn" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="weaknesses">Điểm yếu:</label>
+                    <textarea id="weaknesses" name="weaknesses" placeholder="Nhập điểm yếu của bạn" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="orientation">Định hướng nghề nghiệp:</label>
+                    <input type="text" id="orientation" name="orientation" placeholder="Ví dụ: Trở thành chuyên gia AI">
+                </div>
+                <div class="form-group">
+                    <label for="mbti">MBTI:</label>
+                    <input type="text" id="mbti" name="mbti" placeholder="Ví dụ: INTJ, ENFP...">
+                </div>
+                <button type="submit" class="submit-button">Lưu hồ sơ</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-bottom">
             <h3>CAREER COMPASS</h3>
@@ -145,7 +147,7 @@
                 <h3>Thông tin liên hệ</h3>
                 <p>Địa chỉ: 1A Nguyễn Hiến Lê, Phường 13, Tân Bình, Hồ Chí Minh</p>
                 <p>Điện thoại: 090 695 0881</p>
-                <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee9a9b8f809d9bdfdbd8dfae89838f8782c08d8183">[email&#160;protected]</a></p>
+                <p>Email: tuansu1561@gmail.com</p>
             </div>
             <div class="footer-column">
                 <div class="links">
@@ -163,7 +165,7 @@
             <p>Copyright © 2025 CAREER COMPASS. All rights reserved.</p>
         </div>
     </footer>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
     <script type="module">
         import { auth } from '../auth.js';
         import { signOut } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
