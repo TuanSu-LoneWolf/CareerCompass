@@ -447,7 +447,7 @@ function validateInfoAndContinue() {
         isValid = false;
     }
     
-    if (!ageInput.value || ageInput.value < 18 || ageInput.value > 100) {
+    if (!ageInput.value || ageInput.value < 15 || ageInput.value > 100) {
         ageInput.style.borderColor = '#e74c3c';
         isValid = false;
     }
