@@ -1,4 +1,5 @@
-import { auth, database, ref, set, get, onAuthStateChanged } from '../auth.js';
+import { auth, database, storage, ref, set, get, onAuthStateChanged, storageRef, uploadBytes, getDownloadURL } from '../auth.js';
+import { updateProfile } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Get DOM Elements ---
@@ -11,20 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayStrengths = document.getElementById('display-strengths');
     const displayWeaknesses = document.getElementById('display-weaknesses');
     const displayMbti = document.getElementById('display-mbti');
-    // const profileAvatarImg = document.getElementById('profile-avatar-img');
 
-    // Form elements (now directly in the page)
+    // Modal and form elements
     const updateProfileLink = document.getElementById('update-profile-link');
-    const updateFormContainer = document.getElementById('update-form-container');
-    const profileForm = document.getElementById('profile-form'); // The actual form element
-
-    // Modal elements are removed
-    // const modal = document.getElementById('update-profile-modal');
-    // const modalFormContent = document.getElementById('modal-form-content');
-    // const closeButton = document.querySelector('.modal .close-button');
+    const modal = document.getElementById('update-profile-modal');
+    const closeButton = document.querySelector('.modal .close-button');
+    const profileForm = document.getElementById('profile-form');
+    const changeAvatarLink = document.getElementById('change-avatar-link');
 
     let currentUserId = null;
-    let currentUserProfileData = {}; // Store current profile data to pre-fill form
+    let currentUserProfileData = {};
 
     // --- Authentication Check ---
     onAuthStateChanged(auth, (user) => {
@@ -34,8 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadUserProfile(currentUserId);
         } else {
             console.log("User not logged in. Redirecting...");
-            // Redirect to login page if not authenticated
-            window.location.href = '../su&si/si.html'; // Adjust path as needed
+            window.location.href = '../su&si/si.html';
         }
     });
 
@@ -45,21 +41,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         get(userProfileRef).then((snapshot) => {
             if (snapshot.exists()) {
-                currentUserProfileData = snapshot.val(); // Store data
+                currentUserProfileData = snapshot.val();
                 console.log("Profile data fetched:", currentUserProfileData);
                 displayProfileData(currentUserProfileData);
-                 // Pre-fill form once data is loaded, even if form is initially hidden
-                 prefillProfileForm(currentUserProfileData);
+                prefillProfileForm(currentUserProfileData);
             } else {
-                currentUserProfileData = {}; // Reset if no data
+                currentUserProfileData = {};
                 console.log("No profile data available for user:", userId);
-                displayProfileData({}); // Display default values
-                prefillProfileForm({}); // Pre-fill form with empty values
+                displayProfileData({});
+                prefillProfileForm({});
+            }
+            // Cập nhật ảnh đại diện từ Firebase Authentication
+            const user = auth.currentUser;
+            const profileAvatarImg = document.getElementById('profile-avatar-img');
+            if (user && profileAvatarImg) {
+                profileAvatarImg.src = user.photoURL || '../Logo.svg'; // Đồng bộ với fallback của navigation
             }
         }).catch((error) => {
             console.error("Error loading profile data:", error);
             alert("Lỗi tải thông tin hồ sơ!");
-            displayProfileData(null); // Indicate error
+            displayProfileData(null);
         });
     }
 
@@ -67,11 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayProfileData(data) {
         const defaultText = 'Chưa cập nhật';
         if (data === null) {
-             displayName.textContent = 'Lỗi tải dữ liệu';
-             displayDob.textContent = ''; displayGender.textContent = ''; displayFavCareer.textContent = '';
-             displayCareerOrientation.textContent = ''; displayStrengths.textContent = '';
-             displayWeaknesses.textContent = ''; displayMbti.textContent = '';
-             return;
+            displayName.textContent = 'Lỗi tải dữ liệu';
+            displayDob.textContent = ''; 
+            displayGender.textContent = ''; 
+            displayFavCareer.textContent = '';
+            displayCareerOrientation.textContent = ''; 
+            displayStrengths.textContent = '';
+            displayWeaknesses.textContent = ''; 
+            displayMbti.textContent = '';
+            return;
         }
         displayName.textContent = data.name || defaultText;
         displayDob.textContent = data.dob ? formatDate(data.dob) : defaultText;
@@ -83,29 +88,31 @@ document.addEventListener('DOMContentLoaded', () => {
         displayMbti.textContent = data.mbti || defaultText;
     }
 
-    // --- Toggle Update Form Visibility ---
-    if (updateProfileLink && updateFormContainer) {
+    // --- Open Modal ---
+    if (updateProfileLink && modal) {
         updateProfileLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent link from navigating anywhere
-            // Toggle the 'show' class to control visibility via CSS
-            updateFormContainer.classList.toggle('show');
-
-            // Optional: If shown, pre-fill just in case data loaded *after* initial prefill
-            if (updateFormContainer.classList.contains('show')) {
-                 prefillProfileForm(currentUserProfileData);
-                 // Optional: scroll to the form if it's opened
-                 updateFormContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+            e.preventDefault();
+            modal.style.display = 'block';
+            prefillProfileForm(currentUserProfileData);
         });
-    } else {
-         console.error("Could not find update link or form container");
     }
 
+    // --- Close Modal ---
+    if (closeButton && modal) {
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    }
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 
     // --- Pre-fill the Profile Form ---
-    // Renamed from prefillInjectedForm for clarity
     function prefillProfileForm(data) {
-         // Use document.getElementById as IDs should be unique on the page
         const nameInput = document.getElementById('fullname');
         const dobInput = document.getElementById('dob');
         const genderInput = document.getElementById('gender');
@@ -116,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mbtiInput = document.getElementById('mbti');
 
         if (nameInput) nameInput.value = data?.name || '';
-        if (dobInput) dobInput.value = data?.dob || ''; // Assumes YYYY-MM-DD
+        if (dobInput) dobInput.value = data?.dob || '';
         if (genderInput) genderInput.value = data?.gender || '';
         if (careerInput) careerInput.value = data?.fav_career || '';
         if (orientationInput) orientationInput.value = data?.career_orientation || '';
@@ -127,17 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Handle Profile Form Submission ---
     function handleProfileUpdateSubmit(event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
         if (!currentUserId) {
             alert("Lỗi: Không xác định được người dùng. Vui lòng đăng nhập lại.");
             return;
         }
         if (!profileForm) {
-             alert("Lỗi: Không tìm thấy biểu mẫu.");
-             return;
+            alert("Lỗi: Không tìm thấy biểu mẫu.");
+            return;
         }
 
-        // Gather data directly using element IDs
         const updatedData = {
             name: document.getElementById('fullname')?.value.trim() || '',
             dob: document.getElementById('dob')?.value || '',
@@ -151,23 +157,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log("Submitting updated data:", updatedData);
 
-        // Save data to Firebase
         const userProfileRef = ref(database, `users/${currentUserId}/profile`);
         set(userProfileRef, updatedData)
             .then(() => {
                 console.log("Profile updated successfully in Firebase.");
-                currentUserProfileData = updatedData; // Update local cache
-                displayProfileData(currentUserProfileData); // Update the main page display
-
-                // Hide the form section after successful update
-                if (updateFormContainer) {
-                    updateFormContainer.classList.remove('show');
-                }
+                currentUserProfileData = updatedData;
+                displayProfileData(currentUserProfileData);
+                modal.style.display = 'none';
             })
             .catch((error) => {
                 console.error("Error updating profile:", error);
                 alert(`Đã xảy ra lỗi khi cập nhật hồ sơ: ${error.message}`);
             });
+    }
+
+    // --- Handle Change Avatar ---
+    if (changeAvatarLink) {
+        changeAvatarLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = async (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                if (!currentUserId) {
+                    alert("Lỗi: Không xác định được người dùng. Vui lòng đăng nhập lại.");
+                    return;
+                }
+
+                try {
+                    // Tạo tham chiếu tới Firebase Storage
+                    const avatarRef = storageRef(storage, `avatars/${currentUserId}/${file.name}`);
+                    // Tải ảnh lên
+                    await uploadBytes(avatarRef, file);
+                    // Lấy URL tải xuống
+                    const photoURL = await getDownloadURL(avatarRef);
+
+                    // Cập nhật photoURL trong Firebase Authentication
+                    await updateProfile(auth.currentUser, { photoURL });
+
+                    // Cập nhật ảnh đại diện trên giao diện
+                    const profileAvatarImg = document.getElementById('profile-avatar-img');
+                    const userLogo = document.getElementById('userLogo');
+                    if (profileAvatarImg) profileAvatarImg.src = photoURL;
+                    if (userLogo) userLogo.src = photoURL;
+
+                    console.log("Ảnh đại diện đã được cập nhật:", photoURL);
+                } catch (error) {
+                    console.error("Lỗi khi cập nhật ảnh đại diện:", error);
+                    alert("Đã xảy ra lỗi khi cập nhật ảnh đại diện.");
+                }
+            };
+            input.click();
+        });
     }
 
     // --- Attach Submit Listener to the Form ---
@@ -177,19 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Profile form (#profile-form) not found in the DOM.");
     }
 
-
-    // --- Modal Close Logic Removed ---
-    // if (closeButton) { ... }
-    // window.onclick = (event) => { ... };
-
     // --- Helper Function to Format Date ---
     function formatDate(dateString) {
-       // ... (Keep this function as is) ...
-       if (!dateString) return '';
+        if (!dateString) return '';
         try {
-            const parts = dateString.split('-'); // Input YYYY-MM-DD
+            const parts = dateString.split('-');
             if (parts.length === 3) {
-                return `${parts[2]}/${parts[1]}/${parts[0]}`; // Output DD/MM/YYYY
+                return `${parts[2]}/${parts[1]}/${parts[0]}`;
             }
             return dateString;
         } catch (e) {
@@ -197,5 +235,4 @@ document.addEventListener('DOMContentLoaded', () => {
             return dateString;
         }
     }
-
 });

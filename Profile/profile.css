@@ -1,137 +1,59 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue",
-    Helvetica, Arial, sans-serif;
+  font-family: "Times New Roman", Times, serif; /* Primary font set to Times New Roman with fallbacks */
   overflow-x: block;
-}
-
-/* Navvigation Bar */
-header {
-  width: 100vw;
-  position: fixed;
-  z-index: 1;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.095);
-}
-
-.nav {
-  display: flex;
-  width: 100vw;
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  height: 3.25em;
-  position: fixed;
-  top: 0;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.095);
-}
-
-.nav_pc-list {
-  display: flex;
-  list-style-type: none;
-  width: 100vw;
-  justify-content: center;
-}
-
-.nav_pc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-logo {
-  height: 40px;
-  width: 40px;
-  margin-left: 50px;
-}
-
-.nav_pc-link a {
-  padding-bottom: 5px;
-  margin-bottom: 15px;
-  margin: 0 20px;
-  text-decoration: none;
-  font-size: 20px;
-  color: rgb(100, 100, 100);
-  font-weight: bold;
-}
-
-header ul li a:hover {
-  border-bottom: solid;
-  border-color: #1f65de;
-}
-
-.nav_bars-btn {
-  display: none;
-}
-
-#border {
-  width: 100vw;
-  height: 5px;
-  background-image: transparent;
-  opacity: 0.1;
-  background-image: linear-gradient(rgb(0, 0, 0), rgb(255, 255, 255));
-}
-
-/* font-colororange */
-.fontcolor-organe {
-  color: #ff7504;
-  padding: 0 0.25em;
-}
-
-#firstcolor {
-  padding: 0 0.25em 0.25em 0;
 }
 
 /* --- Profile Page Specific Styles --- */
 .profile-page-container {
-  padding-top: calc(3.5em + 40px); /* Header height + desired space */
-  padding-bottom: 60px; /* More space at the bottom */
-  padding-left: 20px; /* Add horizontal padding */
+  padding-top: calc(3.5em + 40px);
+  padding-bottom: 60px;
+  padding-left: 20px;
   padding-right: 20px;
   box-sizing: border-box;
 }
 
 .profile-card {
   background-color: #ffffff;
-  max-width: 950px; /* Slightly wider */
+  max-width: 950px;
   margin: 0 auto;
   padding: 40px 50px;
-  border-radius: 12px; /* More rounded corners */
-  box-shadow: 0 5px 20px rgba(0, 86, 179, 0.1); /* Subtle blue-ish shadow */
-  border: 1px solid #e0e4e8; /* Softer border */
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 86, 179, 0.1);
+  border: 1px solid #e0e4e8;
 }
 
 .profile-card h1 {
   text-align: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 2.5em; /* Adjusted size */
-  font-weight: 700; /* Bolder */
-  color: #0056b3; /* Darker primary blue for main title */
+  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #0056b3;
   margin-top: 0;
-  margin-bottom: 45px; /* Adjusted spacing */
-  letter-spacing: -0.5px; /* Tighten spacing slightly */
+  margin-bottom: 45px;
+  letter-spacing: -0.5px;
 }
 
 .profile-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px 60px; /* Row gap, Column gap */
+  gap: 40px 60px;
   align-items: flex-start;
 }
 
 .profile-left {
-  flex: 0 0 220px; /* Slightly wider */
+  flex: 0 0 220px;
   text-align: center;
 }
 
 #profile-avatar-img {
-  width: 160px; /* Larger avatar */
+  width: 160px;
   height: 160px;
   border-radius: 50%;
-  border: 4px solid #ffffff; /* White border to lift it off */
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); /* Shadow for avatar */
-  background-color: #e0e4e8; /* Placeholder bg */
+  border: 4px solid #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  background-color: #e0e4e8;
   display: block;
   margin: 0 auto 25px auto;
   object-fit: cover;
@@ -140,134 +62,174 @@ header ul li a:hover {
 .action-links a {
   display: block;
   margin-bottom: 12px;
-  color: #007bff; /* Primary blue */
+  color: #007bff;
   text-decoration: none;
+  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
   font-size: 1em;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
   cursor: pointer;
   transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 .action-links a:hover {
-  color: #0056b3; /* Darker blue on hover */
+  color: #0056b3;
   text-decoration: underline;
 }
 
 .profile-right {
   flex: 1;
-  min-width: 0; /* Prevent overflow */
+  min-width: 0;
+}
+
+.profile-details {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  row-gap: 10px;
+  column-gap: 15px;
+  align-items: center;
+  font-size: 16px;
 }
 
 .profile-details p {
-  margin-bottom: 20px; /* Increased spacing */
-  line-height: 1.6; /* Improved readability */
-  font-size: 1.05em; /* Slightly larger text */
-  font-family: Georgia, "Times New Roman", Times, serif; /* Keep serif for details */
-  display: flex; /* Use flex for better alignment */
-  flex-wrap: wrap; /* Allow wrapping on small screens */
-  align-items: baseline; /* Align text nicely */
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-size: 1.05em;
+  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  display: contents;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.profile-details strong {
+  text-align: left;
+  white-space: nowrap;
 }
 
 .profile-details p strong {
-  font-weight: 700; /* Bolder */
-  color: #ff7504; /* Accent orange */
-  min-width: 180px; /* Adjust width */
+  font-weight: 700;
+  color: #ff7504;
+  min-width: 180px;
   display: inline-block;
-  margin-right: 15px; /* More space */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Match labels font */
-  flex-shrink: 0; /* Prevent label from shrinking */
+  margin-right: 15px;
+  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  flex-shrink: 0;
+}
+
+.profile-details span {
+  text-align: left;
+}
+
+.detail-block {
+  white-space: pre-wrap;
 }
 
 .profile-details p span {
-  color: #34495e; /* Main text color */
-  flex-grow: 1; /* Allow value to take remaining space */
+  color: #34495e;
+  flex-grow: 1;
 }
 
-/* --- Styles for the IN-PAGE Update Form Section --- */
-.update-form-section {
-  display: none; /* Hidden by default */
-  margin-top: 50px; /* More space above the form */
-  padding: 35px 45px; /* More padding */
-  border: 1px solid #d1e3ff; /* Light blue border */
-  border-radius: 8px;
-  background-color: #f8fcff; /* Very light blue background */
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.08); /* Subtle blue shadow */
+/* --- Modal Styles --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Class added by JS to show the form */
-.update-form-section.show {
-  display: block;
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px 30px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-/* Title inside the update form section */
-.update-form-section h2 {
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+.modal-content h2 {
   text-align: center;
   margin-top: 0;
-  margin-bottom: 35px;
-  color: #007bff; /* Primary blue */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 25px;
+  color: #007bff;
+  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
   font-size: 1.8em;
   font-weight: 600;
 }
 
-/* Form Group styling */
-.update-form-section .form-group {
-  margin-bottom: 20px; /* Consistent spacing */
+.form-group {
+  margin-bottom: 20px;
 }
 
-/* Label styling within the update form section */
-.update-form-section label {
+.modal-content label {
   display: block;
   margin-bottom: 8px;
-  font-weight: 600; /* Slightly less bold than details label */
-  color: #ff7504; /* Accent orange */
+  font-weight: 600;
+  color: #ff7504;
   font-size: 0.95em;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
 }
 
-/* Input, Select, Textarea styling within the update form section */
-.update-form-section input[type="text"],
-.update-form-section input[type="date"],
-.update-form-section select,
-.update-form-section textarea {
+.modal-content input[type="text"],
+.modal-content input[type="date"],
+.modal-content select,
+.modal-content textarea {
   width: 100%;
-  padding: 12px 15px; /* More padding */
-  border: 1px solid #b8cde0; /* Softer border color */
-  border-radius: 6px; /* Slightly more rounded */
+  padding: 12px 15px;
+  border: 1px solid #b8cde0;
+  border-radius: 6px;
   box-sizing: border-box;
   font-size: 1em;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
   color: #34495e;
-  background-color: #ffffff; /* White background for inputs */
-  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Add transitions */
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Focus styles using blue */
-.update-form-section input[type="text"]:focus,
-.update-form-section input[type="date"]:focus,
-.update-form-section select:focus,
-.update-form-section textarea:focus {
-  border-color: #007bff; /* Blue border on focus */
+.modal-content input[type="text"]:focus,
+.modal-content input[type="date"]:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+  border-color: #007bff;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Blue glow */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.update-form-section textarea {
+.modal-content textarea {
   resize: vertical;
-  min-height: 100px; /* Adjusted height */
+  min-height: 100px;
   display: block;
 }
 
-/* Style placeholder text */
-.update-form-section ::placeholder {
+.modal-content ::placeholder {
   color: #95a5a6;
-  opacity: 1; /* Firefox */
+  opacity: 1;
 }
 
-/* Button styling within the update form section */
-.update-form-section button[type="submit"] {
-  background-color: #007bff; /* Primary blue button */
+.modal-content button[type="submit"] {
+  background-color: #007bff;
   color: white;
   padding: 12px 25px;
   border: none;
@@ -278,132 +240,17 @@ header ul li a:hover {
   display: block;
   width: 100%;
   margin-top: 25px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.update-form-section button[type="submit"]:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.modal-content button[type="submit"]:hover {
+  background-color: #0056b3;
   box-shadow: 0 4px 10px rgba(0, 86, 179, 0.2);
 }
 
-/* Footer */
-footer {
-  background: linear-gradient(135deg, #1a3a8f 0%, #0a1f4d 100%);
-  color: white;
-  padding: 40px 0 20px;
-  font-family: "Inter", sans-serif;
-}
-
-.footer-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-top {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.footer-top h3 {
-  color: #ff7504;
-  font-size: 28px;
-  font-weight: bold;
-  margin: 0;
-  padding-bottom: 10px;
-  position: relative;
-}
-
-.footer-top h3::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background-color: #ff7504;
-}
-
-.footer-columns {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.footer-column {
-  flex: 1;
-  min-width: 250px;
-  margin-bottom: 30px;
-  padding: 0 15px;
-}
-
-.footer-logo {
-  width: 90%; /* Tăng kích thước để chiếm gần hết cột */
-  max-width: 300px; /* Giới hạn kích thước tối đa để không quá lớn */
-  margin: 0 auto;
-}
-
-.footer-logo img {
-  width: 100%;
-  height: auto;
-}
-
-.footer-column h3 {
-  color: #ff7504;
-  font-size: 20px;
-  margin-bottom: 20px;
-  position: relative;
-  padding-bottom: 10px;
-}
-
-.footer-column h3::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 50px;
-  height: 3px;
-  background-color: #ff7504;
-}
-
-.footer-column p,
-.footer-column a {
-  color: #ffffff;
-  line-height: 1.6;
-  margin-bottom: 10px;
-  font-size: 15px;
-}
-
-.footer-column a {
-  text-decoration: none;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.footer-column a:hover {
-  color: #ff7504;
-  padding-left: 5px;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  margin-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-bottom p {
-  margin: 0;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-}
-
 /* --- Responsive Adjustments --- */
-
-/* Tablets and Smaller Desktops */
 @media (max-width: 992px) {
   .profile-card {
     padding: 30px 35px;
@@ -412,7 +259,7 @@ footer {
     gap: 30px 40px;
   }
   .profile-left {
-    flex: 0 0 180px; /* Smaller left column */
+    flex: 0 0 180px;
   }
   #profile-avatar-img {
     width: 140px;
@@ -421,15 +268,11 @@ footer {
   .profile-details p strong {
     min-width: 160px;
   }
-  .update-form-section {
-    padding: 30px;
-  }
 }
 
-/* Mobile Devices */
 @media (max-width: 768px) {
   .profile-page-container {
-    padding-top: calc(3.5em + 20px); /* Less top padding */
+    padding-top: calc(3.5em + 20px);
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -443,145 +286,39 @@ footer {
   .profile-content {
     flex-direction: column;
     align-items: center;
-    gap: 35px; /* Adjust gap for column layout */
+    gap: 35px;
   }
   .profile-left {
     flex-basis: auto;
     width: 100%;
-    max-width: 200px; /* Limit width even when centered */
+    max-width: 200px;
   }
   .profile-right {
     width: 100%;
-    text-align: center; /* Center text in right column */
+    text-align: center;
   }
   .profile-details p {
     font-size: 1em;
-    flex-direction: column; /* Stack label and value */
-    align-items: center; /* Center items */
-    text-align: center; /* Ensure text is centered */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     margin-bottom: 15px;
   }
-
   .profile-details p strong {
-    display: block; /* Make label block */
-    margin-bottom: 5px; /* Space between label and value */
-    min-width: unset; /* Remove min-width */
-    margin-right: 0; /* Remove right margin */
-    text-align: center; /* Center label */
+    display: block;
+    margin-bottom: 5px;
+    min-width: unset;
+    margin-right: 0;
+    text-align: center;
   }
-
   .profile-details p span {
-    display: block; /* Make value block */
-    text-align: center; /* Center value */
-  }
-  /* Adjust form padding on smaller screens */
-  .update-form-section {
-    padding: 25px 20px;
-  }
-  .update-form-section h2 {
-    font-size: 1.6em;
-  }
-  .update-form-section button[type="submit"] {
-    padding: 12px 20px;
-    font-size: 1em;
-  }
-
-  /* Footer columns stack */
-  .footer-container {
-    flex-direction: column;
-    align-items: center; /* Center columns */
+    display: block;
     text-align: center;
   }
-  .footer-column {
-    width: 90%; /* Make columns take most width */
-    max-width: 400px; /* But not too wide */
-  }
-  .footer-column:first-child {
-    /* Logo column */
-    margin-bottom: 30px; /* More space below logo */
-  }
-  .footer-column h3 {
-    display: inline-block; /* Ensure underline is contained */
-    border-bottom: none; /* Remove underline on mobile if desired */
-    margin-bottom: 10px;
-  }
-  footer .links a {
-    /* Center footer links */
-    text-align: center;
-  }
-
-  /* Simple Header adjustments for mobile - ASSUMING you have mobile nav logic */
-  .nav_pc-list {
-    display: none; /* Hide PC nav list */
-  }
-  .nav_bars-btn {
-    display: block; /* Show hamburger menu */
-  }
-  .nav {
-    justify-content: space-between; /* Space logo and burger */
-    padding: 0 15px; /* Adjust padding */
-  }
-  .nav-logo {
-    margin-left: 0; /* Remove margin if needed */
-    margin-right: auto; /* Push burger to the right */
-  }
-  /* Add styles for .nav_MobileAndTablet when active if not already done */
 }
 
-/* Larger Screens */
 @media only screen and (min-width: 1200px) {
-  .nav_pc-link a {
-    font-size: 1.05rem; /* Slightly larger nav text on big screens */
-    margin: 0 18px;
-  }
   .profile-card {
     padding: 50px 60px;
   }
-}
-
-/*Menu người dùng*/
-#userMenu {
-  display: none;
-  position: absolute;
-  top: 40px;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  width: 160px;
-  z-index: 1000;
-  padding: 8px 0;
-}
-
-#userMenu a,
-#userMenu button {
-  display: flex;
-  align-items: center;
-  padding: 10px 16px;
-  text-decoration: none;
-  color: #333;
-  width: 100%;
-  text-align: left;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 14px;
-  box-sizing: border-box;
-  margin: 0;
-  font-family: "Inter", sans-serif;
-}
-
-#userMenu a:hover,
-#userMenu button:hover {
-  background-color: #f5f5f5;
-}
-
-#userMenu button {
-  color: #ff0000;
-}
-
-#userMenu a {
-  border-bottom: 1px solid #eee;
-  color: #333;
 }
