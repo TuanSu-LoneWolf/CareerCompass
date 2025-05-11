@@ -7,7 +7,8 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
     GoogleAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    signOut
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-storage.js";
 
@@ -131,5 +132,6 @@ export {
     createUserWithEmailAndPassword,
     storageRef,
     uploadBytes,
-    getDownloadURL
+    getDownloadURL,
+    signOut
 };
