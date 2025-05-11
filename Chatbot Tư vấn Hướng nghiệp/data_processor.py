@@ -142,3 +142,36 @@ class DataProcessor:
             chunks.append(' '.join(current_chunk))
         
         return chunks
+    
+    def process_raw_folder(self, raw_folder='raw', output_folder='processed'):
+        """
+        Xử lý tất cả các file trong thư mục 'raw' và lưu kết quả dạng JSON vào thư mục 'processed'.
+
+        Args:
+            raw_folder (str): Đường dẫn thư mục chứa dữ liệu gốc.
+            output_folder (str): Đường dẫn thư mục lưu kết quả đã xử lý.
+        """
+        import json
+
+        os.makedirs(output_folder, exist_ok=True)
+
+        for filename in os.listdir(raw_folder):
+            file_path = os.path.join(raw_folder, filename)
+
+            # Bỏ qua nếu không phải file hoặc không hỗ trợ định dạng
+            if not os.path.isfile(file_path):
+                continue
+            if not filename.lower().endswith(('.pdf', '.txt', '.docx')):
+                continue
+
+            try:
+                print(f"Đang xử lý: {filename}")
+                chunks = self.process_file(file_path)
+                base_name = os.path.splitext(filename)[0]
+                output_path = os.path.join(output_folder, base_name + ".json")
+
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    json.dump(chunks, f, ensure_ascii=False, indent=2)
+                print(f"✔ Đã lưu: {output_path}")
+            except Exception as e:
+                print(f"❌ Lỗi khi xử lý {filename}: {e}")

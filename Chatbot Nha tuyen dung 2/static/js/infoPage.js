@@ -1,3 +1,5 @@
+let userInfo = {}; // Đặt ở đầu script
+
 // Load nghề từ file JSON (giả sử bạn đặt nó trong public/data)
 fetch('/data/processed/data.json')
   .then(response => response.json())
@@ -15,18 +17,6 @@ fetch('/data/processed/data.json')
   });
 
   console.log("infoPage.js đã được tải ✅");
-  
-
-// document.getElementById("infoForm").addEventListener("submit", function (e) {
-//   e.preventDefault();
-
-//   const name = document.getElementById("name").value;
-//   const age = document.getElementById("age").value;
-//   const career = document.getElementById("career").value;
-
-//   const params = new URLSearchParams({ name, age, career });
-//   window.location.href = `index.html?${params.toString()}`;
-// });
 
 //Switch screen
 function switchScreen(screenId) {
@@ -76,7 +66,6 @@ document.getElementById("infoForm").addEventListener("submit", function (e) {
   }
 
   // Nếu thông tin hợp lệ, lưu thông tin người dùng và chuyển màn hình
-  let userInfo = {}; // Đặt ở đầu script
 
   if (isValid) {
     userInfo = {
@@ -94,3 +83,43 @@ document.getElementById("infoForm").addEventListener("submit", function (e) {
     alert('Vui lòng điền đầy đủ thông tin trước khi tiếp tục');
   }
 });
+
+let selectedMode = null; // Biến lưu chế độ được chọn
+
+// Xử lý khi chọn 1 mode-card
+document.querySelectorAll('.mode-card:not(.disabled)').forEach(card => {
+  card.addEventListener('click', function () {
+    // Bỏ lớp selected khỏi tất cả các card
+    document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+
+    // Thêm lớp selected cho card được chọn
+    this.classList.add('selected');
+
+    // Lưu chế độ được chọn từ data-mode
+    selectedMode = this.getAttribute('data-mode');
+  });
+});
+
+// Xử lý khi nhấn nút Tiếp tục
+document.getElementById('continueButton').addEventListener('click', function () {
+  if (!selectedMode) {
+    alert("Vui lòng chọn chế độ phỏng vấn trước khi tiếp tục.");
+    return;
+  }
+
+  // Ví dụ: bạn có thể lưu selectedMode vào biến toàn cục hay localStorage nếu cần dùng tiếp
+  console.log("Chế độ đã chọn:", selectedMode);
+
+  // Chuyển đến màn hình interview (bạn phải có element với id='interview-screen')
+  switchScreen('interview-screen');
+
+  // Gán nội dung nghề nghiệp sau khi chuyển màn hình
+  document.getElementById('user-career-display').textContent = `Phỏng vấn bằng Chat: ${userInfo.career}`;
+  document.getElementById('user-name-display-interview').textContent = `Ứng viên: ${userInfo.name}`;
+  document.getElementById('user-age-display-interview').textContent = `Tuổi: ${userInfo.age}`;
+});
+
+//Chat container
+
+// Thêm phần tử <h2> vào trong chat-header
+chatHeader.appendChild(h2Element);

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+r<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -9,51 +9,24 @@
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
-            <div class="logo">
-                <i class="fas fa-robot"></i>
-                <h1>Recruiter AI</h1>
-            </div>
-            <div class="upload-container">
-                <h2>Tài liệu</h2>
-                <div class="upload-form">
-                    <label for="file-upload" class="upload-btn">
-                        <i class="fas fa-upload"></i> Tải tài liệu lên
-                    </label>
-                    <input type="file" id="file-upload" accept=".pdf,.txt" hidden>
-                    <p class="upload-info">Hỗ trợ: PDF, TXT</p>
-                </div>
-                <div class="upload-progress" id="upload-progress" hidden>
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-                    <p class="progress-text">Đang xử lý...</p>
-                </div>
-            </div>
-            <div class="documents-list">
-                <h3>Tài liệu đã tải lên</h3>
-                <ul id="careers"></ul>
-            </div>
-            <div class="sidebar-footer">
-                <p>© 2025 Recruiter AI Bot</p>
-            </div>
-        </div>
         <div class="main-content">
             <div class="chat-container">
                 <div class="chat-header">
-                    <h2>Trợ lý tuyển dụng AI</h2>
+                    <img src="./img/iconChatbot.png" class="iconLogo"></img>
+                    <h2>Phỏng vấn bằng Chat: </h2>
                 </div>
                 <div class="chat-messages" id="chat-messages">
                     <div class="message bot">
                         <div class="message-content">
-                            <p>Xin chào! Tôi là trợ lý tuyển dụng AI. Tôi có thể giúp bạn với các câu hỏi về tuyển dụng, đánh giá CV, quy trình phỏng vấn, và các vấn đề liên quan đến nhân sự dựa trên tài liệu của bạn.</p>
-                            <p>Hãy tải lên tài liệu của bạn trước khi bắt đầu đặt câu hỏi.</p>
+                            <p>"Chào bạn! Tôi là trợ lý tuyển dụng AI. Tôi sẽ giúp bạn chuẩn bị cho các cuộc phỏng vấn như một nhà tuyển dụng thực thụ. Tôi sẽ đưa ra các câu hỏi phỏng vấn thường gặp, giúp bạn luyện tập trả lời, và cung cấp phản hồi để bạn có thể cải thiện kỹ năng giao tiếp, thuyết phục và tạo ấn tượng mạnh mẽ với nhà tuyển dụng.</p>
+                            <p>Ngoài ra, tôi cũng có thể hỗ trợ bạn trong việc đánh giá CV, giải thích các bước trong quy trình tuyển dụng và cung cấp các mẹo để bạn tự tin hơn trong các cuộc phỏng vấn thực tế.</p>
+                            <p>Hãy chọn nghề nghiệp mà bạn muốn được phỏng vấn và tôi sẽ tùy chỉnh các câu hỏi để giúp bạn chuẩn bị một cách hiệu quả nhất. Cùng tôi luyện tập để nâng cao cơ hội thành công trong công việc và tạo dấu ấn mạnh mẽ trong mắt nhà tuyển dụng!"</p>
                         </div>
                     </div>
                 </div>
                 <div class="chat-input">
-                    <input type="text" id="user-input" placeholder="Nhập câu hỏi của bạn..." >
-                    <button id="send-btn" >
+                    <input type="text" id="user-input" placeholder="Nhập câu hỏi của bạn...">
+                    <button id="send-btn">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>

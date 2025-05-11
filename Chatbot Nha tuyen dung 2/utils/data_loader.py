@@ -3,17 +3,9 @@ import json
 from typing import List, Dict, Any
 
 def load_career_data(file_path: str) -> List[Dict[str, Any]]:
-    """
-    Load dữ liệu nghề nghiệp từ file JSON.
-
-    Args:
-        file_path: Đường dẫn tới file JSON.
-
-    Returns:
-        List các bản ghi dữ liệu nghề nghiệp.
-    """
+    """Load career data from a JSON file."""
     if not os.path.exists(file_path):
-        raise FileNotFoundError(f"Không tìm thấy file: {file_path}")
+        raise FileNotFoundError(f"File not found: {file_path}")
     
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -21,30 +13,28 @@ def load_career_data(file_path: str) -> List[Dict[str, Any]]:
     return data
 
 def list_all_careers(data: List[Dict[str, Any]]) -> List[str]:
-    """
-    Lấy danh sách tất cả các nghề nghiệp từ dữ liệu.
-
-    Args:
-        data: Dữ liệu nghề nghiệp.
-
-    Returns:
-        List tên nghề nghiệp.
-    """
+    """Get list of all careers from the data."""
     return [career['name'] for career in data if 'name' in career]
 
-
 def get_questions_by_career(data: List[Dict[str, Any]], career_name: str) -> List[str]:
-    """
-    Lấy danh sách câu hỏi theo tên nghề nghiệp.
-
-    Args:
-        data: Dữ liệu nghề nghiệp.
-        career_name: Tên nghề nghiệp cần lấy câu hỏi.
-
-    Returns:
-        List câu hỏi.
-    """
+    """Get list of questions based on career name."""
     for career in data:
-        if career.get('name', '').lower() == career_name.lower():  # Chỉnh lại 'career' thành 'name'
-            return career.get('criteria', [{}])[0].get('questions', [])  # Lấy câu hỏi từ tiêu chí đầu tiên
+        if career.get('name', '').lower() == career_name.lower():
+            return career.get('criteria', [{}])[0].get('questions', [])
     return []
+
+import os
+import json
+
+def load_data():
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))  # Trở về thư mục gốc project
+    data_file = os.path.join(base_dir, 'data', 'processed', 'data.json')
+
+    with open(data_file, 'r', encoding='utf-8') as f:
+        career_data = json.load(f)
+    
+    return career_data
+
+
+# Global data
+career_data = load_data()

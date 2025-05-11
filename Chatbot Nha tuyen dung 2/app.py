@@ -19,10 +19,19 @@ PROCESSED_DIR = os.path.join(DATA_DIR, 'processed')
 VECTOR_STORE_DIR = os.path.join(DATA_DIR, 'vector_store')
 processed_file = os.path.join(os.getcwd(), 'data', 'processed', 'data.json')
 
+def load_data():
+    processed_file_path = os.path.join(PROCESSED_DIR, 'data.json')
+    if os.path.exists(processed_file_path):
+        with open(processed_file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
+
 # Tạo thư mục nếu chưa tồn tại
 for dir_path in [DATA_DIR, RAW_DIR, PROCESSED_DIR, VECTOR_STORE_DIR]:
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
+        
 
 @app.route('/')
 def index():
@@ -130,6 +139,8 @@ def get_processed_documents():
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+
 
 
 if __name__ == '__main__':

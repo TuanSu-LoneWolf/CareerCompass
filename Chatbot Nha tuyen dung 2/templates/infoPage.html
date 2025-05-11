@@ -66,7 +66,51 @@
       <button id="continueButton">Tiếp tục</button>
     </div>
   </div>
-
+  
+  <!-- Phần phỏng vấn -->
+   <div class="interview-container" id="interview-screen" style="display: none;">
+        <div class="main-content">
+            <div class="chat-container">
+                <div class="chat-header">
+                  <div class="left-chat-header">
+                    <img src="{{ url_for('static', filename='images/iconChatbot.png') }}" class="iconLogo"></img>
+                    <h2 id="user-career-display"></h2>
+                  </div>
+                  <div class="rigth-chat-header">
+                    <p class="" id="user-name-display-interview"></p>
+                    <p class="" id="user-age-display-interview"></p>
+                  </div>
+                </div>
+                <div class="chat-progress">
+                  <div class="title-progress">
+                    <img src="">
+                    <h3>Tiến độ phỏng vấn:</h3>
+                  </div>
+                  <div class="progress-bar" id="progress-bar">
+                    <div class="progress-bar-fill" style="width: 30%;"></div>
+                  </div>
+                  <div class="progress-text" id="progress-text">
+                    <div class="left-progress-text">
+                      <img src="../static/images/clock.png">
+                      <p class="progress-time" id="progress-time">Thời gian</p>
+                    </div>
+                    <div class="right-progress-text">
+                      <p class="progress-textprog" id="progress-textprog"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                  <!-- Messages will be added dynamically -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Nhập câu trả lời của bạn...">
+                    <button id="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
   <script src="/static/js/infoPage.js"></script>
 </body>
 </html>
