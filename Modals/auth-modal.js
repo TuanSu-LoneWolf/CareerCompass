@@ -10,7 +10,7 @@ import {
     update,
     onAuthStateChanged,
     signOut
-} from './auth.js';
+} from '../auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements

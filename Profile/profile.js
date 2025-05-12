@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadUserProfile(currentUserId);
         } else {
             console.log("User not logged in. Redirecting...");
-            window.location.href = '../su&si/si.html';
+            window.location.href = '../index.html';
         }
     });
 
