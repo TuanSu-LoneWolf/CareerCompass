@@ -887,6 +887,332 @@
             ]
           }
         ]
+      },
+      {
+        "id": "career_04",
+        "name": "Bác sĩ da liễu",
+        "criteria": [
+          {
+            "id": "criteria_01",
+            "name": "Kiến thức chuyên môn",
+            "levels": [
+              {
+                "score": 1,
+                "description": "Thiếu kiến thức nền tảng, nhầm lẫn nhiều."
+              },
+              {
+                "score": 2,
+                "description": "Kiến thức cơ bản nhưng chưa đủ sâu."
+              },
+              {
+                "score": 3,
+                "description": "Nắm vững chuyên môn, có khả năng phân tích tốt ."
+              },
+              {
+                "score": 4,
+                "description": "Kiến thức xuất sắc, hiểu biết rộng và có tư duy logic."
+              }
+            ],
+            "questions": [
+              "Bạn đánh giá thế nào về nguyên nhân gây bệnh trứng cá?",
+              "Phân biệt vảy nến và viêm da cơ địa  ?",
+              "Bạn sẽ chuẩn đoán và điều trị bệnh da dầu như thế nào ?",
+              "Điều trị nám da có những phương pháp nào phổ biến ?",
+              "Nguyên nhân và cách điều trị bệnh zona thần kinh ?"
+            ]
+          },
+          {
+            "id": "criteria_02",
+            "name": "Kinh nghiệm lâm sàng.",
+            "levels": [
+              {
+                "score": 1,
+                "description": "Thiếu kinh nghiệm, lúng túng khi chẩn đoán."
+              },
+              {
+                "score": 2,
+                "description": "Có kinh nghiệm nhưng chưa xử lý đa dạng ca bệnh."
+              },
+              {
+                "score": 3,
+                "description": "Xử lý tốt các ca bệnh phổ biến, ít sai sót."
+              },
+              {
+                "score": 4,
+                "description": "Giàu kinh nghiệm, xử lý linh hoạt các tình huống phức tạp."
+              }
+            ],
+            "questions": [
+              "Bạn đã từng điều trị ca bệnh da liễu phức tạp nào chưa? Hãy mô tả?",
+              "Khi gặp bệnh nhân bị dị ứng thuốc bôi da, bạn sẽ xử lý như thế nào?",
+              "Bạn có kinh nghiệm trong điều trị sẹo rỗ không? Hãy mô tả phương pháp.",
+              "Bạn đã từng thực hiện tiểu phẫu trong da liễu chưa? Nếu có, hãy kể một ca điển hình.",
+              "Bạn có kinh nghiệm xử lý biến chứng sau điều trị laser không?"
+            ]
+          },
+          {
+            "id": "criteria_03",
+            "name": "Kỹ năng giao tiếp & tư vấn.",
+            "levels": [
+              {
+                "score": 1,
+                "description": "Giao tiếp khó hiểu, không tạo được sự tin tưởng."
+              },
+              {
+                "score": 2,
+                "description": "Truyền đạt được nhưng chưa thuyết phục."
+              },
+              {
+                "score": 3,
+                "description": "Giao tiếp rõ ràng, thuyết phục bệnh nhân."
+              },
+              {
+                "score": 4,
+                "description": "Khả năng tư vấn xuất sắc, giúp bệnh nhân an tâm."
+              }
+            ],
+            "questions": [
+              "Làm thế nào để bạn giải thích bệnh lý da liễu phức tạp cho bệnh nhân dễ hiểu?",
+              "Nếu bệnh nhân lo lắng về tác dụng phụ của thuốc, bạn sẽ trấn an thế nào?",
+              "Bạn sẽ tư vấn chế độ ăn uống cho bệnh nhân bị viêm da cơ địa như thế nào?",
+              "Khi một bệnh nhân đòi hỏi phương pháp điều trị không phù hợp, bạn sẽ xử lý ra sao?",
+              " Làm sao để bạn tạo niềm tin cho bệnh nhân ngay lần khám đầu tiên?"
+            ]
+          },
+          {
+            "id": "criteria_04",
+            "name": "Thái độ & đạo đức nghề nghiệp.",
+            "levels": [
+                {
+                "score": 1,
+                "description": "Thiếu trách nhiệm, không quan tâm đến bệnh nhân."
+              },
+              {
+                "score": 2,
+                "description": "Thái độ đúng mực nhưng chưa thực sự tận tâm."
+              },
+              {
+                "score": 3,
+                "description": "Tận tình, có tinh thần trách nhiệm cao."
+              },
+              {
+                "score": 4,
+                "description": "Yêu nghề, tận tâm, đặt bệnh nhân lên hàng đầu."
+              }
+            ],
+            "questions": [
+  "Bạn nghĩ gì về vai trò của đạo đức trong ngành y?",
+  "Nếu bệnh nhân không đủ tài chính để điều trị, bạn sẽ làm gì?",
+  "Bạn có từng từ chối điều trị một bệnh nhân chưa? Lý do là gì?",
+  "Nếu đồng nghiệp của bạn mắc sai lầm y khoa, bạn sẽ xử lý như thế nào?",
+  "Điều gì tạo nên một bác sĩ da liễu giỏi ngoài kiến thức chuyên môn?"
+]
+          },
+          {
+            "id": "criteria_05",
+            "name": " Xử lý tình huống.",
+            "levels": [
+              {
+                "score": 1,
+                "description": "Hoang mang khi gặp tình huống khó."
+              },
+              {
+                "score": 2,
+                "description": "Có thể xử lý nhưng chưa nhạy bén."
+              },
+              {
+                "score": 3,
+                "description": "Xử lý tốt, hợp lý, đảm bảo an toàn."
+              },
+              {
+                "score": 4,
+                "description": "Nhạy bén, xử lý linh hoạt, hạn chế tối đa rủi ro."
+              }
+              
+            ],
+            "questions": [
+  "Nếu bệnh nhân phản ứng dị ứng ngay trong phòng khám, bạn sẽ làm gì?",
+  "Nếu gặp bệnh nhân không tuân thủ liệu trình điều trị, bạn sẽ xử lý thế nào?",
+  "Một bệnh nhân bị sẹo do điều trị laser sai cách từ nơi khác, bạn sẽ xử lý thế nào?",
+  "Nếu bệnh nhân không hài lòng với kết quả điều trị, bạn sẽ làm gì?",
+  "Khi phòng khám đông bệnh nhân nhưng thời gian có hạn, bạn sẽ ưu tiên điều gì?"
+]
+          },
+          {
+            "id": "criteria_06",
+            "name": "Kỹ năng đánh giá & kiểm tra năng lực học sinh",
+            "levels": [
+              {
+                "score": 1,
+                "description": "Không có tiêu chí đánh giá rõ ràng, không thể nhận biết học sinh hiểu bài hay không."
+              },
+              {
+                "score": 2,
+                "description": "Đưa ra bài kiểm tra cơ bản nhưng chưa đa dạng, chủ yếu kiểm tra lý thuyết."
+              },
+              {
+                "score": 3,
+                "description": "Xây dựng bài kiểm tra cân bằng giữa lý thuyết và thực hành, đánh giá khách quan."
+              },
+              {
+                "score": 4,
+                "description": "Thiết kế hệ thống đánh giá toàn diện (trắc nghiệm, tự luận, dự án, bài tập tình huống)."
+              }
+            ],
+            "questions": [
+              "Khi hướng dẫn học sinh làm thí nghiệm, bạn sẽ làm gì để đảm bảo an toàn?",
+              "Hãy mô tả một thí nghiệm Hóa học thú vị mà bạn từng tổ chức cho học sinh.",
+              "Nếu học sinh làm đổ hóa chất trong phòng thí nghiệm, bạn sẽ xử lý như thế nào?",
+              "Làm thế nào để giúp học sinh hiểu được tầm quan trọng của quy tắc an toàn trong phòng thí nghiệm?",
+              "Theo bạn, có những biện pháp nào giúp tối ưu hóa việc tổ chức thực hành hóa học trong điều kiện thiếu trang thiết bị?"
+            ]
+          },
+          {
+            "id": "criteria_06",
+            "name": "Ứng dụng công nghê & thẩm mỹ.",
+            "levels": [
+{
+                "score": 1,
+                "description": "Không cập nhật công nghệ mới, hạn chế kỹ năng sử dụng máy móc."
+              },
+              {
+                "score": 2,
+                "description": "Biết sử dụng nhưng chưa thành thạo."
+              },
+              {
+                "score": 3,
+                "description": "Ứng dụng tốt công nghệ vào điều trị."
+              },
+              {
+                "score": 4,
+                "description": "Thành thạo, sáng tạo trong ứng dụng công nghệ."
+              }
+            ],
+            "questions": [
+  "Bạn có kinh nghiệm sử dụng công nghệ laser trong điều trị da không? Nếu có, hãy chia sẻ.",
+  "Bạn đánh giá thế nào về hiệu quả của lăn kim và PRP trong tái tạo da?",
+  "Khi nào bạn khuyên bệnh nhân sử dụng công nghệ RF (Radio Frequency) thay vì laser?",
+  "Bạn có kinh nghiệm sử dụng công nghệ HIFU hoặc Ultherapy trong trẻ hóa da không?",
+  "Bạn nghĩ công nghệ nào sẽ là xu hướng trong điều trị da liễu trong 5 năm tới?"
+]
+          },
+          {
+            "id": "criteria_07",
+            "name": "Nghiên cứu & cập nhật kiến thức.",
+            "levels": [
+              {
+                "score": 1,
+                "description": "Không quan tâm đến nghiên cứu, ít cập nhật xu hướng mới."
+              },
+              {
+                "score": 2,
+                "description": "Theo dõi nhưng chưa có khả năng ứng dụng."
+              },
+              {
+                "score": 3,
+                "description": "Thường xuyên cập nhật, biết cách áp dụng thực tiễn."
+              },
+              {
+                "score": 4,
+                "description": "Chủ động nghiên cứu, có đóng góp mới cho chuyên ngành."
+              }       
+            ],
+            "questions": [
+  "Gần đây bạn có đọc nghiên cứu nào về da liễu mà bạn thấy thú vị không? Hãy chia sẻ.",
+  "Bạn thường cập nhật kiến thức chuyên ngành qua những nguồn nào?",
+  "Theo bạn, vi khuẩn Cutibacterium acnes (trước đây là Propionibacterium acnes) có vai trò gì trong bệnh lý da?",
+  "Bạn có từng tham gia hội nghị hoặc khóa đào tạo về da liễu không? Nếu có, hãy kể về một sự kiện bạn thấy ấn tượng nhất.",
+  "Theo bạn, vai trò của AI trong chẩn đoán bệnh da liễu sẽ phát triển thế nào?"
+]
+          },
+          {
+            "id": "criteria_08",
+            "name": "Làm việc nhóm.",
+            "levels": [
+              {
+                "score": 1,
+                "description": "Khó hợp tác, làm việc cá nhân."
+              },
+              {
+                "score": 2,
+                "description": "Hợp tác được nhưng chưa chủ động."
+              },
+              {
+                "score": 3,
+                "description": "Làm việc nhóm tốt, hỗ trợ đồng nghiệp."
+              },
+              {
+                "score": 4,
+                "description": "Chủ động, tạo ảnh hưởng tích cực trong nhóm."
+              }
+            ],
+            "questions": [
+  "Bạn đã từng làm việc trong môi trường phòng khám hoặc bệnh viện chưa? Kinh nghiệm của bạn thế nào?",
+  "Nếu có mâu thuẫn giữa bạn và đồng nghiệp trong việc chẩn đoán bệnh, bạn sẽ làm gì?",
+  "Làm thế nào để bạn phối hợp tốt với y tá và kỹ thuật viên trong phòng khám?",
+  "Nếu một bệnh nhân yêu cầu gặp bác sĩ khác vì không hài lòng với bạn, bạn sẽ xử lý ra sao?",
+  "Bạn có từng đào tạo hoặc hướng dẫn nhân viên y tế trẻ tuổi hơn chưa?"
+]
+          },
+          {
+            "id": "criteria_09",
+            "name": "Khả năng quản lý và sắp xếp công việc.",
+            "levels": [
+              {
+                "score": 1,
+                "description": "Không sắp xếp được lịch làm việc, gây chậm trễ."
+              },
+              {
+                "score": 2,
+                "description": "Quản lý được nhưng chưa hiệu quả."
+              },
+              {
+                "score": 3,
+                "description": "Sắp xếp tốt, xử lý công việc trơn tru."
+              },
+              {
+                "score": 4,
+                "description": "Quản lý xuất sắc, tối ưu thời gian và hiệu suất."
+              }
+            ],
+            "questions": [
+  "Khi phòng khám có quá nhiều bệnh nhân, bạn sẽ làm gì để tối ưu thời gian khám?",
+  "Bạn có kinh nghiệm quản lý hồ sơ bệnh án và lịch hẹn bệnh nhân không?",
+  "Nếu bệnh nhân đến muộn hoặc không đến khám mà không báo trước, bạn sẽ giải quyết thế nào?",
+  "Làm thế nào để bạn cân bằng giữa số lượng bệnh nhân cần khám và chất lượng điều trị?",
+  "Bạn có từng tham gia vào việc xây dựng quy trình hoạt động cho phòng khám hoặc bệnh viện chưa?"
+]
+          },
+          {
+            "id": "criteria_10",
+            "name": "Hiểu biết pháp lý và quy định y tế.",
+            "levels": [
+              {
+                "score": 1,
+                "description": "Không nắm rõ quy định y tế."
+              },
+              {
+                "score": 2,
+                "description": "Biết cơ bản nhưng chưa chắc chắn."
+              },
+              {
+                "score": 3,
+                "description": "Hiểu rõ quy định và tuân thủ tốt."
+              },
+              {
+                "score": 4,
+                "description": "Am hiểu sâu sắc, có khả năng tư vấn pháp lý."
+              }
+            ],
+            "questions": [
+  "Bạn có nắm rõ các quy định về kê đơn thuốc và quản lý thuốc kê đơn trong da liễu không?",
+  "Nếu bệnh nhân yêu cầu làm thủ thuật thẩm mỹ nhưng không đủ điều kiện sức khỏe, bạn sẽ xử lý thế nào?",
+  "Bạn hiểu như thế nào về trách nhiệm pháp lý của bác sĩ khi xảy ra biến chứng trong điều trị da liễu?",
+  "Bạn có kinh nghiệm làm hồ sơ bảo hiểm y tế hoặc tư vấn bảo hiểm cho bệnh nhân không?",
+  "Theo bạn, bác sĩ da liễu cần chú ý điều gì để tránh vi phạm đạo đức và pháp luật trong hành nghề?"
+]
+          }
+        ]
       }
     ]
   }
