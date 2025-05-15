@@ -200,8 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .catch((error) => {
                     const errorCode = error.code;
-                    if (errorCode === 'auth/popup-closed-by-user') {
-                        loginError.textContent = 'Cửa sổ đăng nhập Google đã bị đóng.';
+                    if (errorCode === 'auth/popup-closed-by-user' || errorCode === 'auth/cancelled-popup-request') {
+                        loginError.textContent = 'Đăng nhập với Google bị hủy. Vui lòng cho phép popup hoặc thử lại.';
                     } else if (errorCode === 'auth/account-exists-with-different-credential') {
                         loginError.textContent = 'Tài khoản đã tồn tại với phương thức đăng nhập khác.';
                     } else {
@@ -312,8 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .catch((error) => {
                     const errorCode = error.code;
-                    if (errorCode === 'auth/popup-closed-by-user') {
-                        signupError.textContent = 'Cửa sổ đăng nhập Google đã bị đóng.';
+                    if (errorCode === 'auth/popup-closed-by-user' || errorCode === 'auth/cancelled-popup-request') {
+                        signupError.textContent = 'Đăng nhập với Google bị hủy. Vui lòng cho phép popup hoặc thử lại.';
                     } else if (errorCode === 'auth/account-exists-with-different-credential') {
                         signupError.textContent = 'Tài khoản đã tồn tại với phương thức đăng nhập khác.';
                     } else {
@@ -328,6 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutBtn.addEventListener('click', () => {
             signOut(auth).then(() => {
                 console.log('Đăng xuất thành công.');
+                localStorage.removeItem('loggedInUserId'); // Xóa UID khỏi localStorage
                 if (signupLink && loginLink && userLogoContainer) {
                     signupLink.style.display = 'block';
                     loginLink.style.display = 'block';

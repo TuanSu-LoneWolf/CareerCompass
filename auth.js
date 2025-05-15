@@ -14,13 +14,13 @@ import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "http
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBrMIQRcwplYg8GFPB7pqpgT1gHbaDbxQw",
-    authDomain: "career-compass-8987a.firebaseapp.com",
-    projectId: "career-compass-8987a",
-    databaseURL: "https://career-compass-8987a-default-rtdb.firebaseio.com",
-    storageBucket: "career-compass-8987a.firebasestorage.app",
-    messagingSenderId: "751217295596",
-    appId: "1:751217295596:web:75bc3abd7579885fe225c9"
+    apiKey: "AIzaSyD8L_WuO4BeE2_MzsMgIV3ooWKmCaqOyE0",
+    authDomain: "career-compass-318e7.firebaseapp.com",
+    projectId: "career-compass-318e7",
+    storageBucket: "career-compass-318e7.firebasestorage.app",
+    messagingSenderId: "745724931177",
+    appId: "1:745724931177:web:6a85fc478c7c2989ac46f8",
+    measurementId: "G-5PW2LJZ4BW"
 };
 
 // Initialize Firebase
