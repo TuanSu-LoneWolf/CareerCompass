@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,30 +7,30 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
 import {
   getFirestore,
   doc,
   setDoc,
   getDoc,
   updateDoc
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
 import {
   getStorage,
   ref as storageRef,
   uploadBytes,
   getDownloadURL
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-storage.js";
+} from "https://www.gstatic.com/firebasejs/11.7.3/firebase-storage.js";
 
 // Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyD8L_WuO4BeE2_MzsMgIV3ooWKmCaqOyE0",
-  authDomain: "career-compass-318e7.firebaseapp.com",
-  projectId: "career-compass-318e7",
-  storageBucket: "career-compass-318e7.appspot.com",
-  messagingSenderId: "745724931177",
-  appId: "1:745724931177:web:6a85fc478c7c2989ac46f8",
-  measurementId: "G-5PW2LJZ4BW"
+  apiKey: "AIzaSyAhWFSE7eXgpoyT1nf0zCE8epn8bNebATM",
+  authDomain: "career-compass-3472c.firebaseapp.com",
+  projectId: "career-compass-3472c",
+  storageBucket: "career-compass-3472c.firebasestorage.app",
+  messagingSenderId: "630173821220",
+  appId: "1:630173821220:web:5ce4bdde12b49015e7ebb1",
+  measurementId: "G-VV5QKRNN13"
 };
 
 // Init Firebase
