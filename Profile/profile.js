@@ -1,4 +1,3 @@
-// profile.js
 import {
   auth,
   db,
@@ -10,9 +9,11 @@ import {
   storage,
   storageRef,
   uploadBytes,
-  getDownloadURL
+  getDownloadURL,
+  collection,
+  getDocs
 } from '../auth.js';
-import { updateProfile } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { updateProfile } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js"; // Cập nhật phiên bản Firebase
 
 document.addEventListener('DOMContentLoaded', () => {
   const displayName = document.getElementById('display-name');
@@ -28,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeButton = document.querySelector('.modal .close-button');
   const profileForm = document.getElementById('profile-form');
   const changeAvatarLink = document.getElementById('change-avatar-link');
+  const testHistoryLink = document.getElementById('test-history-link');
+  const testHistoryModal = document.getElementById('test-history-modal');
+  const testHistoryCloseButton = testHistoryModal?.querySelector('.close-button');
+  const testHistoryContent = document.getElementById('test-history-content');
 
   let currentUserId = null;
   let currentUserProfileData = {};
@@ -144,5 +149,69 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       input.click();
     });
+  }
+
+  if (testHistoryLink) {
+    testHistoryLink.addEventListener('click', async () => {
+      testHistoryModal.style.display = 'block';
+      await loadTestHistory(currentUserId);
+    });
+  }
+
+  if (testHistoryCloseButton) {
+    testHistoryCloseButton.addEventListener('click', () => {
+      testHistoryModal.style.display = 'none';
+    });
+  }
+
+  window.addEventListener('click', (e) => {
+    if (e.target === testHistoryModal) {
+      testHistoryModal.style.display = 'none';
+    }
+  });
+
+  async function loadTestHistory(userId) {
+    if (!userId) {
+      testHistoryContent.innerHTML = '<p>Không tìm thấy người dùng.</p>';
+      return;
+    }
+
+    try {
+      const testResultsRef = collection(db, 'testResults', userId, 'results');
+      const querySnapshot = await getDocs(testResultsRef);
+
+      if (querySnapshot.empty) {
+        testHistoryContent.innerHTML = '<p>Chưa có bài kiểm tra nào.</p>';
+        return;
+      }
+
+      let historyHTML = '<ul style="list-style: none; padding: 0;">';
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const testType = data.testType;
+        const timestamp = new Date(data.timestamp).toLocaleString('vi-VN');
+        const result = data.result;
+
+        let resultSummary = '';
+        if (testType === 'MBTI') {
+          resultSummary = `Kết quả: ${result.type} (E: ${result.e}%, I: ${result.i}%, S: ${result.s}%, N: ${result.n}%, T: ${result.t}%, F: ${result.f}%, J: ${result.j}%, P: ${result.p}%)`;
+        } else {
+          resultSummary = JSON.stringify(result);
+        }
+
+        historyHTML += `
+          <li style="margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #e0e4e8;">
+            <strong>${testType}</strong><br>
+            <span>Thời gian: ${timestamp}</span><br>
+            <span>${resultSummary}</span>
+          </li>
+        `;
+      });
+      historyHTML += '</ul>';
+      testHistoryContent.innerHTML = historyHTML;
+    } catch (err) {
+      console.error('Lỗi khi tải lịch sử kiểm tra:', err);
+      testHistoryContent.innerHTML = '<p>Lỗi khi tải lịch sử kiểm tra: ' + err.message + '</p>';
+    }
   }
 });

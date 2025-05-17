@@ -26,7 +26,7 @@ body {
 
 .profile-card h1 {
   text-align: center;
-  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  font-family: "Inter", sans-serif; /* Thay bằng font không có chân */
   font-size: 2.5em;
   font-weight: 700;
   color: #0056b3;
@@ -64,7 +64,7 @@ body {
   margin-bottom: 12px;
   color: #007bff;
   text-decoration: none;
-  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  font-family: "Inter", sans-serif; /* Thay bằng font không có chân */
   font-size: 1em;
   font-weight: 600;
   cursor: pointer;
@@ -94,7 +94,7 @@ body {
   margin-bottom: 20px;
   line-height: 1.6;
   font-size: 1.05em;
-  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  font-family: "Inter", sans-serif; /* Thay bằng font không có chân */
   display: contents;
   flex-wrap: wrap;
   align-items: baseline;
@@ -111,7 +111,7 @@ body {
   min-width: 180px;
   display: inline-block;
   margin-right: 15px;
-  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  font-family: "Inter", sans-serif; /* Thay bằng font không có chân */
   flex-shrink: 0;
 }
 
@@ -174,7 +174,7 @@ body {
   margin-top: 0;
   margin-bottom: 25px;
   color: #007bff;
-  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  font-family: "Inter", sans-serif; /* Thay bằng font không có chân */
   font-size: 1.8em;
   font-weight: 600;
 }
@@ -189,7 +189,7 @@ body {
   font-weight: 600;
   color: #ff7504;
   font-size: 0.95em;
-  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  font-family: "Inter", sans-serif; /* Thay bằng font không có chân */
 }
 
 .modal-content input[type="text"],
@@ -202,7 +202,7 @@ body {
   border-radius: 6px;
   box-sizing: border-box;
   font-size: 1em;
-  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  font-family: "Inter", sans-serif; /* Thay bằng font không có chân */
   color: #34495e;
   background-color: #ffffff;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -240,7 +240,7 @@ body {
   display: block;
   width: 100%;
   margin-top: 25px;
-  font-family: "Times New Roman", Times, serif; /* Changed to Times New Roman */
+  font-family: "Inter", sans-serif; /* Thay bằng font không có chân */
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -248,6 +248,37 @@ body {
 .modal-content button[type="submit"]:hover {
   background-color: #0056b3;
   box-shadow: 0 4px 10px rgba(0, 86, 179, 0.2);
+}
+
+/* --- Test History Modal Styles --- */
+#test-history-modal .modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#test-history-content {
+  font-family: "Inter", sans-serif; /* Thay bằng font không có chân */
+  font-size: 1em;
+  color: #34495e;
+  line-height: 1.6;
+}
+
+#test-history-content ul li {
+  padding: 10px;
+  border-bottom: 1px solid #e0e4e8;
+}
+
+#test-history-content ul li:last-child {
+  border-bottom: none;
+}
+
+#test-history-content strong {
+  color: #ff7504;
+  font-weight: 700;
+}
+
+#test-history-content span {
+  color: #34495e;
 }
 
 /* --- Responsive Adjustments --- */

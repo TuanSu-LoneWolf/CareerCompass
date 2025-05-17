@@ -13,7 +13,9 @@ import {
   doc,
   setDoc,
   getDoc,
-  updateDoc
+  updateDoc,
+  collection,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
 import {
   getStorage,
@@ -55,5 +57,7 @@ export {
   storageRef,
   uploadBytes,
   getDownloadURL,
-  signOut
+  signOut,
+  collection,
+  getDocs
 };
