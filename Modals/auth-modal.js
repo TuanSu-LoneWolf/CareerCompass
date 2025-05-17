@@ -1,19 +1,19 @@
-import { 
-    auth, 
-    database, 
-    signInWithEmailAndPassword, 
-    GoogleAuthProvider, 
-    signInWithPopup, 
+import {
+    auth,
+    db,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
     createUserWithEmailAndPassword,
-    ref, 
-    set, 
-    update,
+    doc,
+    setDoc,
+    updateDoc,
     onAuthStateChanged,
     signOut
 } from '../auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
+    // DOM Elements...
     const loginModal = document.getElementById('loginModal');
     const signupModal = document.getElementById('signupModal');
     const showLoginModal = document.getElementById('showLoginModal');
@@ -21,23 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const switchToLogin = document.getElementById('switchToLogin');
     const switchToSignup = document.getElementById('switchToSignup');
     const closeButtons = document.querySelectorAll('.close-modal');
-    
-    // Login form elements
+
     const loginForm = document.getElementById('login-form');
     const loginEmail = document.getElementById('login-email');
     const loginPassword = document.getElementById('login-password');
     const loginError = document.getElementById('login-error-message');
     const googleLoginBtn = document.getElementById('google-login-btn');
-    
-    // Signup form elements
+
     const signupForm = document.getElementById('signup-form');
     const signupEmail = document.getElementById('signup-email');
     const signupPassword = document.getElementById('signup-password');
     const confirmPassword = document.getElementById('confirm-password');
     const signupError = document.getElementById('signup-error-message');
     const googleSignupBtn = document.getElementById('google-signup-btn');
-    
-    // Navigation elements
+
     const signupLink = document.getElementById('signupLink');
     const loginLink = document.getElementById('loginLink');
     const userLogoContainer = document.getElementById('userLogoContainer');
@@ -45,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const userMenu = document.getElementById('userMenu');
     const logoutBtn = document.getElementById('logoutBtn');
 
-    // Modal functions
     function openModal(modal) {
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
@@ -61,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (errorElement) errorElement.textContent = '';
     }
 
-    // Event listeners for modal controls
+    // Modal UI Events
     showLoginModal?.addEventListener('click', (e) => {
         e.preventDefault();
         openModal(loginModal);
@@ -85,19 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     closeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const modal = this.closest('.auth-modal');
+        button.addEventListener('click', () => {
+            const modal = button.closest('.auth-modal');
             closeModal(modal);
         });
     });
 
-    // Close modal when clicking outside
     window.addEventListener('click', (e) => {
         if (e.target === loginModal) closeModal(loginModal);
         if (e.target === signupModal) closeModal(signupModal);
     });
 
-    // User menu toggle
     if (userLogo && userMenu) {
         userLogo.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -113,27 +107,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle login success
-    function handleLoginSuccess(user) {
+    async function handleLoginSuccess(user) {
         console.log('Đăng nhập thành công:', user.uid);
-        
-        // Lưu UID vào localStorage
         localStorage.setItem('loggedInUserId', user.uid);
 
-        // Cập nhật thông tin người dùng trong database
-        const userRef = ref(database, 'users/' + user.uid);
-        const dt = new Date().toISOString();
-        
-        update(userRef, {
-            last_login: dt,
-            email: user.email,
-            displayName: user.displayName || 'Người dùng',
-            photoURL: user.photoURL || ''
-        }).catch(dbError => {
-            console.warn("Không thể cập nhật last_login:", dbError);
-        });
+        const userDoc = doc(db, 'users', user.uid);
+        try {
+            await updateDoc(userDoc, {
+                last_login: new Date().toISOString(),
+                email: user.email,
+                displayName: user.displayName || 'Người dùng',
+                photoURL: user.photoURL || ''
+            });
+        } catch (err) {
+            console.warn("Không thể cập nhật last_login:", err);
+        }
 
-        // Cập nhật giao diện
         if (signupLink && loginLink && userLogoContainer && userLogo) {
             signupLink.style.display = 'none';
             loginLink.style.display = 'none';
@@ -141,12 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
             userLogoContainer.style.display = 'block';
         }
 
-        // Đóng modal
         closeModal(loginModal);
         closeModal(signupModal);
     }
 
-    // 1. Xử lý đăng nhập bằng Email/Password
+    // Đăng nhập bằng email
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -165,55 +153,50 @@ document.addEventListener('DOMContentLoaded', () => {
                     handleLoginSuccess(userCredential.user);
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
-                    if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password' || errorCode === 'auth/invalid-credential') {
-                        loginError.textContent = 'Email hoặc mật khẩu không chính xác.';
-                    } else if (errorCode === 'auth/invalid-email') {
-                        loginError.textContent = 'Địa chỉ email không hợp lệ.';
-                    } else {
-                        loginError.textContent = `Lỗi đăng nhập: ${error.message}`;
-                    }
+                    loginError.textContent = 'Lỗi đăng nhập: ' + error.message;
                 });
         });
     }
 
-    // 2. Xử lý đăng nhập bằng Google
+    // Đăng nhập Google
     if (googleLoginBtn) {
-        googleLoginBtn.addEventListener('click', () => {
+        googleLoginBtn.addEventListener('click', async () => {
             clearError(loginError);
             const provider = new GoogleAuthProvider();
 
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    const user = result.user;
-                    const userRef = ref(database, 'users/' + user.uid);
-                    
-                    update(userRef, {
-                        email: user.email,
-                        displayName: user.displayName || 'Người dùng Google',
-                        photoURL: user.photoURL || '',
-                        provider: 'google.com',
-                        lastLogin: new Date().toISOString()
-                    }).finally(() => {
-                        handleLoginSuccess(user);
-                    });
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    if (errorCode === 'auth/popup-closed-by-user') {
-                        loginError.textContent = 'Cửa sổ đăng nhập Google đã bị đóng.';
-                    } else if (errorCode === 'auth/account-exists-with-different-credential') {
-                        loginError.textContent = 'Tài khoản đã tồn tại với phương thức đăng nhập khác.';
-                    } else {
-                        loginError.textContent = `Lỗi đăng nhập Google: ${error.message}`;
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                const userDoc = doc(db, 'users', user.uid);
+
+                await setDoc(userDoc, {
+                    email: user.email,
+                    displayName: user.displayName || 'Người dùng Google',
+                    photoURL: user.photoURL || '',
+                    provider: 'google.com',
+                    lastLogin: new Date().toISOString(),
+                    profile: {
+                        name: '',
+                        dob: '',
+                        gender: '',
+                        fav_career: '',
+                        career_orientation: '',
+                        strengths: '',
+                        weaknesses: '',
+                        mbti: ''
                     }
-                });
+                }, { merge: true });
+
+                handleLoginSuccess(user);
+            } catch (error) {
+                loginError.textContent = 'Lỗi Google: ' + error.message;
+            }
         });
     }
 
-    // 3. Xử lý đăng ký bằng Email/Password
+    // Đăng ký email/password
     if (signupForm) {
-        signupForm.addEventListener('submit', (e) => {
+        signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             clearError(signupError);
 
@@ -221,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = signupPassword.value;
             const confirmPass = confirmPassword.value;
 
-            // Validate
             if (!email || !password || !confirmPass) {
                 signupError.textContent = 'Vui lòng điền đầy đủ thông tin.';
                 return;
@@ -231,129 +213,96 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             if (password !== confirmPass) {
-                signupError.textContent = 'Mật khẩu và xác nhận mật khẩu không khớp.';
+                signupError.textContent = 'Mật khẩu và xác nhận không khớp.';
                 return;
             }
 
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    const userRef = ref(database, 'users/' + user.uid);
-                    
-                    set(userRef, {
-                        email: user.email,
-                        provider: 'email/password',
-                        createdAt: new Date().toISOString(),
-                        profile: {
-                            name: '',
-                            dob: '',
-                            gender: '',
-                            fav_career: '',
-                            career_orientation: '',
-                            strengths: '',
-                            weaknesses: '',
-                            mbti: ''
-                        }
-                    }).then(() => {
-                        handleLoginSuccess(user);
-                    }).catch(dbError => {
-                        console.error("Lỗi khi tạo người dùng:", dbError);
-                        signupError.textContent = 'Đăng ký thành công nhưng có lỗi khi lưu thông tin.';
-                    });
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    if (errorCode === 'auth/email-already-in-use') {
-                        signupError.textContent = 'Địa chỉ email này đã được sử dụng.';
-                    } else if (errorCode === 'auth/weak-password') {
-                        signupError.textContent = 'Mật khẩu quá yếu. Vui lòng sử dụng ít nhất 6 ký tự.';
-                    } else if (errorCode === 'auth/invalid-email') {
-                        signupError.textContent = 'Địa chỉ email không hợp lệ.';
-                    } else {
-                        signupError.textContent = `Đã xảy ra lỗi: ${error.message}`;
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                const userDoc = doc(db, 'users', user.uid);
+
+                await setDoc(userDoc, {
+                    email,
+                    provider: 'email/password',
+                    createdAt: new Date().toISOString(),
+                    profile: {
+                        name: '',
+                        dob: '',
+                        gender: '',
+                        fav_career: '',
+                        career_orientation: '',
+                        strengths: '',
+                        weaknesses: '',
+                        mbti: ''
                     }
                 });
+
+                handleLoginSuccess(user);
+            } catch (error) {
+                signupError.textContent = 'Lỗi đăng ký: ' + error.message;
+            }
         });
     }
 
-    // 4. Xử lý đăng ký bằng Google
+    // Đăng ký bằng Google
     if (googleSignupBtn) {
-        googleSignupBtn.addEventListener('click', () => {
+        googleSignupBtn.addEventListener('click', async () => {
             clearError(signupError);
             const provider = new GoogleAuthProvider();
 
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    const user = result.user;
-                    const userRef = ref(database, 'users/' + user.uid);
-                    
-                    set(userRef, {
-                        email: user.email,
-                        displayName: user.displayName || 'Người dùng Google',
-                        photoURL: user.photoURL || '',
-                        provider: 'google.com',
-                        lastLogin: new Date().toISOString(),
-                        profile: {
-                            name: '',
-                            dob: '',
-                            gender: '',
-                            fav_career: '',
-                            career_orientation: '',
-                            strengths: '',
-                            weaknesses: '',
-                            mbti: ''
-                        }
-                    }).then(() => {
-                        handleLoginSuccess(user);
-                    }).catch(dbError => {
-                        console.error("Lỗi khi tạo người dùng Google:", dbError);
-                        signupError.textContent = 'Đăng nhập thành công nhưng có lỗi khi lưu thông tin.';
-                    });
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    if (errorCode === 'auth/popup-closed-by-user') {
-                        signupError.textContent = 'Cửa sổ đăng nhập Google đã bị đóng.';
-                    } else if (errorCode === 'auth/account-exists-with-different-credential') {
-                        signupError.textContent = 'Tài khoản đã tồn tại với phương thức đăng nhập khác.';
-                    } else {
-                        signupError.textContent = `Lỗi khi đăng nhập với Google: ${error.message}`;
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                const userDoc = doc(db, 'users', user.uid);
+
+                await setDoc(userDoc, {
+                    email: user.email,
+                    displayName: user.displayName || 'Người dùng Google',
+                    photoURL: user.photoURL || '',
+                    provider: 'google.com',
+                    createdAt: new Date().toISOString(),
+                    profile: {
+                        name: '',
+                        dob: '',
+                        gender: '',
+                        fav_career: '',
+                        career_orientation: '',
+                        strengths: '',
+                        weaknesses: '',
+                        mbti: ''
                     }
-                });
+                }, { merge: true });
+
+                handleLoginSuccess(user);
+            } catch (error) {
+                signupError.textContent = 'Lỗi Google: ' + error.message;
+            }
         });
     }
 
-    // 5. Xử lý đăng xuất
+    // Đăng xuất
     if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            signOut(auth).then(() => {
-                console.log('Đăng xuất thành công.');
-                if (signupLink && loginLink && userLogoContainer) {
-                    signupLink.style.display = 'block';
-                    loginLink.style.display = 'block';
-                    userLogoContainer.style.display = 'none';
-                }
-            }).catch((error) => {
-                console.error('Lỗi đăng xuất:', error);
-            });
+        logoutBtn.addEventListener('click', async () => {
+            await signOut(auth);
+            localStorage.removeItem('loggedInUserId');
+            signupLink.style.display = 'block';
+            loginLink.style.display = 'block';
+            userLogoContainer.style.display = 'none';
         });
     }
 
-    // 6. Kiểm tra trạng thái đăng nhập
+    // Xử lý giao diện khi đã đăng nhập
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            if (signupLink && loginLink && userLogoContainer && userLogo) {
-                signupLink.style.display = 'none';
-                loginLink.style.display = 'none';
-                userLogo.src = user.photoURL || './Logo.svg';
-                userLogoContainer.style.display = 'block';
-            }
+            signupLink.style.display = 'none';
+            loginLink.style.display = 'none';
+            userLogo.src = user.photoURL || './Logo.svg';
+            userLogoContainer.style.display = 'block';
         } else {
-            if (signupLink && loginLink && userLogoContainer) {
-                signupLink.style.display = 'block';
-                loginLink.style.display = 'block';
-                userLogoContainer.style.display = 'none';
-            }
+            signupLink.style.display = 'block';
+            loginLink.style.display = 'block';
+            userLogoContainer.style.display = 'none';
         }
     });
 });
