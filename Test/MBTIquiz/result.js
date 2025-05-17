@@ -1,5 +1,7 @@
+import { auth } from "../../auth.js";
+import { saveTestResult } from "../../savetest.js";
 
-const scores = JSON.parse(localStorage.getItem('traitScores')) || {e: 0, i: 0, s: 0, n: 0, t: 0, f: 0, j: 0, p: 0};
+const scores = JSON.parse(localStorage.getItem('traitScores')) || { e: 0, i: 0, s: 0, n: 0, t: 0, f: 0, j: 0, p: 0 };
 
 function createBar(trait1, trait2) {
     const total1 = scores[trait1] ?? 0;
@@ -90,9 +92,6 @@ const mbtiDescriptions = {
     }
 };
 
-
-
-
 function getMBTIType() {
     return [
         scores.e > scores.i ? 'E' : 'I',
@@ -102,6 +101,7 @@ function getMBTIType() {
     ].join('');
 }
 
+// Tính loại MBTI và hiển thị kết quả
 const mbtiResult = getMBTIType();
 const mbtiContainer = document.getElementById('mbti-result');
 const { color, desc } = mbtiDescriptions[mbtiResult] || { color: "#333", desc: "Không xác định." };
@@ -114,3 +114,21 @@ mbtiContainer.innerHTML = `
 const pairs = [['e', 'i'], ['s', 'n'], ['t', 'f'], ['j', 'p']];
 const barContainer = document.getElementById('result-bars');
 pairs.forEach(([t1, t2]) => barContainer.appendChild(createBar(t1, t2)));
+
+// Lưu kết quả vào Firestore
+auth.onAuthStateChanged(async (user) => {
+    if (user) {
+        try {
+            const resultData = {
+                ...scores,
+                type: mbtiResult
+            };
+            await saveTestResult(user.uid, "MBTI", resultData);
+        } catch (error) {
+            console.error("Không thể lưu kết quả MBTI:", error);
+            alert("Không thể lưu kết quả bài kiểm tra. Vui lòng thử lại sau.");
+        }
+    } else {
+        console.log("Không có người dùng đăng nhập. Kết quả không được lưu.");
+    }
+});

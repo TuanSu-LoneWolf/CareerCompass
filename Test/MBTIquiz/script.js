@@ -147,4 +147,8 @@ window.addEventListener("scroll", function() {
     }
 });
 
+if (!localStorage.getItem("startTime")) {
+    localStorage.setItem("startTime", Date.now());
+}
+
 
